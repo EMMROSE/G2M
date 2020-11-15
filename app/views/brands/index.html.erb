@@ -1,2 +1,37 @@
-<h1>Brands#index</h1>
-<p>Find me in app/views/brands/index.html.erb</p>
+<div class="container">
+  <h2> Mes Marques & Vêtements</h2>
+  <div style="width: 100%; display:flex; justify-content: space-around;">
+  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <%= link_to 'Ajouter une marque', new_brand_path, class: "button-ts"%>
+  <%= link_to 'Ajouter un vêtement', new_clothe_path, class: "button-ts"%>
+  </div>
+  <br>
+  <div style="width: 100%; display:flex; justify-content: space-around;">
+    <div class="fiche_listing">
+      <% if Brand.all.count == 0 %>
+        <p>Aucune marque n'est créée actuellement.</p>
+      <% else %>
+        <h2>Les Marques</h2>
+        <% @brands.each do |brand| %>
+          <div class="fiche_column">
+            <div><%= brand.name %></div>
+            <div><%= link_to 'X', brand_path(brand), method: :delete, class: "button-red"%></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="fiche_listing">
+      <% if Clothe.all.count == 0 %>
+        <p>Aucun vêtement n'est créée actuellement.</p>
+      <% else %>
+        <h2>Les Vêtements</h2>
+        <% @clothes.each do |clothe| %>
+          <div class="fiche_column">
+            <div><%= clothe.name %></div>
+            <div><%= link_to 'X', clothe_path(clothe), method: :delete, class: "button-red"%></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

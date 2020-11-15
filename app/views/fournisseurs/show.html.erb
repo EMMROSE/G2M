@@ -1,0 +1,22 @@
+<div>
+  <div class="fiche_fournisseur">
+    <h2>Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %></h2>
+    <p>Coordonnées : <%= @fournisseur.email %>  </p>
+    <p>RIB : <%= @fournisseur.rib %></p>
+    <p>Code : <%= @fournisseur.code %></p>
+    <div>
+      <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes. Crédit = <%= @fournisseur.credit %> €. </p>
+      <p><%= @fournisseur.firstname %> a gagné <%= @fournisseur.settle %>€.</p>
+      <br>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-around; align-items: center;">
+    <%= link_to 'Ses sélections', selections_path(fournisseur_id: @fournisseur.id), class: "button"%>
+
+    <%= link_to "Créer une nouvelle sélection de vêtements", selections_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts"%>
+
+    <%= link_to "Réaliser un paiement", new_fournisseur_paiement_path(@fournisseur), class: "button-red"%>
+
+    <%= link_to "Retour aux autres fournisseurs", fournisseurs_path, class: "button-return"%>
+  </div>
+</div>

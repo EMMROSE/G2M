@@ -1,0 +1,15 @@
+<div class="container m-5">
+  <%= link_to 'retour au Menu', root_path, class: "button"%>
+  <% @fournisseurs.each do |element| %>
+    <%= link_to fournisseur_path(element) do %>
+      <div class="index mt-5">
+        <div>
+          <%= element.firstname %> <%= element.lastname %>- n°<%= element.code %>
+        </div>
+        <div>
+          <%= link_to 'X', fournisseur_path(element), method: :delete, class: "button-red"%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

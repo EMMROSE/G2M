@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Votre dépôt chez Graîne de Mômes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
+  'reload' %>
+  <%= wicked_pdf_stylesheet_link_tag "selection" %>
+  <%= wicked_pdf_stylesheet_link_tag "application" %>
+</head>
+<body>
+    <%= image_tag wicked_pdf_asset_base64('logo.png'), style:"width: 200px; height: 120px;" %>
+  <br>
+  <p class="mt-5"><strong>Votre sélection pour Graine de Mômes</strong></p>
+  <p style="text-align: right;"><%= Date.today.strftime("le %d/%m/%Y") %></p>
+  <br>
+  <p>Bonjour <%= @selection.fournisseur.firstname %>,</p>
+  <p>Vous trouverez ci-dessous notre proposition de prix pour votre dernière sélection déposée chez Graîne de Mômes :</p><br>
+  <table>
+    <tr style="border-bottom: 1px solid black;">
+      <td style="width: 350px;">Vêtements</td>
+      <td style="width: 100px;">Tailles</td>
+      <td style="width: 100px;">Prix HT</td>
+      <td style="width: 150px;">Votre commission</td>
+      <td style="text-align: center;">Validation</td>
+    </tr>
+    <% @selection.products.each do |product| %>
+      <tr style="margin-bottom: 32px;">
+        <td style="width: 350px;"><%= product.name %> - <%= product.brand %></td>
+        <td style="width: 100px;"><%= product.size %></td>
+        <td style="width: 50px;"><%= product.price %>€</td>
+        <td style="width: 100px;"><%= product.price/2 %>€</td>
+        <td style="width: 150px; text-align: center;"><%= image_tag wicked_pdf_asset_base64('circle-regular.svg'), style:"width: 24px; height: 16px;"%></td>
+      </tr>
+    <% end %>
+      <td style="width: 350px;"></td>
+      <td style="width: 100px; border-top: : 1px solid black;">Total</td>
+      <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up %>€</td>
+      <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up / 2 %>€</td>
+  </table>
+  <br>
+  <p><%= image_tag wicked_pdf_asset_base64('circle-regular.svg'), style:"width: 24px; height: 16px;"%> Je valide la liste dans son intégralité.</p>
+  <br>
+  <p>Merci pour votre confiance. Retrouvez toutes les informations sur vos vêtements déposés sur notre site <strong>wwww.grainedemomes.fr</strong> dans la rubrique Dépôts.</p>
+  <br>
+  <br>
+  <p style="text-align: right; line-height:5px;"><strong>Marine Boizet</strong> - Fondatrice</p>
+  <p style="text-align: right; line-height:5px;">bonjour@grainedemomes.com</p>
+  <p style="text-align: right; line-height:5px;">14 place de l'Hotel de Ville</p>
+  <p style="text-align: right; line-height:5px;">92600 Asnières sur Seine</p>
+</body>
+</html>

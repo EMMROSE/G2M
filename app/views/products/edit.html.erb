@@ -1,0 +1,27 @@
+<div class="container">
+  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h1>Modifier ce produit</h1>
+      <%= simple_form_for [ @selection, @product ] do |f| %>
+        <% array_brand =  []%>
+        <% array_clothe =  []%>
+        <% Brand.all.each do |brand| %>
+        <%   array_brand << brand.name %>
+        <% end %>
+        <% Clothe.all.each do |clothe| %>
+          <%   array_clothe << clothe.name %>
+        <% end %>
+        # <%= f.input :brand, collection: array_brand %>
+        <%= f.input :name, collection:  array_clothe %>
+        <%= f.input :size, collection: ['0 mois', '1 mois','3 mois','6 mois','9 mois','12 mois','18 mois','2 ans', '3 ans', '4 ans', '5 ans', '6 ans', '7 ans', '8 ans', 'Pointure 19', 'Pointure 20', 'Pointure 21', 'Pointure 22', 'Pointure 23', 'Pointure 24', 'Pointure 25', 'Pointure 26', 'Pointure 27', 'Pointure 28', 'Pointure 29', 'Pointure 30', 'Pointure 32', 'Pointure 32', 'Pointure 33']%>
+        <%= f.input :genre, collection: ['Fille', 'Garçon', 'Mixte'] %>
+        <%= f.input :color, label: "Sa couleur",collection: ["Argenté", "Beige", "Blanc", "Bleu", "Bordeau", "Doré", "Gris", "Jaune", "Marron", "Multicolor", "Noir", "Orange", "Rose", "Rouge", "Vert", "Violet", "Marinière"] %>
+       <div class="form-button mt-2">
+        <%= f.submit "Modifier le produit", class: 'btn btn-primary' %>
+       </div>
+       <br>
+     <% end %>
+    </div>
+  </div>
+</div>

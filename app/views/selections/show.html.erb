@@ -1,0 +1,42 @@
+<h1>Détail de la sélection n°<%= @selection.id %> de <%= @selection.fournisseur.firstname %></h1>
+<div class="buttons-fournisseurs">
+  <%= link_to "Générer un PDF", selection_path(@selection, :format => :pdf) , :format => :pdf, class: "btn btn-success" %>
+  <%= link_to "Enregistrer en CSV", selection_csv_path, class: "button-red", style:"width: 240px;" %>
+  <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
+  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+</div>
+
+<div class="products_table">
+  <table>
+    <tr id="product-bg">
+      <td>Vêtements</td>
+      <td>Marque</td>
+      <td>Catégorie</td>
+      <td>Taille</td>
+      <td>Genre</td>
+      <td>Prix HT</td>
+      <td>Statut</td>
+      <td>Modifier le prix</td>
+      <td>Editer le produit</td>
+      <td>Supprimer le produit</td>
+    </tr>
+    <% if @selection.products.count > 0 %>
+      <% @selection.products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.brand %></td>
+          <td><%= product.category %></td>
+          <td><%= product.size %></td>
+          <td><%= product.genre %></td>
+          <td><%= product.price %>€</td>
+          <td><%= product.status %></td>
+          <td><%= link_to '€', edit_price_path(product), method: :post %></td>
+          <td><%= link_to 'edit',edit_product_path(product)%></td>
+          <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
+        </tr>
+      <% end %>
+      <% else %>
+        <tr> Cette sélection ne contient pas de produits.</tr>
+      <% end %>
+  </table>
+</div>

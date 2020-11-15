@@ -1,0 +1,13 @@
+<div class="fiche_fournisseur">
+  <h1>Nouveau fournisseur</h1>
+   <%= link_to 'retour au Menu', root_path, class: "button"%>
+  <% new_fournisseur = Fournisseur.new %>
+ <%= simple_form_for(new_fournisseur) do |f| %>
+    <%= f.input :firstname, label: 'Prénom', placeholder: "Freddy" %>
+    <%= f.input :lastname, label: 'Nom de famille', placeholder: "Mercury" %>
+    <%= f.input :email, label: 'adresse e-mail', placeholder: "bonjour@grainedemomes.com" %>
+    <%= f.input :rib, label: 'RIB', placeholder: "FR76XXXXXXXX" %>
+    <%= f.submit "Créer le fournisseur", class: 'btn btn-primary' %>
+
+ <% end %>
+</div>

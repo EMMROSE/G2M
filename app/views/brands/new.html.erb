@@ -1,2 +1,21 @@
-<h1>Brands#new</h1>
-<p>Find me in app/views/brands/new.html.erb</p>
+<div class="fiche_fournisseur">
+  <h1>Brands#new</h1>
+  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <br>
+  <p>Pour créer une marque, c'est ici que ça se passe >></p>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <h1>Nouvelle marque :</h1>
+        <%= simple_form_for [ @brand ] do |f| %>
+        <%= f.input :name, label: 'Nom de la marque', placeholder: "Jacadi, Dior, Merlinpinpin" %>
+         <div class="form-button mt-2">
+          <%= f.submit "Créer le produit", class: 'btn btn-primary' %>
+         </div>
+         <br>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

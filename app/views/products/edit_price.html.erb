@@ -1,0 +1,12 @@
+<div class="container">
+   <div class="container form-container">
+     <%= simple_form_for(@product) do |f| %>
+       <div class="form-top">
+         <%= f.number_field :price_cents, label: "Quelle somme en cents ? (on va essayer de modifier)", placeholder: 0%>
+       </div>
+       <div class="btn btn-primary">
+        <%= f.submit "Soumettre", class: 'btn btn-contact'%>
+       </div>
+     <% end %>
+   </div>
+</div>
