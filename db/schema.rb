@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_175643) do
     t.bigint "selection_id"
     t.string "genre"
     t.string "category"
+    t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["selection_id"], name: "index_products_on_selection_id"

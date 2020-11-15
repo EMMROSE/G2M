@@ -1,0 +1,40 @@
+.dashboard {
+  color: white;
+  margin: 32px 32px 0px 32px;
+  table {border: 2px solid black;}
+  tr, td {border: 1px solid black;}
+  td {
+    min-width: 200px;
+    text-align: center;
+  }
+}
+
+.products_table {
+  margin: 32px 32px 0px 32px;
+  table {border: 2px solid black;}
+  tr, td {border: 1px solid black;}
+  td {
+    min-width: 100px;
+    text-align: center;
+  }
+}
+
+#product-bg {
+  color: white;
+  font-weight: bolder;
+  height: 32px;
+  background: #ED4264;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #FFEDBC, #ED4264);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.table-selections{
+  margin: 32px 32px 0px 32px;
+  table {border: 2px solid white; background-color: #a27efb; color: white;}
+  tr, td {border: 1px solid white;}
+  td {
+    min-width: 160px;
+    text-align: center;
+    padding: 12px;
+  }
+}

@@ -1,0 +1,30 @@
+.fiche_fournisseur {
+  width: 70%;
+  border-radius: 6px;
+  margin: 32px;
+  padding: 16px;
+  background: #8e9eab;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 0 16px 16px rgba(51,61,71,0.4);
+}
+
+.fiche_listing {
+  background: #fc4a1a;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 50%;
+  padding: 32px;
+  margin: 32px;
+  border-radius: 6px;
+  font-weight: bolder;
+  color: white;
+  h1, h2, h3 {text-align: center;}
+}
+
+.fiche_column {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+

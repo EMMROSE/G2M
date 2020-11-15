@@ -1,4 +1,38 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
+@import "button";
+@import "dashboard";
+@import "fiche";
 @import "navbar";
+
+.bg-home {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/094.jpg");
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  h1, h2 {color: white; margin-left: 32px;}
+  height: 100vh;
+  margin-top: 1vh;
+}
+
+.bg-fournisseur {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/062.jpg");
+  background-size: cover;
+  background-position: center;
+  h1, h2, h3 {color: white;}
+  height: 100vh;
+  margin: 32px;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0px 16px 0px;
+  color: white;
+  font-weight: bolder;
+}

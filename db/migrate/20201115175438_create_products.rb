@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.references :selection, null: true, foreign_key: true
       t.string :genre
       t.string :category
+      t.string :color
 
       t.timestamps
     end
