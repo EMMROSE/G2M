@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="bg-home">
+  <h1>Graine de mômes</h1>
+  <h2>Application de Gestion du stock & comptabilité</h2>
+  <div class="buttons-home">
+    <%= link_to furnishers_path do %>
+      FOURNISSEURS
+    <% end %>
+    <%= link_to stocks_path do %>
+      STOCKS
+    <% end %>
+    <%= link_to comptabilite_path do %>
+      COMPTABILITE
+    <% end %>
+    <%= link_to test_path do %>
+      TEST
+    <% end %>
+  </div>
+  <div class="dashboard">
+    <h3>Dashboard</h3>
+    <table>
+      <tr class="bg-info text-white">
+        <td>Fournisseurs</td>
+        <td>Sélections</td>
+        <td>Produits</td>
+        <td>Valeur estimée du stock</td>
+        <td>Montant estimé des ventes</td>
+      </tr>
+      <tr>
+        <td><%= @fournisseurs.count %> fournisseurs</td>
+        <td><%= @selections.count %> sélections</td>
+        <td><%= @products.count %> produits</td>
+        <% inventory = 0 %>
+        <% sales = 0 %>
+        <% @products.each do |product| %>
+          <% inventory += product.price %>
+          <% sales += product.price if product.status == "vendu" %>
+        <% end %>
+        <td><%= inventory %>€</td>
+        <td><%= sales %>€</td>
+      </tr>
+    </table>
+  </div>
+</div>

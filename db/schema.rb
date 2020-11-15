@@ -10,10 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_174025) do
+ActiveRecord::Schema.define(version: 2020_11_15_175643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clothes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fournisseurs", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "rib"
+    t.string "email"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "paiements", force: :cascade do |t|
+    t.string "date"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "EUR", null: false
+    t.bigint "fournisseur_id", null: false
+    t.string "status", default: "à générer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fournisseur_id"], name: "index_paiements_on_fournisseur_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "brand"
+    t.string "name"
+    t.string "size"
+    t.string "status", default: "à vendre"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
+    t.bigint "selection_id"
+    t.string "genre"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["selection_id"], name: "index_products_on_selection_id"
+  end
+
+  create_table "selections", force: :cascade do |t|
+    t.text "date"
+    t.bigint "fournisseur_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fournisseur_id"], name: "index_selections_on_fournisseur_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +83,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_174025) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "paiements", "fournisseurs"
+  add_foreign_key "products", "selections"
+  add_foreign_key "selections", "fournisseurs"
 end
