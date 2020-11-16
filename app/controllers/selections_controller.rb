@@ -67,6 +67,8 @@ class SelectionsController < ApplicationController
   def mail
     @selection = Selection.find(params[:id])
     ProposalMailer.information(@selection).deliver_now
+    redirect_to selection_path(@selection)
+    flash[:notice] = "l'Email a été expédié."
   end
 
   private
