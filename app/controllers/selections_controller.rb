@@ -66,7 +66,7 @@ class SelectionsController < ApplicationController
 
   def mail
     @selection = Selection.find(params[:id])
-    PrposalMailer.information(contenu_pdf).deliver_now
+    ProposalMailer.information(contenu_pdf).deliver_now
   end
 
   private
