@@ -3,7 +3,7 @@
   <%= link_to "Générer un PDF", selection_path(@selection, :format => :pdf) , :format => :pdf, class: "btn btn-success" %>
   <%= link_to "Enregistrer en CSV", selection_csv_path, class: "button-red", style:"width: 240px;" %>
   <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
-  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <%= link_to 'Retour', selections_path(fournisseur_id: @selection.fournisseur.id), class: "btn btn-success"%>
 </div>
 
 <div class="products_table">
