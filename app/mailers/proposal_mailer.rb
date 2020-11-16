@@ -23,7 +23,7 @@ class ProposalMailer < ApplicationMailer
   end
 
   def generatecsv(csv)
-    attachments['my_file_name.csv'] = {mime_type: 'text/csv', content: csv}
+    attachments['import_products.csv'] = {mime_type: 'text/csv', content: csv}
     mail(to: 'bonjour@grainedemomes.com', subject: 'My CSV')
   end
 
