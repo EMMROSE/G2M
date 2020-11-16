@@ -66,4 +66,4 @@ gem 'money-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # to generate EMAIL
-gem 'postmark-rails'
+# gem 'postmark-rails'
