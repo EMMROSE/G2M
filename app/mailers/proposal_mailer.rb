@@ -5,26 +5,21 @@ class ProposalMailer < ApplicationMailer
   #
   #   en.gift_mailer.confirmation.subject
   #
-  def information(selection)
+  def information(selection, pdf)
     @selection = selection
-
+    attachments["Sélection n° #{@selection.id} du #{@selection.date}.pdf"] = WickedPdf.new.pdf_from_string(
+      render_to_string(pdf: 'todo', template: 'selections/show.html.erb', layout: 'pdf.html', page_size: 'A4', background: false, no_background: true, lowquality: true, zoom: 1, dpi: 300, encoding:"UTF-8")
+    )
+    # mail(to: todo.owner.email, subject: 'Your todo PDF is attached', todo: todo)
     mail(
       to:       @selection.fournisseur.email,
       subject:  "Votre dépôt chez Graîne de mômes"
     )
-    # mail(:to => @selection.fournisseur.email, :subject => "Votre dépôt chez Graîne de mômes") do |format|
-    #   format.text # renders send_report.text.erb for body of email
-    #   format.pdf do
-    #     attachments["Récapitulatif de la sélection No. #{@selection.id} du #{@selection.date}.pdf"] = WickedPdf.new.pdf_from_string(
-    #       render_to_string(:pdf => "Récapitulatif de la sélection No. #{@selection.id} du #{@selection.date}.", page_size: 'A4', :template => 'selections/show.html.erb')
-    #     )
-    #   end
-    # end
   end
 
   def generatecsv(csv)
     attachments['import_products.csv'] = {mime_type: 'text/csv', content: csv}
-    mail(to: 'bonjour@grainedemomes.com', subject: 'My CSV')
+    mail(to: 'bonjour@grainedemomes.com', subject: 'Nouveau CSV pour Shopify')
   end
 
 end

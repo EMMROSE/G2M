@@ -6,7 +6,7 @@ class Selection < ApplicationRecord
   def sum_up
     sum = 0
     self.products.each do |product|
-      sum += product.price
+      sum += product.price / 1.2
     end
     return sum
   end

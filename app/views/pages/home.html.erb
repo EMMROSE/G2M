@@ -22,8 +22,8 @@
         <td>Fournisseurs</td>
         <td>Sélections</td>
         <td>Produits</td>
-        <td>Valeur estimée du stock</td>
-        <td>Montant estimé des ventes</td>
+        <td>Valeur estimée du stock en HT</td>
+        <td>Montant estimé des ventes en HT</td>
       </tr>
       <tr>
         <td><%= @fournisseurs.count %> fournisseurs</td>
@@ -32,8 +32,8 @@
         <% inventory = 0 %>
         <% sales = 0 %>
         <% @products.each do |product| %>
-          <% inventory += product.price %>
-          <% sales += product.price if product.status == "vendu" %>
+          <% inventory += (product.price / 1.2) %>
+          <% sales += (product.price / 1.2) if product.status == "vendu" %>
         <% end %>
         <td><%= inventory %>€</td>
         <td><%= sales %>€</td>

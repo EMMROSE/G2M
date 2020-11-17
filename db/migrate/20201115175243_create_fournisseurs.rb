@@ -5,6 +5,7 @@ class CreateFournisseurs < ActiveRecord::Migration[6.0]
       t.string :lastname
       t.string :rib
       t.string :email
+      t.string :phone
       t.string :code
 
       t.timestamps

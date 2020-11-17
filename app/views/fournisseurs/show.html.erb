@@ -1,7 +1,7 @@
 <div>
   <div class="fiche_fournisseur">
-    <h2>Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %></h2>
-    <p>Coordonnées : <%= @fournisseur.email %>  </p>
+    <h2 style="display: flex;">Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %>    <%= link_to 'Editer', edit_fournisseur_path(@fournisseur), class: "button", style:"margin-left: 16px;"%></h2>
+    <p>Coordonnées : <%= @fournisseur.email %>  / Tél: <%= @fournisseur.phone %></p>
     <p>RIB : <%= @fournisseur.rib %></p>
     <p>Code : <%= @fournisseur.code %></p>
     <div>

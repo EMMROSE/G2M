@@ -6,13 +6,14 @@ class Fournisseur < ApplicationRecord
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :email, presence: true
+  validates :phone, presence: false
   validates :rib, presence: false
 
   def sold
     sold = 0
     self.selections.each do |selection|
       selection.products.where(status: "vendu").each do |product|
-        sold += (product.price * 0.5)
+        sold += ((product.price/1.2) * 0.5)
       end
     end
     return sold

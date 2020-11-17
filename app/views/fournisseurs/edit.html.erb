@@ -1,0 +1,14 @@
+<div class="fiche_fournisseur">
+  <%= link_to 'retour aux fournisseurs', fournisseurs_path, class: "btn btn-success"%>
+  <br>
+  <br>
+  <h1>Editez ce fournisseur</h1>
+   <%= simple_form_for(@fournisseur) do |f| %>
+      <%= f.input :firstname, label: 'Prénom', placeholder: "Freddy" %>
+      <%= f.input :lastname, label: 'Nom de famille', placeholder: "Mercury" %>
+      <%= f.input :email, label: 'adresse e-mail', placeholder: "bonjour@grainedemomes.com" %>
+      <%= f.input :phone, label: 'Téléphone', placeholder: "0636373637" %>
+      <%= f.input :rib, label: 'RIB', placeholder: "FR76XXXXXXXX" %>
+      <%= f.submit "Enregistrer", class: 'btn btn-primary' %>
+   <% end %>
+</div>

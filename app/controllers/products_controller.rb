@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
     array1 = ["Pull", "Gilet", "Cardigan"]
     array2 = ["Blouse", "Chemise"]
-    array3 = ["Body", "Pyjama"]
+    array3 = ["Body", "Pyjama", "Gigoteuse"]
     array4 = ["Combinaison", "Salopette", "Bloomer Salopette"]
     array5 = ["Robe", "Jupe"]
     array6 = ["Ensemble"]
@@ -87,12 +87,12 @@ class ProductsController < ApplicationController
         else
           @product.price = 0
         end
-    # #   end
-    # # end
-    # @product.price = prices[@product.brand.to_sym][@product.name.to_sym]
 
-    if @product.save
+    if @product.save && params[:commit] == 'Créer le produit'
       redirect_to selection_path(@selection)
+      flash[:notice] = "Votre produit a bien été enregistré."
+    elsif @product.save && params[:commit] == 'Créer un autre produit'
+      redirect_to new_selection_product_path(@selection)
       flash[:notice] = "Votre produit a bien été enregistré."
     else
       render :new

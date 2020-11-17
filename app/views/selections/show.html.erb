@@ -4,6 +4,7 @@
   <%= link_to "Enregistrer en CSV", selection_csv_path, class: "button-red", style:"width: 240px;" %>
   <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
   <%= link_to 'Retour', selections_path(fournisseur_id: @selection.fournisseur.id), class: "btn btn-success"%>
+  <h3><%= @selection.products.count %> produit(s)</h3>
 </div>
 
 <div class="products_table">
@@ -14,7 +15,9 @@
       <td>Catégorie</td>
       <td>Taille</td>
       <td>Genre</td>
+      <td>Couleur</td>
       <td>Prix HT</td>
+      <td>Prix TTC</td>
       <td>Statut</td>
       <td>Modifier le prix</td>
       <td>Editer le produit</td>
@@ -28,6 +31,8 @@
           <td><%= product.category %></td>
           <td><%= product.size %></td>
           <td><%= product.genre %></td>
+          <td><%= product.color %></td>
+          <td><%= product.price / 1.2 %>€</td>
           <td><%= product.price %>€</td>
           <td><%= product.status %></td>
           <td><%= link_to '€', edit_price_path(product), method: :post %></td>

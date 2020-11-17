@@ -68,6 +68,6 @@ class FournisseursController < ApplicationController
   private
 
   def fournisseur_params
-    params.require(:fournisseur).permit(:firstname, :lastname, :email, :rib, :code)
+    params.require(:fournisseur).permit(:firstname, :lastname, :email, :phone, :rib, :code)
   end
 end
