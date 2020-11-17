@@ -5,7 +5,7 @@ class ProposalMailer < ApplicationMailer
   #
   #   en.gift_mailer.confirmation.subject
   #
-  def information(selection, pdf)
+  def proposal(selection)
     @selection = selection
     attachments["Sélection n° #{@selection.id} du #{@selection.date}.pdf"] = WickedPdf.new.pdf_from_string(
       render_to_string(pdf: 'Sélection n° #{@selection.id} du #{@selection.date}.', template: 'selections/show.html.erb', layout: 'pdf.html', page_size: 'A4', background: false, no_background: true, lowquality: true, zoom: 1, dpi: 300, encoding:"UTF-8")
