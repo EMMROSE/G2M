@@ -63,6 +63,7 @@ class SelectionsController < ApplicationController
   def mail
     @selection = Selection.find(params[:id])
     # prepare email and forward csv as argument
+    #ProposalMailer.information(@selection).deliver_now
     ProposalMailer.proposal(@selection).deliver_now
     redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
     flash[:notice] = "l'Email a été expédié."

@@ -1,5 +1,11 @@
-<div class="container">
-  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+<div class="container mt-5">
+  <div class="buttons-fournisseurs">
+    <%= link_to 'Retour à la sélection', selection_path(@selection), class: "btn btn-success"%>
+    <%= link_to 'Créer une marque', new_brand_path, class: "button-red"%>
+    <%= link_to 'Créer un vêtement', new_clothe_path, class: "button-sm"%>
+    <% product = Product.last %>
+    <%= link_to 'Revenir au dernier produit',edit_product_path(product), class: "button"%>
+  </div>
   <div class="row">
     <div class="col-12 col-md-8">
       <h1>Nouveau produit</h1>
