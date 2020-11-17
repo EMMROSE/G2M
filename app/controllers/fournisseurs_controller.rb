@@ -38,6 +38,8 @@ class FournisseursController < ApplicationController
     @fournisseur = Fournisseur.new(fournisseur_params)
     numberforcode = (10000 - Fournisseur.count).to_s
     @fournisseur.code = Date.today.year.to_s + @fournisseur.firstname.chr + @fournisseur.lastname.chr + numberforcode
+    @fournisseur.firstname = @fournisseur.firstname.capitalize
+    @fournisseur.lastname = @fournisseur.lastname.capitalize
     if @fournisseur.save
       redirect_to furnishers_path
       flash[:notice] = "Votre fournisseur a bien été enregistré."

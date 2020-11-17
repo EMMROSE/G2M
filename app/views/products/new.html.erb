@@ -3,8 +3,10 @@
     <%= link_to 'Retour à la sélection', selection_path(@selection), class: "btn btn-success"%>
     <%= link_to 'Créer une marque', new_brand_path, class: "button-red"%>
     <%= link_to 'Créer un vêtement', new_clothe_path, class: "button-sm"%>
-    <% product = Product.last %>
-    <%= link_to 'Revenir au dernier produit',edit_product_path(product), class: "button"%>
+    <% if @selection.products.count > 0 %>
+      <% product = @selection.products.last %>
+      <%= link_to 'Revenir au dernier produit',edit_product_path(product), class: "button"%>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-12 col-md-8">
