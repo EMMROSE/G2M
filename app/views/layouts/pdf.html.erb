@@ -22,6 +22,7 @@
       <td style="width: 350px;">Vêtements</td>
       <td style="width: 100px;">Tailles</td>
       <td style="width: 100px;">Prix HT</td>
+      <td style="width: 100px;">Prix TTC</td>
       <td style="width: 150px;">Votre commission</td>
       <td style="text-align: center;">Validation</td>
     </tr>
@@ -30,6 +31,7 @@
         <td style="width: 350px;"><%= product.name %> - <%= product.brand %></td>
         <td style="width: 100px;"><%= product.size %></td>
         <td style="width: 50px;"><%= product.price / 1.2 %>€</td>
+        <td style="width: 50px;"><%= product.price %>€</td>
         <td style="width: 100px;"><%= product.price/ 2.4 %>€</td>
         <td style="width: 150px; text-align: center;"><%= image_tag wicked_pdf_asset_base64('circle-regular.svg'), style:"width: 24px; height: 16px;"%></td>
       </tr>
