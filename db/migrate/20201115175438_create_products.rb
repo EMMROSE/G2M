@@ -10,6 +10,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :genre
       t.string :category
       t.string :color
+      t.string :photo
 
       t.timestamps
     end

@@ -68,4 +68,6 @@ gem 'wkhtmltopdf-binary'
 
 # generate email with attachment
 gem 'postmark-rails'
+# join a photo to get image_path
+gem 'cloudinary'
 
