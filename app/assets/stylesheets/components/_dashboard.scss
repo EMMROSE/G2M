@@ -10,11 +10,12 @@
 }
 
 .products_table {
+  font-size: 12px;
   margin: 32px 32px 0px 32px;
   table {border: 2px solid black;}
   tr, td {border: 1px solid black;}
   td {
-    min-width: 100px;
+    min-width: 75px;
     text-align: center;
   }
 }

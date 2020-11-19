@@ -21,6 +21,7 @@
       <td>Prix HT</td>
       <td>Prix TTC</td>
       <td>Statut</td>
+      <td>Photo</td>
       <td>MAJ prix</td>
       <td>Editer</td>
       <td>Supprimer</td>
@@ -37,6 +38,7 @@
           <td><%= product.price / 1.2 %>€</td>
           <td><%= product.price %>€</td>
           <td><%= product.status %></td>
+          <td><%= product.photo.present?%></td>
           <td><%= link_to '€', edit_price_path(product), method: :post %></td>
           <td><%= link_to 'edit',edit_product_path(product)%></td>
           <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
