@@ -13,6 +13,7 @@ class ProposalMailer < ApplicationMailer
     # mail(to: todo.owner.email, subject: 'Your todo PDF is attached', todo: todo)
     mail(
       to:       @selection.fournisseur.email,
+      bcc:      'bonjour@grainedemomes.com',
       subject:  "Votre dépôt chez Graîne de mômes"
     )
   end

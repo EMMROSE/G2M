@@ -13,7 +13,7 @@ puts '... building array'
 
 array = ['Aden & Anais', '10IS', 'Absorba', 'Alice', 'Arsène et les pipelettes', 'Baby b gosh', 'Benetton', 'Billieblush', 'Blune', 'Bonpoint', 'Bonton', 'Boutchou', 'Burberry', 'C&A', 'Cadet Rousselle', 'Carrément Beau', 'Catimini', 'CdeC', 'Chipie', 'Cyrillus', 'Dior', 'DPAM', 'Gap', 'Gocco', 'H&M', 'IKKS', 'Isabel Marant', 'Jacadi', 'Kiabi', 'Kickers', 'K-way', 'La Redoute', 'Le Bome', 'Levis', 'Lola Palacios', 'Louis Louise', 'Mango', 'Monoprix', 'Natalys', 'Noukies', 'Obaïbi', 'Okaïdi', 'Orchestra', 'Oscar & Valentine', 'Oshkosh', 'Paul Smith', 'Petit Bateau', 'Ralph Lauren', 'Ronron', 'Sergent Major', 'Stella McCartney', 'Sucre d Orge','TAO', 'Tape à l œil', 'Tartine & Chocolat', 'The Little White Company', 'Timberland', 'Vert Baudet', 'Zadig & Voltaire', 'Zara']
 array2 = ['Bloomer', 'Bloomer Salopette', 'Blouse', 'Body', 'Chaussures', 'Chaussons', 'Chemise', 'Combinaison', 'Doudoune', 'Ensemble', 'Gigoteuse', 'Gilet', 'Hauts Manches Longues', 'Jupe', 'Manteau', 'Pantalon', 'Pull', 'Pyjama', 'Robe', 'Salopette', 'Veste']
-
+array3 = ["Argenté", "Beige", "Blanc", "Bleu", "Bordeau", "Doré", "Gris", "Jaune", "Marron", "Multicolor", "Noir", "Orange", "Rose", "Rouge", "Vert", "Violet", "Marinière", "Terracotta", "Lavande", "Corail"]
 puts "CREATING PRICES HASH"
 puts '----------------'
 puts "CREATING BRANDS"
@@ -30,6 +30,15 @@ puts '----------------'
 array2.each do |element|
   y = Clothe.new(name: element)
   y.save
+end
+puts '>>>>>> Done!'
+puts '----------------'
+
+puts "CREATING COLORS"
+puts '----------------'
+array2.each do |element|
+  z = Color.new(name: element)
+  z.save
 end
 puts '>>>>>> Done!'
 puts '----------------'

@@ -2,8 +2,10 @@
   <h2> Mes Marques & Vêtements</h2>
   <div style="width: 100%; display:flex; justify-content: space-around;">
   <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <%= link_to "Retour aux autres fournisseurs", fournisseurs_path, class: "button-return"%>
   <%= link_to 'Ajouter une marque', new_brand_path, class: "button-ts"%>
   <%= link_to 'Ajouter un vêtement', new_clothe_path, class: "button-ts"%>
+  <%= link_to 'Ajouter une couleur', new_color_path, class: "button-ts"%>
   </div>
   <br>
   <div style="width: 100%; display:flex; justify-content: space-around;">
@@ -29,6 +31,19 @@
           <div class="fiche_column">
             <div><%= clothe.name %></div>
             <div><%= link_to 'X', clothe_path(clothe), method: :delete, class: "button-red"%></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+        <div class="fiche_listing">
+      <% if Color.all.count == 0 %>
+        <p>Aucune couleur n'est créée actuellement.</p>
+      <% else %>
+        <h2>Les Vêtements</h2>
+        <% @colors.each do |color| %>
+          <div class="fiche_column">
+            <div><%= color.name %></div>
+            <div><%= link_to 'X', color_path(color), method: :delete, class: "button-red"%></div>
           </div>
         <% end %>
       <% end %>

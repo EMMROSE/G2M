@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'colors/index'
+  get 'colors/new'
+  get 'colors/create'
+  get 'colors/edit'
+  get 'colors/update'
+  get 'colors/destroy'
   get 'clothes/index'
   get 'clothes/new'
   get 'clothes/create'
@@ -45,5 +51,6 @@ Rails.application.routes.draw do
 
   resources :brands
   resources :clothes
+  resources :colors
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

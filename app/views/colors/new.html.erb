@@ -1,0 +1,18 @@
+<%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+<br>
+<p>Pour créer une nouvelle couleur, c'est ici que ça se passe >></p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h1>Nouvealle couleur :</h1>
+      <%= simple_form_for [ @color ] do |f| %>
+      <%= f.input :name, label: 'Nom de la couleur', placeholder: "Bleu, Rose, Doré" %>
+       <div class="form-button mt-2">
+        <%= f.submit "Créer la couleur", class: 'btn btn-primary' %>
+       </div>
+       <br>
+     <% end %>
+    </div>
+  </div>
+</div>
