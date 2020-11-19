@@ -35,4 +35,12 @@ class Fournisseur < ApplicationRecord
   def sales
     self.count
   end
+
+  #pg search
+  include PgSearch::Model
+  pg_search_scope :search_by_lastname_email_code,
+    against: [ :lastname, :email, :code ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

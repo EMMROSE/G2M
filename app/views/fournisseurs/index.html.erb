@@ -1,5 +1,23 @@
 <div class="container m-5">
   <%= link_to 'retour au Menu', root_path, class: "button"%>
+
+  <div class="search mt-2">
+    <%= form_tag fournisseurs_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+      <div class="search-form-control form-group mt-1 mb-0">
+        <%= text_field_tag :query,
+            params[:query],
+            class: "search-input form-control string required",
+            id: "search_query",
+            placeholder: "chercher un fournisseur par son nom, son email ou son code",
+            value: ""
+        %>
+        <%= button_tag(type: "submit", class: "btn btn-flat") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <% @fournisseurs.each do |element| %>
     <%= link_to fournisseur_path(element) do %>
       <div class="index mt-5">

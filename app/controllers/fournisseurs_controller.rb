@@ -1,9 +1,9 @@
 class FournisseursController < ApplicationController
   require 'date'
 
-  def research
+  def index
     if params[:query].present?
-      @fournisseurs = Fournisseur.search_by_name_code(params[:query])
+      @fournisseurs = Fournisseur.search_by_lastname_email_code(params[:query])
     else @fournisseurs = Fournisseur.all
     end
     if @fournisseurs.count == 0
@@ -11,9 +11,9 @@ class FournisseursController < ApplicationController
     end
   end
 
-  def index
-    @fournisseurs = Fournisseur.all
-  end
+  # def index
+  #   @fournisseurs = Fournisseur.all
+  # end
 
   def show
     @fournisseur = Fournisseur.find(params[:id])

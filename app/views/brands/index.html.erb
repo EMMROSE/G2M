@@ -2,14 +2,14 @@
   <h2> Mes Marques & Vêtements</h2>
   <div style="width: 100%; display:flex; justify-content: space-around;">
   <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
-  <%= link_to "Retour aux autres fournisseurs", fournisseurs_path, class: "button-return"%>
+  <%= link_to "Retour aux fournisseurs", fournisseurs_path, class: "button-return"%>
   <%= link_to 'Ajouter une marque', new_brand_path, class: "button-ts"%>
   <%= link_to 'Ajouter un vêtement', new_clothe_path, class: "button-ts"%>
   <%= link_to 'Ajouter une couleur', new_color_path, class: "button-ts"%>
   </div>
   <br>
   <div style="width: 100%; display:flex; justify-content: space-around;">
-    <div class="fiche_listing">
+    <div class="fiche_listing bg_list1">
       <% if Brand.all.count == 0 %>
         <p>Aucune marque n'est créée actuellement.</p>
       <% else %>
@@ -22,7 +22,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="fiche_listing">
+    <div class="fiche_listing bg_list2">
       <% if Clothe.all.count == 0 %>
         <p>Aucun vêtement n'est créée actuellement.</p>
       <% else %>
@@ -35,11 +35,11 @@
         <% end %>
       <% end %>
     </div>
-        <div class="fiche_listing">
+        <div class="fiche_listing bg_list3">
       <% if Color.all.count == 0 %>
         <p>Aucune couleur n'est créée actuellement.</p>
       <% else %>
-        <h2>Les Vêtements</h2>
+        <h2>Les Couleurs</h2>
         <% @colors.each do |color| %>
           <div class="fiche_column">
             <div><%= color.name %></div>

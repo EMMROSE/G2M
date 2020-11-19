@@ -1,8 +1,8 @@
 class BrandsController < ApplicationController
   def index
-    @brands = Brand.all
-    @clothes = Clothe.all
-    @colors = Colors.all
+    @brands = Brand.order(name: :asc)
+    @clothes = Clothe.order(name: :asc)
+    @colors = Color.order(name: :asc)
   end
 
   def new
