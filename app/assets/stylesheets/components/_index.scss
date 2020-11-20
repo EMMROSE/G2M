@@ -4,6 +4,7 @@
 @import "button";
 @import "dashboard";
 @import "fiche";
+@import "form";
 @import "navbar";
 
 .bg-home {
@@ -14,6 +15,15 @@
   h1, h2 {color: white; margin-left: 32px;}
   height: 100vh;
   margin-top: 1vh;
+}
+
+#welcometext {
+  p {
+    text-align: center;
+    color: white;
+    margin: 5vh;
+    font-size: 32px;
+  }
 }
 
 .bg-fournisseur {

@@ -69,6 +69,10 @@ class SelectionsController < ApplicationController
     flash[:notice] = "l'Email a été expédié."
   end
 
+  def image
+    @product = Product.find(params[:id])
+  end
+
   private
 
   def selection_params

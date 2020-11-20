@@ -36,9 +36,9 @@ Rails.application.routes.draw do
     resources :paiements, only: [ :index, :show, :new, :create ]
   end
   resources :selections do
-      resources :products, only: [ :index, :show, :new, :create ]
+    resources :products, only: [ :index, :new, :create ]
   end
-  resources :products, only: [ :edit, :update, :destroy]
+  resources :products, only: [ :edit, :update, :destroy, :show]
     post 'products/:id/sold', to: "products#sold_status", as: "sold_status"
     post 'products/:id/sell', to: "products#tosell_status", as: "tosell_status"
     post 'products/:id/return', to: "products#return_status", as: "return_status"
@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   get 'selections/:id/csv', to: "selections#csv", as: "selection_csv"
   get 'selections/:id/mail', to: "selections#mail", as: "selection_mail"
+  get 'selections/:id/image', to: "selections#image", as: "image"
 
   resources :brands
   resources :clothes
