@@ -34,22 +34,25 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import { loadDynamicBannerText } from '../components/banner';
+import { openModal } from '../components/modal';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
   loadDynamicBannerText();
+  openModal();
+  initSweetalert('#sweet-alert-demo', {
+    title: "Une seconde d'attention !",
+    text: "Vous souhaitez transmettre cette proposition ?",
+    icon: "success"
+  }, (value) => {
+    if (value) {
+      const link = document.querySelector('#delete-link');
+      link.click();
+    }
+  });
 });
 
-import { initSweetalert } from '../plugins/init_sweetalert';
 
-initSweetalert('#sweet-alert-demo', {
-  title: "Une seconde d'attention !",
-  text: "Vous souhaitez transmettre cette proposition ?",
-  icon: "success"
-}, (value) => {
-  if (value) {
-    const link = document.querySelector('#delete-link');
-    link.click();
-  }
-});
+
