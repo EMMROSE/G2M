@@ -28,7 +28,7 @@
     </tr>
     <% if @selection.products.count > 0 %>
       <% @selection.products.each do |product| %>
-        <tr>
+        <tr id="product-details">
           <td><%= product.name %></td>
           <td><%= product.brand %></td>
           <td><%= product.category %></td>
@@ -42,29 +42,18 @@
           <td><%= link_to '€', edit_price_path(product), method: :post %></td>
           <td><%= link_to 'edit',edit_product_path(product)%></td>
           <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
-          <td><a data-toggle="modal" data-target="#exampleModal"><i class="fas fa-camera-retro"></i></a></td>
-          <%# This is a Modal %>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-             <div class="modal-content form-content">
-               <div class="modal-header form-content">
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                 </button>
-               </div>
-               <div class="modal-body">
-                 <div class="container">
-                      <%= cl_image_tag product.photo.key %>
-                 </div>
-               </div>
-             </div>
+          <td><a href="#modal1" class="js-modal"><i class="fas fa-camera-retro"></i></a></td>
+
+          <aside id="modal1" class="modal" aria-hidden="true" role="dialog">
+            <div class="modal-wrapper js-modal-stop">
+              <button class="js-modal-close">Fermer la boîte modale</button>
+              <p><%= product.name %></p>
             </div>
-          </div>
-          <%# end of Modal %>
+          </aside>
         </tr>
       <% end %>
       <% else %>
-        <tr> Cette sélection ne contient pas de produits.</tr>
+        <tr> Cette sélection ne contient pas de produit.</tr>
       <% end %>
   </table>
 </div>
