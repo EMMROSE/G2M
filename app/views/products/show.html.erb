@@ -1,6 +1,11 @@
 <div class="modal">
   <div class="modal-wrapper">
-    <%= link_to 'X', selection_path(@product.selection)%>
-    <%= cl_image_tag @product.photo.key %>
+    <% if @product.photo.present? %>
+      <%= link_to 'X', selection_path(@product.selection)%>
+      <%= cl_image_tag @product.photo.key %>
+    <% else %>
+      <%= link_to 'X', selection_path(@product.selection)%>
+      <p>le produit n°<%= @product.id %> n'a pas encore d'image.</p>
+    <% end %>
   </div>
 </div>
