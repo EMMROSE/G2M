@@ -12,6 +12,7 @@
 <div class="products_table">
   <table>
     <tr id="product-bg">
+      <td>N°</td>
       <td>Vêtements</td>
       <td>Marque</td>
       <td>Catégorie</td>
@@ -25,10 +26,12 @@
       <td>MAJ prix</td>
       <td>Editer</td>
       <td>Supprimer</td>
+      <td>Vendu ?</td>
     </tr>
     <% if @selection.products.count > 0 %>
       <% @selection.products.each do |product| %>
         <tr id="product-details">
+          <td><%= product.id %></td>
           <td><%= product.name %></td>
           <td><%= product.brand %></td>
           <td><%= product.category %></td>
@@ -38,14 +41,20 @@
           <td><%= product.price / 1.2 %>€</td>
           <td><%= product.price %>€</td>
           <td><%= product.status %></td>
-          <td><%= product.photo.present?%></td>
+          <td>
+            <% if product.photo.present?%>
+              <%= link_to product_path(product) do %>
+                <i class="fas fa-camera-retro"></i>
+              <% end %>
+            <% else %>
+              <i class="fas fa-ban"></i>
+            <% end %>
+          </td>
           <td><%= link_to '€', edit_price_path(product), method: :post %></td>
           <td><%= link_to 'edit',edit_product_path(product)%></td>
           <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
           <td>
-            <%= link_to product_path(product) do %>
-              <i class="fas fa-camera-retro"></i>
-            <% end %>
+            <%= link_to "V", sold_status_path(product), method: :post %>
           </td>
         </tr>
       <% end %>

@@ -13,7 +13,7 @@ class SelectionsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Sélection N°. #{@selection.id} de #{@selection.fournisseur.firstname} #{@selection.fournisseur.firstname} du #{@selection.date}.",
+        render pdf: "Sélection N°. #{@selection.id} de #{@selection.fournisseur.firstname} #{@selection.fournisseur.lastname} du #{@selection.date}.",
           layout: 'pdf.html',
           page_size: 'A4',
           template: "selections/show.html.erb",

@@ -122,21 +122,21 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product.status = "vendu"
     product.save
-    redirect_to stocks_path
+    redirect_to selection_path(product.selection)
   end
 
   def tosell_status
     product = Product.find(params[:id])
     product.status = "à vendre"
     product.save
-    redirect_to stocks_path
+    redirect_to selection_path(product.selection)
   end
 
   def return_status
     product = Product.find(params[:id])
     product.status = "retourné"
     product.save
-    redirect_to stocks_path
+    redirect_to selection_path(product.selection)
   end
 
   def edit_price
