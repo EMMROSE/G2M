@@ -42,14 +42,11 @@
           <td><%= link_to '€', edit_price_path(product), method: :post %></td>
           <td><%= link_to 'edit',edit_product_path(product)%></td>
           <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
-          <td><a href="#modal1" class="js-modal"><i class="fas fa-camera-retro"></i></a></td>
-
-          <aside id="modal1" class="modal" aria-hidden="true" role="dialog">
-            <div class="modal-wrapper js-modal-stop">
-              <button class="js-modal-close">Fermer la boîte modale</button>
-              <p><%= product.name %></p>
-            </div>
-          </aside>
+          <td>
+            <%= link_to product_path(product) do %>
+              <i class="fas fa-camera-retro"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       <% else %>

@@ -5,6 +5,7 @@
 @import "dashboard";
 @import "fiche";
 @import "form";
+@import "modal";
 @import "navbar";
 @import "product";
 
@@ -48,11 +49,14 @@
   font-weight: bolder;
 }
 
-.search button {
+.search {
+  width: 80%;
+  button {
   padding-top: 19px;
   padding-bottom: 19px;
   color: white;
-  i {
-    color: white
+    i {
+      color: red;
+    }
   }
 }
