@@ -50,14 +50,32 @@
                 <i class="fas fa-camera-retro"></i>
               <% end %>
             <% else %>
-              <i class="fas fa-ban"></i>
+              <i class="fas fa-ban" style="color: #9E2725;"></i>
             <% end %>
           </td>
-          <td><%= link_to '€', edit_price_path(product), method: :post %></td>
-          <td><%= link_to 'edit',edit_product_path(product)%></td>
-          <td><%= link_to '-', product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %></td>
           <td>
-            <%= link_to " Vendu ", sold_status_path(product), method: :post %> / <%= link_to " à Vendre ", tosell_status_path(product), method: :post %>
+            <% if product.status == "à vendre" %>
+              <%= link_to '€', edit_price_path(product), method: :post %>
+            <% else %>
+              <i class="fas fa-ban" style="color: #9E2725;"></i>
+            <% end %>
+          </td>
+          <td>
+            <% if product.status == "à vendre" %>
+              <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_path(product)%>
+            <% else %>
+              <i class="fas fa-ban" style="color: #9E2725;"></i>
+            <% end %>
+          </td>
+          <td>
+            <% if product.status == "à vendre" %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
+            <% else %>
+              <i class="fas fa-ban" style="color: #9E2725;"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
           </td>
         </tr>
       <% end %>

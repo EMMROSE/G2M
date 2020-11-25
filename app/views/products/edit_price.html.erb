@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <%= link_to 'retour à la sélection', selection_path(@product.selection), class: "btn btn-success"%>
    <div class="container form-container">
      <%= simple_form_for(@product) do |f| %>
       <p>Modifiez le prix TTC de ce produit</p>
