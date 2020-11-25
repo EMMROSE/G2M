@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
     @selection = Selection.find(params[:selection_id])
     @product.selection = @selection
     # to add a category according to name of product itself
-
     array1 = ["Pull", "Gilet", "Cardigan"]
     array2 = ["Blouse", "Chemise"]
     array3 = ["Body", "Pyjama", "Gigoteuse"]
@@ -46,6 +45,7 @@ class ProductsController < ApplicationController
     array8 = ["Pantalon", "Legging", "Bloomer"]
     array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
     array10 = ["Chaussures", "Chaussons"]
+    array11 = ["Hauts Manches Courtes"]
     if array1.include?(@product.name)
       @product.category = "Pull/Gilet/Cardigan"
     elsif array2.include?(@product.name)
@@ -61,11 +61,13 @@ class ProductsController < ApplicationController
     elsif array7.include?(@product.name)
       @product.category = "Hauts Manches Longues"
     elsif array8.include?(@product.name)
-      @product.category = "Pantalon/Leggin/Bloomer"
+      @product.category = "Pantalon/Legging/Bloomer"
     elsif array9.include?(@product.name)
       @product.category = "Manteau/Blouson"
     elsif array10.include?(@product.name)
       @product.category = "Chaussures/Chaussons"
+    elsif array11.include?(@product.name)
+      @product.category = "Hauts Manches Courtes"
     else
       @product.category = "Accessoires"
     end
@@ -106,6 +108,44 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    #to edit category
+    array1 = ["Pull", "Gilet", "Cardigan"]
+    array2 = ["Blouse", "Chemise"]
+    array3 = ["Body", "Pyjama", "Gigoteuse"]
+    array4 = ["Combinaison", "Salopette", "Bloomer Salopette"]
+    array5 = ["Robe", "Jupe"]
+    array6 = ["Ensemble"]
+    array7 = ["Hauts Manches Longues"]
+    array8 = ["Pantalon", "Legging", "Bloomer"]
+    array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
+    array10 = ["Chaussures", "Chaussons"]
+    array11 = ["Hauts Manches Courtes"]
+    if array1.include?(@product.name)
+      @product.category = "Pull/Gilet/Cardigan"
+    elsif array2.include?(@product.name)
+      @product.category = "Blouse/Chemise"
+    elsif array3.include?(@product.name)
+      @product.category = "Body/Pyjama"
+    elsif array4.include?(@product.name)
+      @product.category = "Combinaison/Salopette"
+    elsif array5.include?(@product.name)
+      @product.category = "Robe/Jupe"
+    elsif array6.include?(@product.name)
+      @product.category = "Ensemble"
+    elsif array7.include?(@product.name)
+      @product.category = "Hauts Manches Longues"
+    elsif array8.include?(@product.name)
+      @product.category = "Pantalon/Legging/Bloomer"
+    elsif array9.include?(@product.name)
+      @product.category = "Manteau/Blouson"
+    elsif array10.include?(@product.name)
+      @product.category = "Chaussures/Chaussons"
+    elsif array11.include?(@product.name)
+      @product.category = "Hauts Manches Courtes"
+    else
+      @product.category = "Accessoires"
+    end
+
     if @product.update(product_params)
       redirect_to selection_path(@product.selection)
     else render :edit
