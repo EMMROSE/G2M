@@ -18,6 +18,7 @@
     <% if @selection.products.count > 0 %>
       <% @selection.products.where(status: "à vendre").each do |product| %>
         <div class="etiquette">
+          <%= image_tag wicked_pdf_asset_base64('petitlogo.png'), style:"width: 80px; height: 80px;" %>
           <p><%= product.name %> - n°<%= product.id %><%= product.selection.fournisseur.firstname.chars.first%><%= product.selection.fournisseur.lastname.chars.first%></p>
           <p style="font-size: 24px;"><%= product.price %>€</p>
         </div>
