@@ -3,6 +3,7 @@
     <%= link_to 'Retour à la sélection', selection_path(@selection), class: "btn btn-success"%>
     <%= link_to 'Créer une marque', new_brand_path, class: "button-red"%>
     <%= link_to 'Créer un vêtement', new_clothe_path, class: "button-sm"%>
+    <%= link_to 'Créer une couleur', new_color_path, class: "button-red"%>
     <% if @selection.products.count > 0 %>
       <% product = @selection.products.last %>
       <%= link_to 'Revenir au dernier produit',edit_product_path(product), class: "button"%>
@@ -24,8 +25,8 @@
         <% Color.all.each do |color| %>
           <%   array_color << color.name %>
         <% end %>
-        <%= f.input :brand, label: "Marque",collection: array_brand %>
         <%= f.input :name, label: "Nom du vêtement",collection:  array_clothe %>
+        <%= f.input :brand, label: "Marque",collection: array_brand %>
         <%= f.input :size, label: "Taille",collection: ['0 mois', '1 mois','3 mois','6 mois','9 mois','12 mois','18 mois','2 ans', '3 ans', '4 ans', '5 ans', '6 ans', '7 ans', '8 ans', 'Pointure 19', 'Pointure 20', 'Pointure 21', 'Pointure 22', 'Pointure 23', 'Pointure 24', 'Pointure 25', 'Pointure 26', 'Pointure 27', 'Pointure 28', 'Pointure 29', 'Pointure 30', 'Pointure 32', 'Pointure 32', 'Pointure 33']%>
         <%= f.input :genre, label: "Genre",collection: ['Fille', 'Garçon', 'Mixte'] %>
         <%= f.input :color, label: "Sa couleur",collection: array_color %>

@@ -1,11 +1,18 @@
 <div class="container">
   <h2> Mes Marques & Vêtements</h2>
   <div style="width: 100%; display:flex; justify-content: space-around;">
-  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
-  <%= link_to "Retour aux fournisseurs", fournisseurs_path, class: "button-return"%>
-  <%= link_to 'Ajouter une marque', new_brand_path, class: "button-ts"%>
-  <%= link_to 'Ajouter un vêtement', new_clothe_path, class: "button-ts"%>
-  <%= link_to 'Ajouter une couleur', new_color_path, class: "button-ts"%>
+    <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+    <%= link_to "Retour aux fournisseurs", fournisseurs_path, class: "button-return"%>
+    <% if Selection.all.count > 0 %>
+      <% @selection = Selection.last %>
+      <%= link_to 'Revenir à la dernière sélection',selection_path(@selection), class: "button-return"%>
+    <% end %>
+  </div>
+  <br>
+  <div style="width: 100%; display:flex; justify-content: space-around;">
+    <%= link_to 'Ajouter une marque', new_brand_path, class: "button-ts"%>
+    <%= link_to 'Ajouter un vêtement', new_clothe_path, class: "button-ts"%>
+    <%= link_to 'Ajouter une couleur', new_color_path, class: "button-ts"%>
   </div>
   <br>
   <div style="width: 100%; display:flex; justify-content: space-around;">

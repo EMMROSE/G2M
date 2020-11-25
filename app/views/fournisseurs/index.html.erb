@@ -1,5 +1,7 @@
 <div class="container m-5">
-  <%= link_to 'retour au Menu', root_path, class: "button"%>
+  <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
+  <br>
+  <%= link_to 'Créer un fournisseur', new_fournisseur_path, class: "button-red", style:"margin-top: 16px;"%>
 
   <div class="search mt-2">
     <%= form_tag fournisseurs_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>

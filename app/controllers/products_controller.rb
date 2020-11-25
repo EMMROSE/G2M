@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     array5 = ["Robe", "Jupe"]
     array6 = ["Ensemble"]
     array7 = ["Hauts Manches Longues"]
-    array8 = ["Pantalon", "Leggin", "Bloomer"]
+    array8 = ["Pantalon", "Legging", "Bloomer"]
     array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
     array10 = ["Chaussures", "Chaussons"]
     if array1.include?(@product.name)
