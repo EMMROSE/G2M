@@ -2,6 +2,7 @@ class Selection < ApplicationRecord
   belongs_to :fournisseur
 
   has_many :products, dependent: :destroy
+  has_one :notification, dependent: :destroy
 
   def sum_up
     sum = 0

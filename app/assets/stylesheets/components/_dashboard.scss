@@ -39,6 +39,11 @@
     text-align: center;
     padding: 12px;
   }
+  i {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+  }
 }
 
 #td-no-border {
@@ -46,3 +51,12 @@
   border-right : none;
   border-bottom: none;
 }
+
+#red {
+  color: red;
+}
+
+#green {
+  color: green;
+}
+

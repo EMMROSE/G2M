@@ -85,6 +85,9 @@ class SelectionsController < ApplicationController
     # prepare email and forward csv as argument
     #ProposalMailer.information(@selection).deliver_now
     ProposalMailer.proposal(@selection).deliver_now
+    @notification = Notification.new(selection_id: @selection.id)
+    @notification.status = "transmis"
+    @notification.save!
     redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
     flash[:notice] = "l'Email a été expédié."
   end
