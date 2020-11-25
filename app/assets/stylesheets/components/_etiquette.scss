@@ -11,4 +11,12 @@
   text-align: center;
   padding: 16px;
   margin: 8px;
+  position: relative;
+  img {
+    position: absolute;
+    top: 50px;
+    left: 6px;
+    width: 50px;
+    height: 40px;
+  }
 }
