@@ -27,6 +27,26 @@ class SelectionsController < ApplicationController
     end
   end
 
+  def etiquette
+    @selection = Selection.find(params[:id])
+    @fournisseur = @selection.fournisseur_id
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Etiquettes de la Sélection N°. #{@selection.id}.",
+          layout: 'pdf2.html',
+          page_size: 'A4',
+          template: "selections/show.html.erb",
+          background: false,
+          no_background: true,
+          lowquality: true,
+          zoom: 1,
+          dpi: 300,
+          encoding:"UTF-8"
+      end
+    end
+  end
+
   def new
     @selection = Selection.new
   end

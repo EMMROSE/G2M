@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   get 'selections/:id/csv', to: "selections#csv", as: "selection_csv"
   get 'selections/:id/mail', to: "selections#mail", as: "selection_mail"
+  get 'selections/:id/etiquette', to: "selections#etiquette", as: "selection_etiquette"
 
   resources :brands
   resources :clothes
