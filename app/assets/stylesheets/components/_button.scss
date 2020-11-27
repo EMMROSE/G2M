@@ -159,3 +159,25 @@
     color: white;
   }
 }
+
+#button-plus {
+  a {
+    background-color: pink;
+    padding: 16px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    &:hover {border : solid red 2px;}
+  }
+  p {display: none;}
+  &:hover {
+    p {
+      display: inline-block;
+      background-color: black;
+      padding: 6px;
+      color: white;
+      font-weight: bolder;
+    }
+  }
+}

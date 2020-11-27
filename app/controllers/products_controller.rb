@@ -191,6 +191,23 @@ class ProductsController < ApplicationController
     flash[:notice] = "Votre prix a bien été modifié."
   end
 
+  def duplicate
+    @last_product = Product.last
+    @product = Product.new
+    @product.name = @last_product.name
+    @product.brand = @last_product.brand
+    @product.size = @last_product.size
+    @product.color = @last_product.color
+    @product.genre = @last_product.genre
+    @product.selection = @last_product.selection
+    @product.price = @last_product.price
+    @product.category = @last_product.category
+
+    @product.save!
+    redirect_to selection_path(@product.selection)
+    flash[:notice] = "Votre produit a été dupliqué."
+  end
+
   private
 
   def product_params

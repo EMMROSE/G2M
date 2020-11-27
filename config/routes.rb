@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     post 'products/:id/sell', to: "products#tosell_status", as: "tosell_status"
     post 'products/:id/return', to: "products#return_status", as: "return_status"
     post 'products/:id/edit_price', to: "products#edit_price", as: "edit_price"
+    post 'products/duplicate', to: "products#duplicate", as: "duplicate"
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
 
