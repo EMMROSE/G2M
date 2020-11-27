@@ -1,24 +1,14 @@
 class ProductsController < ApplicationController
+
   def index
-    # Status filter
-    @products = @products.where(status: params[:status]) if params[:status].present?
-    # FOURNISSEUR filter THROUGHT SELECTION ID ??
-    @products = @products.selection.where(fournisseur: params[:fournisseur]) if params[:fournisseur].present?
-    # # Size filter
-    @products = @products.article.where(size: params[:size]) if params[:size].present?
-
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search_by_brand_id_name(params[:query])
+    else @products = Product.all
+    end
+    if @products.count == 0
+      @products = Product.all
+    end
   end
-
-  # def research
-  #   if params[:query].present?
-  #     @products = Product.search_by_name_sku(params[:query])
-  #   else @products = Product.all
-  #   end
-  #   if @products.count == 0
-  #     @products = Product.all
-  #   end
-  # end
 
   def show
     @product = Product.find(params[:id])

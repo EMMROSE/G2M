@@ -1,0 +1,82 @@
+<div class="container m-5">
+  <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
+  <div class="search mt-2">
+    <%= form_tag products_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+      <div class="search-form-control form-group mt-1 mb-0">
+        <%= text_field_tag :query,
+            params[:query],
+            class: "search-input form-control string required",
+            id: "search_query",
+            placeholder: "chercher un produit par son nom, sa marque ou son identifiant",
+            value: ""
+        %>
+        <%= button_tag(type: "submit", class: "btn btn-flat") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <table class="products_table">
+    <tr id="product-bg">
+      <td>N°</td>
+      <td>Vêtements</td>
+      <td>Marque</td>
+      <td>Déposant</td>
+      <td>Prix TTC</td>
+      <td>Photo</td>
+      <td>MAJ prix</td>
+      <td>Editer</td>
+      <td>Supprimer</td>
+      <td>Statut</td>
+      <td>Vendu ?</td>
+    </tr>
+    <% @products.order(:id).each do |element| %>
+      <tr id="product-details">
+        <td><%= element.id %></td>
+        <td><%= element.name %></td>
+        <td><%= element.brand %></td>
+        <% if element.selection.present? && element.selection.fournisseur.present? %>
+          <td><%= element.selection.fournisseur.firstname%> <%= element.selection.fournisseur.lastname%></td>
+        <% else %>
+          <td><i class="fas fa-ban" style="color: #9E2725;"></i></td>
+        <% end %>
+        <td><%= element.price %>€</td>
+        <td>
+          <% if element.photo.present?%>
+            <%= link_to product_path(element) do %>
+              <i class="fas fa-camera-retro"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-ban" style="color: #9E2725;"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if element.status == "à vendre" %>
+            <%= link_to '€', edit_price_path(element), method: :post %>
+          <% else %>
+            <i class="fas fa-ban" style="color: #9E2725;"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if element.status == "à vendre" %>
+            <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_path(element)%>
+          <% else %>
+            <i class="fas fa-ban" style="color: #9E2725;"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if element.status == "à vendre" %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(element), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
+          <% else %>
+            <i class="fas fa-ban" style="color: #9E2725;"></i>
+          <% end %>
+        </td>
+        <td><%= element.status %></td>
+        <td>
+          <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(element), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(element), method: :post, style:"color: #F6AE3B;" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

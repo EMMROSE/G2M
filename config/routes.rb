@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :selections do
     resources :products, only: [ :index, :new, :create ]
   end
-  resources :products, only: [ :edit, :update, :destroy, :show]
+  resources :products, only: [ :index, :edit, :update, :destroy, :show]
     post 'products/:id/sold', to: "products#sold_status", as: "sold_status"
     post 'products/:id/sell', to: "products#tosell_status", as: "tosell_status"
     post 'products/:id/return', to: "products#return_status", as: "return_status"
