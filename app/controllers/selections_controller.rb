@@ -30,6 +30,7 @@ class SelectionsController < ApplicationController
   def etiquette
     @selection = Selection.find(params[:id])
     @fournisseur = @selection.fournisseur_id
+    @products = @selection.products.where(status: "à vendre")
     respond_to do |format|
       format.html
       format.pdf do
