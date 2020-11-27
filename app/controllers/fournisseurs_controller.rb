@@ -9,6 +9,7 @@ class FournisseursController < ApplicationController
     if @fournisseurs.count == 0
       @fournisseurs = Fournisseur.all
     end
+    #authorize @fournisseurs
   end
 
   # def index
