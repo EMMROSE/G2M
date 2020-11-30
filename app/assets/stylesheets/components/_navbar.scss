@@ -1,73 +1,75 @@
 .navbar-lewagon {
-  transition: all 3.0 ease-out;
-  background: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 13vh;
-  box-shadow: 0px 6px 6px rgba(51,89,189,0.3);
-  .nav-items {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 60%;
-    a {
-      color: red;
-      font-weight: bold;
-      font-size: 3rem;
-      margin-right: 16px;
-      transition: border 0.7s;
-    &:hover {
-      text-decoration: none;
-      border: solid 3px red;
-      border-radius: 6px;
-    }
-    img {
-      width: 140px;
-      margin-top: 8px;
-    }
-    }
-  }
+  justify-content: space-between;
+  background: $blue;
+  color: white;
+  font-weight: bolder;
+}
+
+.navbar-shadow {
+  box-shadow: 0px 0px 5px rgb(200, 200, 200);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+}
+
+.navbar {
+  .search {
+  flex-grow: 1;
+  }
+  .search-input {
+  width: 50%;
+  display: inline-block;
+  }
+  .navbar-btn {
+    background-color: $blue;
+    border: 1px solid black;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+  }
+  .white-btn {
+    color: white;
+    border-color: white;
+  }
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.fa-search {
+  color: white!important;
 }
 
 // Smallest device
-@media (min-width: 100px) and (max-width: 380px) {
-  .navbar-lewagon {
-    height: 17vh;
-    .nav-items {
-      width: 95%;
-      a {
-        font-size: 1.6rem;
-        margin-right: 0px;
-        img {
-          width: 70px;
-        }
-      }
-    }
+@media (min-width: 100px) and (max-width: 575px) {
+  .navbar .search-input {
+      width: 80%;
+      display: inline-block;
+  }
+  .fa-search {
+    margin-left: 2px;
   }
 }
 
 // Medium device
-@media (min-width: 568px) and (max-width: 812px) {
-  .navbar-lewagon {
-    height: 15vh;
-    .nav-items {
-      width: 80%;
-      a {
-        font-size: 2rem;
-        margin-right: 35px;
-        img {
-          width: 80px;
-        }
-      }
-    }
+@media (min-width: 665px) and (max-width: 812px) {
+  .navbar-nav {
+    width: 280px;
   }
-
 }
 
+// Medium large
+@media (min-width: 813px) {
+  .navbar-nav {
+    width: 330px;
+  }
+}

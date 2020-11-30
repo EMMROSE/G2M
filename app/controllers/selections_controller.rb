@@ -5,7 +5,7 @@ class SelectionsController < ApplicationController
   def index
     @fournisseur = Fournisseur.find(params[:fournisseur_id])
     @selections = @fournisseur.selections
-    authorize @fournisseur
+    authorize @selections
   end
 
   def show
@@ -100,6 +100,19 @@ class SelectionsController < ApplicationController
     @notification.save!
     redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
     flash[:notice] = "l'Email a été expédié."
+  end
+
+  def import
+    csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+    filepath    = 'beers.csv'
+
+    CSV.foreach(filepath, csv_options) do |element|
+      if Product.where(id: element['Sku']).present?
+        Product.where(id: element['Sku']).status = "vendu"
+      end
+    end
+    redirect_to products_path
+    flash[:notice] = "le statut des vêtements "
   end
 
   private

@@ -4,7 +4,8 @@ class FournisseursController < ApplicationController
   def index
     if params[:query].present?
       @fournisseurs = Fournisseur.search_by_lastname_email_code(params[:query])
-    else @fournisseurs = Fournisseur.all
+    else
+      @fournisseurs = Fournisseur.all
     end
     if @fournisseurs.count == 0
       @fournisseurs = Fournisseur.all

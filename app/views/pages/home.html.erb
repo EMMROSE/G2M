@@ -52,23 +52,21 @@
     <% else %>
       <% mail = current_user.email %>
       <% @fournisseur = Fournisseur.where(email: mail).first %>
-      <p>Bonjour <%= @fournisseur.firstname %>,</p>
-      <p>Vous trouverez ci-dessous votre fiche déposant.</p>
       <div>
-        <div class="fiche_fournisseur">
-          <h2 style="display: flex;">Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %>    <%= link_to 'Editer', edit_fournisseur_path(@fournisseur), class: "button", style:"margin-left: 16px;"%></h2>
-          <p>Coordonnées : <%= @fournisseur.email %>  / Tél: <%= @fournisseur.phone %></p>
-          <p>RIB : <%= @fournisseur.rib %></p>
-          <p>Code : <%= @fournisseur.code %></p>
+        <div class="fiche_fournisseur" style="opacity: 0.8; margin: auto !important;">
+          <h2 style="display: flex;">Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %></h2>
+          <p>Mon code : <%= @fournisseur.code %></p>
           <div>
-            <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes. Crédit = <%= @fournisseur.credit %> €. </p>
-            <p>Vous avez gagné <%= @fournisseur.settle %>€.</p>
+            <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes.</p>
+            <p>Mon crédit = <%= @fournisseur.credit %>€.</p>
+            <p>Vous avez déjà gagné <%= @fournisseur.settle %>€.</p>
             <br>
           </div>
         </div>
+        <br>
         <div style="display: flex; justify-content: space-around; align-items: center;">
           <%= link_to 'Mes sélections', selections_path(fournisseur_id: @fournisseur.id), class: "button"%>
-          <%= link_to "Créer une nouvelle sélection de vêtements", selections_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts"%>
+          <%= link_to "Effectuer un nouveau dépôt", selections_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts"%>
         </div>
       </div>
     <% end %>
