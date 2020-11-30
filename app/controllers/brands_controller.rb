@@ -7,10 +7,12 @@ class BrandsController < ApplicationController
 
   def new
     @brand = Brand.new
+    authorize @brand
   end
 
   def create
     @brand = Brand.new(brand_params)
+    authorize @brand
     @brand.name.capitalize!
     @brand.save
     redirect_to brands_path
@@ -30,6 +32,7 @@ class BrandsController < ApplicationController
 
   def destroy
     @brand = Brand.find(params[:id])
+    authorize @brand
     @brand.destroy
     redirect_to brands_path
   end

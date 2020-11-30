@@ -9,7 +9,7 @@ class FournisseursController < ApplicationController
     if @fournisseurs.count == 0
       @fournisseurs = Fournisseur.all
     end
-    #authorize @fournisseurs
+    authorize @fournisseurs
   end
 
   # def index
@@ -18,6 +18,7 @@ class FournisseursController < ApplicationController
 
   def show
     @fournisseur = Fournisseur.find(params[:id])
+    authorize @fournisseur
     @selections = @fournisseur.selections
     @total = 0
     @sumup = 0
@@ -33,10 +34,12 @@ class FournisseursController < ApplicationController
 
   def new
     @fournisseur = Fournisseur.new
+    authorize @fournisseur
   end
 
   def create
     @fournisseur = Fournisseur.new(fournisseur_params)
+    authorize @fournisseur
     numberforcode = (10000 - Fournisseur.count).to_s
     @fournisseur.code = Date.today.year.to_s + @fournisseur.firstname.chr + @fournisseur.lastname.chr + numberforcode
     @fournisseur.firstname = @fournisseur.firstname.capitalize
@@ -52,10 +55,12 @@ class FournisseursController < ApplicationController
 
   def edit
     @fournisseur = Fournisseur.find(params[:id])
+    authorize @fournisseur
   end
 
   def update
     @fournisseur = Fournisseur.find(params[:id])
+    authorize @fournisseur
     if @fournisseur.update(fournisseur_params)
       redirect_to fournisseur_path(@fournisseur)
     else render :edit
@@ -64,6 +69,7 @@ class FournisseursController < ApplicationController
 
   def destroy
     @fournisseur = Fournisseur.find(params[:id])
+    authorize @fournisseur
     @fournisseur.destroy
     redirect_to fournisseurs_path
   end

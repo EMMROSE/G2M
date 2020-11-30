@@ -3,26 +3,35 @@ class ProductsController < ApplicationController
   def index
     if params[:query].present?
       @products = Product.search_by_brand_id_name(params[:query])
-    else @products = Product.all
+      authorize @products
+    else
+      @products = Product.all
+      authorize @products
     end
     if @products.count == 0
       @products = Product.all
+      authorize @products
     end
   end
 
   def show
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def new
     @selection = Selection.find(params[:selection_id])
+    authorize @selection
     @product = Product.new
+    authorize @product
   end
 
   def create
     @brands = Brand.all
     @product = Product.new(product_params)
+    authorize @product
     @selection = Selection.find(params[:selection_id])
+    authorize @selection
     @product.selection = @selection
     # to add a category according to name of product itself
     array1 = ["Pull", "Gilet", "Cardigan"]
@@ -36,6 +45,7 @@ class ProductsController < ApplicationController
     array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
     array10 = ["Chaussures", "Chaussons"]
     array11 = ["Hauts Manches Courtes"]
+    array12 = ["Sweat"]
     if array1.include?(@product.name)
       @product.category = "Pull/Gilet/Cardigan"
     elsif array2.include?(@product.name)
@@ -58,6 +68,8 @@ class ProductsController < ApplicationController
       @product.category = "Chaussures/Chaussons"
     elsif array11.include?(@product.name)
       @product.category = "Hauts Manches Courtes"
+    elsif array12.include?(@product.name)
+      @product.category = "Sweat"
     else
       @product.category = "Accessoires"
     end
@@ -94,10 +106,12 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def update
     @product = Product.find(params[:id])
+    authorize @product
     #to edit category
     array1 = ["Pull", "Gilet", "Cardigan"]
     array2 = ["Blouse", "Chemise"]
@@ -110,6 +124,7 @@ class ProductsController < ApplicationController
     array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
     array10 = ["Chaussures", "Chaussons"]
     array11 = ["Hauts Manches Courtes"]
+    array12 = ["Sweat"]
     if array1.include?(@product.name)
       @product.category = "Pull/Gilet/Cardigan"
     elsif array2.include?(@product.name)
@@ -132,6 +147,8 @@ class ProductsController < ApplicationController
       @product.category = "Chaussures/Chaussons"
     elsif array11.include?(@product.name)
       @product.category = "Hauts Manches Courtes"
+    elsif array12.include?(@product.name)
+      @product.category = "Sweat"
     else
       @product.category = "Accessoires"
     end
@@ -144,12 +161,14 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
+    authorize @product
     @product.destroy
     redirect_to selection_path(@product.selection)
   end
 
   def sold_status
     product = Product.find(params[:id])
+    authorize @product
     product.status = "vendu"
     product.save
     redirect_to selection_path(product.selection)
@@ -157,6 +176,7 @@ class ProductsController < ApplicationController
 
   def tosell_status
     product = Product.find(params[:id])
+    authorize @product
     product.status = "à vendre"
     product.save
     redirect_to selection_path(product.selection)
@@ -164,6 +184,7 @@ class ProductsController < ApplicationController
 
   def return_status
     product = Product.find(params[:id])
+    authorize @product
     product.status = "retourné"
     product.save
     redirect_to selection_path(product.selection)
@@ -171,10 +192,12 @@ class ProductsController < ApplicationController
 
   def edit_price
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def change_price
     @product = Product.find(params[:id])
+    authorize @product
     @product.update(price_params)
     @product.save
     redirect_to selection_path(@product.selection)
@@ -182,8 +205,9 @@ class ProductsController < ApplicationController
   end
 
   def duplicate
-    @last_product = Product.last
     @product = Product.new
+    authorize @product
+    @last_product = Product.last
     @product.name = @last_product.name
     @product.brand = @last_product.brand
     @product.size = @last_product.size

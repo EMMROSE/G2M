@@ -2,10 +2,20 @@ import Typed from 'typed.js';
 
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
-    strings: ["Bienvenue dans G2M", "l'appli pour gérer et pricer les dépôts", "Bientôt des alertes de disponible"],
+    strings: ["Bienvenue dans G2M", "Notre espace pour déposer vos vêtements", "#CAPOUPASCAP"],
+    typeSpeed: 50,
+    loop: true
+  });
+}
+
+const loadDynamicAdminText = () => {
+  new Typed('#admin-typed-text', {
+    strings: ["Bienvenue dans G2M", "l'appli pour gérer et pricer les dépôts", "Bientôt des alertes de disponible pour notre page ADMIN!"],
     typeSpeed: 30,
     loop: true
   });
 }
 
 export { loadDynamicBannerText };
+
+export { loadDynamicAdminText };

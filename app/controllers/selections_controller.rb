@@ -5,10 +5,12 @@ class SelectionsController < ApplicationController
   def index
     @fournisseur = Fournisseur.find(params[:fournisseur_id])
     @selections = @fournisseur.selections
+    authorize @fournisseur
   end
 
   def show
     @selection = Selection.find(params[:id])
+    authorize @selection
     @fournisseur = @selection.fournisseur_id
     respond_to do |format|
       format.html
@@ -29,6 +31,7 @@ class SelectionsController < ApplicationController
 
   def etiquette
     @selection = Selection.find(params[:id])
+    authorize @selection
     @fournisseur = @selection.fournisseur_id
     @products = @selection.products.where(status: "à vendre")
     respond_to do |format|
@@ -50,10 +53,12 @@ class SelectionsController < ApplicationController
 
   def new
     @selection = Selection.new
+    authorize @selection
   end
 
   def create
     @selection = Selection.new
+    authorize @selection
     @selection.date = Date.today.strftime("%d/%m/%Y")
     @selection.fournisseur = Fournisseur.find(params[:fournisseur_id])
     @selection.save
@@ -62,17 +67,20 @@ class SelectionsController < ApplicationController
 
   def edit
     @selection = Selection.find(params[:id])
+    authorize @selection
     @fournisseur = @selection.fournisseur_id
   end
 
   def destroy
     @selection = Selection.find(params[:id])
+    authorize @selection
     @selection.destroy
     redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
   end
 
   def csv
     @selection = Selection.find(params[:id])
+    authorize @selection
     # prepare my csv with Model function
     csv = @selection.generate_csv
     # prepare email and forward csv as argument
@@ -83,6 +91,7 @@ class SelectionsController < ApplicationController
 
   def mail
     @selection = Selection.find(params[:id])
+    authorize @selection
     # prepare email and forward csv as argument
     #ProposalMailer.information(@selection).deliver_now
     ProposalMailer.proposal(@selection).deliver_now

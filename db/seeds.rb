@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# puts 'Creating Admin'
+# user = User.where(email: 'roseemmanuel@hotmail.com').first
+# user.admin = true
+# user.save
+# puts 'Done.. Next Step'
+
 puts 'Destroy all Clothes'
 Clothe.destroy_all
 puts 'Destroy all Brands'

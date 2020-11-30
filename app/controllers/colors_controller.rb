@@ -5,10 +5,12 @@ class ColorsController < ApplicationController
 
   def new
     @color = Color.new
+    authorize @clothe
   end
 
   def create
     @color = Color.new(color_params)
+    authorize @clothe
     @color.name.capitalize!
     @color.save
     redirect_to brands_path
@@ -23,6 +25,7 @@ class ColorsController < ApplicationController
 
   def destroy
     @color = Color.find(params[:id])
+    authorize @clothe
     @color.destroy
     redirect_to brands_path
   end
