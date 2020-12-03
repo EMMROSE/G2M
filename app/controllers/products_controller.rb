@@ -225,25 +225,36 @@ class ProductsController < ApplicationController
   end
 
   def import
-
-    #possibilité de retrouver le produit par son sku pour contourner la limite des 250 produits
-    url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_API_SHOP']}.myshopify.com/admin/api/2020-10/products.json"
-    user_serialized = RestClient.get(url)
-    user = JSON.parse(user_serialized)
-    raise
-    user["products"].each do |product|
-      qty = nil
-      sku = product["variants"].first.values_at("sku").first
-      if Product.where(id: sku).present?
-        @product = Product.where(id: sku)
-        if product["variants"].first.values_at("inventory_quantity").first == 0
-          @product.status = "vendu"
-          @product.save
+    # start with since_id = 0 and number of products parsed = 0
+    number = 0
+    since_id = 0
+    # Get products.count with API SHOPIFY
+    url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_API_SHOP']}.myshopify.com/admin/api/2020-10/products/count.json"
+    count_serialized = RestClient.get(url)
+    result = JSON.parse(count_serialized)
+    total = result["count"]
+    #tant que le nombre de produits interroger n'est pas égal à products.count
+    while number < total
+      url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_API_SHOP']}.myshopify.com/admin/api/2020-10/products.json?since_id=#{since_id}"
+      user_serialized = RestClient.get(url)
+      user = JSON.parse(user_serialized)
+      # get status of each product, add each product to number and get last product.id to update since_id
+      user["products"].each do |product|
+        qty = nil
+        sku = product["variants"].first.values_at("sku").first
+        if Product.where(id: sku).present?
+          @product = Product.where(id: sku)
+          if product["variants"].first.values_at("inventory_quantity").first == 0
+            @product.status = "vendu"
+            @product.save
+          end
         end
+        number += 1
+        since_id = product["id"] + 1
       end
     end
     redirect_to products_path
-    flash[:notice] = "le statut des vêtements"
+    flash[:notice] = "le traitement est terminé"
   end
 
   private
