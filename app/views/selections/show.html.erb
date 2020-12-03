@@ -37,51 +37,99 @@
     </tr>
     <% if @selection.products.count > 0 %>
       <% @selection.products.order(:id).each do |product| %>
-        <tr id="product-details">
-          <td><%= product.id %></td>
-          <td><%= product.name %></td>
-          <td><%= product.brand %></td>
-          <td><%= product.category %></td>
-          <td><%= product.size %></td>
-          <td><%= product.genre %></td>
-          <td><%= product.color %></td>
-          <td><%= product.price / 1.2 %>€</td>
-          <td><%= product.price %>€</td>
-          <td><%= product.status %></td>
-          <td>
-            <% if product.photo.present?%>
-              <%= link_to product_path(product) do %>
-                <i class="fas fa-camera-retro"></i>
+        <% if product.status == "vendu" %>
+          <tr id="product-details-vendu">
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.brand %></td>
+            <td><%= product.category %></td>
+            <td><%= product.size %></td>
+            <td><%= product.genre %></td>
+            <td><%= product.color %></td>
+            <td><%= product.price / 1.2 %>€</td>
+            <td><%= product.price %>€</td>
+            <td><%= product.status %></td>
+            <td>
+              <% if product.photo.present?%>
+                <%= link_to product_path(product) do %>
+                  <i class="fas fa-camera-retro"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
               <% end %>
-            <% else %>
-              <i class="fas fa-ban" style="color: #9E2725;"></i>
-            <% end %>
-          </td>
-          <td>
-            <% if product.status == "à vendre" %>
-              <%= link_to '€', edit_price_path(product), method: :post %>
-            <% else %>
-              <i class="fas fa-ban" style="color: #9E2725;"></i>
-            <% end %>
-          </td>
-          <td>
-            <% if product.status == "à vendre" %>
-              <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_path(product)%>
-            <% else %>
-              <i class="fas fa-ban" style="color: #9E2725;"></i>
-            <% end %>
-          </td>
-          <td>
-            <% if product.status == "à vendre" %>
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
-            <% else %>
-              <i class="fas fa-ban" style="color: #9E2725;"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
-          </td>
-        </tr>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '€', edit_price_path(product), method: :post %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_path(product)%>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
+            </td>
+          </tr>
+        <% else %>
+          <tr id="product-details">
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.brand %></td>
+            <td><%= product.category %></td>
+            <td><%= product.size %></td>
+            <td><%= product.genre %></td>
+            <td><%= product.color %></td>
+            <td><%= product.price / 1.2 %>€</td>
+            <td><%= product.price %>€</td>
+            <td><%= product.status %></td>
+            <td>
+              <% if product.photo.present?%>
+                <%= link_to product_path(product) do %>
+                  <i class="fas fa-camera-retro"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '€', edit_price_path(product), method: :post %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_product_path(product)%>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if product.status == "à vendre" %>
+                <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
+              <% else %>
+                <i class="fas fa-ban" style="color: #9E2725;"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
       <% else %>
         <tr> Cette sélection ne contient pas de produit.</tr>

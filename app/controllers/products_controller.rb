@@ -169,27 +169,27 @@ class ProductsController < ApplicationController
   end
 
   def sold_status
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     authorize @product
-    product.status = "vendu"
-    product.save
-    redirect_to selection_path(product.selection)
+    @product.status = "vendu"
+    @product.save
+    redirect_to selection_path(@product.selection)
   end
 
   def tosell_status
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     authorize @product
-    product.status = "à vendre"
-    product.save
-    redirect_to selection_path(product.selection)
+    @product.status = "à vendre"
+    @product.save
+    redirect_to selection_path(@product.selection)
   end
 
   def return_status
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     authorize @product
-    product.status = "retourné"
-    product.save
-    redirect_to selection_path(product.selection)
+    @product.status = "retourné"
+    @product.save
+    redirect_to selection_path(@product.selection)
   end
 
   def edit_price
