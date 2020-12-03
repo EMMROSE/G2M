@@ -13,6 +13,14 @@ class TarifPolicy < ApplicationPolicy
     create?
   end
 
+  def update?
+    is_admin?
+  end
+
+  def edit?
+    update?
+  end
+
 
   private
 
