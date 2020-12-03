@@ -14,10 +14,15 @@
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/094.jpg");
   background-size: cover;
   background-position: center;
-  object-fit: cover;
   h1, h2 {color: white; margin-left: 32px;}
   height: 100vh;
   padding-top: 10vh;
+}
+
+.stocks {
+  background: rgb(198,209,221);
+  background: linear-gradient(90deg, rgba(198,209,221,1) 37%, rgba(252,69,113,0.7847514005602241) 62%, rgba(252,123,91,1) 77%, rgba(252,176,69,1) 91%);
+  padding: 10vh 60px 0 60px;
 }
 
 #welcometext {

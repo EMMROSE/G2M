@@ -49,6 +49,15 @@
 #product-details-vendu{
   background-color: yellow;
 }
+
+#product-details{
+  &:hover {
+    background-color: #F28123;
+    color: white;
+    font-weight: bolder;
+  }
+}
+
 #td-no-border {
   border-top: none;
   border-right : none;
