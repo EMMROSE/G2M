@@ -76,8 +76,8 @@ class ProductsController < ApplicationController
       @product.category = "Accessoires"
     end
     # début du pricer
-    if Tarif.where(brand: @product.brand, name: @product.name).present?
-      @product.price = Tarif.where(brand: @product.brand, name: @product.name).first.price
+    if Tarif.where(brand: @product.brand, clothe: @product.name).present?
+      @product.price = Tarif.where(brand: @product.brand, clothe: @product.name).first.price
     else
       @product.price = 0
     end
