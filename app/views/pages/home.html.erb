@@ -74,5 +74,19 @@
   <% else %>
      <%= link_to "Se connecter", new_user_session_path, class: "button-red" %>
   <% end %>
+    <% if user_signed_in? %>
+  <!-- access for admins or customers only -->
+      <% if current_user.admin %>
+        <div>
+          <h3>Statistiques</h3>
+          <br>
+          <p>Produits en stocks</p>
+          <p>Produits vendus: XX, soit X%</p>
+          <p>Les Ages les plus en stock</p>
+          <p>Les marques les plus en stock</p>
+          <p>les Ages les plus vendus</p>
+          <p>Les marques les plus vendu</p>
+        </div>
+      <% end %>
+    <% end %>
 </div>
-
