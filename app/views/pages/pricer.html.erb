@@ -3,27 +3,34 @@
     <tr id="product-bg">
       <td>Vêtements \ Marques</td>
       <% Brand.all.each do |element| %>
-        <td>
-          <%= element.name %>
-        </td>
+      <td><%= element.name %></td>
       <% end %>
     </tr>
     <% Clothe.all.each do |clothe| %>
-      <% @clothe = clothe.name %>
-      <tr>
-        <td><%= @clothe %></td>
-        <% Brand.all.each do |brand| %>
-          <% @brand = brand.name %>
-          <!-- #link to create a new price -->
-          <%= link_to new_price_path(@brand, @selection) %>
-            <% if Price.where(brand: @brand, clothe: @clothe).present? %>
-              <td><% Price.where(brand: @brand, clothe: @clothe) %> €</td>
-            <% else %>
-              <td>0.00 €</td>
+    <% @clothe = clothe.name %>
+    <tr>
+      <td><%= @clothe %></td>
+      <% Brand.all.each do |brand| %>
+      <% @brand = brand.name %>
+        <% if Tarif.where(brand: @brand, clothe: @clothe).present? %>
+          <% @tarif = Tarif.where(brand: @brand, clothe: @clothe).first %>
+          <td style="background-color: #ADF7B6;">
+            <%= link_to edit_tarif_path(@tarif) do %>
+              <p style="margin: auto;"><%= @tarif.price %>€</p>
             <% end %>
-          <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to new_tarif_path do %>
+              <p style="margin: auto; padding: 8px;">0,00 €</p>
+            <% end %>
+          </td>
         <% end %>
-      </tr>
+      <% end %>
+    </tr>
     <% end %>
   </table>
 </div>
+
+
+

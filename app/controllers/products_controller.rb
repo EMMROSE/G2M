@@ -76,23 +76,29 @@ class ProductsController < ApplicationController
       @product.category = "Accessoires"
     end
     # début du pricer
-    # prices = {}
-    # Brand.all.each do |element|
-    #   prices[element.name] = Hash.new
-    #   Clothe.all.each do |element2|
-        sum = 0
-        moy = 0
-        var = 0
-       Product.where(brand: @product.brand, name: @product.name).each do |x|
-          var += 1
-          sum += x.price
-        end
-        if var > 0
-          moy = sum / var
-           @product.price = moy
-        else
-          @product.price = 0
-        end
+    if Tarif.where(brand: @product.brand, name: @product.name).present?
+      @product.price = Tarif.where(brand: @product.brand, name: @product.name).first.price
+    else
+      @product.price = 0
+    end
+
+    # # prices = {}
+    # # Brand.all.each do |element|
+    # #   prices[element.name] = Hash.new
+    # #   Clothe.all.each do |element2|
+    #     sum = 0
+    #     moy = 0
+    #     var = 0
+    #    Product.where(brand: @product.brand, name: @product.name).each do |x|
+    #       var += 1
+    #       sum += x.price
+    #     end
+    #     if var > 0
+    #       moy = sum / var
+    #        @product.price = moy
+    #     else
+    #       @product.price = 0
+    #     end
 
     if @product.save && params[:commit] == 'Créer le produit'
       redirect_to selection_path(@selection)

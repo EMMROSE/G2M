@@ -1,12 +1,16 @@
-class PricePolicy < ApplicationPolicy
+class TarifPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def new?
+  def create?
     is_admin?
+  end
+
+  def new?
+    create?
   end
 
 

@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div style="width: 100%; display:flex; justify-content: space-around;">
+    <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
+    <%= link_to "Retour aux fournisseurs", fournisseurs_path, class: "button-return", id:"margin-top-button"%>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h1>Nouveau Prix</h1>
+      <%= simple_form_for(@tarif)do |f| %>
+      <% array_brand =  []%>
+      <% array_clothe =  []%>
+      <% Brand.all.each do |brand| %>
+      <%   array_brand << brand.name %>
+      <% end %>
+      <% Clothe.all.each do |clothe| %>
+        <%   array_clothe << clothe.name %>
+      <% end %>
+      <div class="form-top">
+        <%= f.input :clothe, label: "Nom du vêtement",collection:  array_clothe %>
+        <%= f.input :brand, label: "Marque",collection: array_brand %>
+        <%= f.number_field :price_cents, label: "Quelle somme en cents ? ex : pour 10 €, taper 1000 (NB >> on va essayer de modifier en €)", placeholder: 0%>
+      </div>
+        <div class="form-button mt-2 mb-2">
+          <%= f.submit "Créer le prix", class: 'button-red', style:"height: 40px !important;" %>
+        </div>
+     <% end %>
+    </div>
+  </div>
+</div>

@@ -5,8 +5,8 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-8">
-      <h1>Nouveau Prix</h1>
-      <%= simple_form_for [ @brand, @clothe ] do |f| %>
+      <h1>Modifier ce Prix</h1>
+      <%= simple_form_for(@tarif) do |f| %>
         <div class="form-top">
           <%= f.number_field :price_cents, label: "Quelle somme en cents ? ex : pour 10 €, taper 1000 (NB >> on va essayer de modifier en €)", placeholder: 0%>
         </div>
