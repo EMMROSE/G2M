@@ -16,4 +16,8 @@ class Product < ApplicationRecord
     self.status = "vendu"
   end
 
+  def most_size
+
+  end
+
 end

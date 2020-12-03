@@ -77,13 +77,36 @@
     <% if user_signed_in? %>
   <!-- access for admins or customers only -->
       <% if current_user.admin %>
-        <div>
+        <div class="stat">
           <h3>Statistiques</h3>
           <br>
-          <p>Produits en stocks</p>
-          <p>Produits vendus: XX, soit X%</p>
-          <p>Les Ages les plus en stock</p>
-          <p>Les marques les plus en stock</p>
+          <p>Produits vendus: <%= Product.where(status: "vendu").count %>, soit <%= Product.where(status: "vendu").count / Product.all.count %>% des produits en stocks.</p>
+          <% x = 0 %>
+          <% numerous_brand = nil %>
+          <% Brand.all.each do |brand| %>
+            <% y = Product.where(brand: brand.name).count %>
+            <% if y > x %>
+              <% x = y %>
+              <% numerous_brand = brand.name %>
+            <% end %>
+          <% end %>
+          <% array = [] %>
+          <% all_size = [] %>
+          <% Product.all.each do |element| %>
+            <% array << element.size %>
+            <% all_size = array.uniq %>
+          <% end %>
+          <% z = 0 %>
+          <% numerous_size = nil %>
+          <% all_size.each do |element| %>
+             <% y = Product.where(size: element).count %>
+             <% if y > z %>
+               <% z = y %>
+               <% numerous_size = element %>
+             <% end %>
+          <% end %>
+          <p>Les Ages les plus en stock: <%= numerous_size %></p>
+          <p>Les marques les plus en stock: <%= numerous_brand %> avec <%= x %> vêtements.</p>
           <p>les Ages les plus vendus</p>
           <p>Les marques les plus vendu</p>
         </div>
