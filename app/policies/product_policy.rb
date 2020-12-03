@@ -58,7 +58,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def import?
-    is_admin?
+    true
   end
 
   private

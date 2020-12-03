@@ -242,16 +242,15 @@ class ProductsController < ApplicationController
       user["products"].each do |product|
         qty = nil
         sku = product["variants"].first.values_at("sku").first
-        if Product.where(id: sku).present?
-          @product = Product.where(id: sku)
-          if product["variants"].first.values_at("inventory_quantity").first == 0
-            @product.status = "vendu"
-            @product.save
-          end
+        if Product.where(id: sku).present? && product["variants"].first.values_at("inventory_quantity").first == 0
+          @product = Product.where(id: sku).first
+          @product.status = "vendu"
+          @product.save!
         end
         number += 1
         since_id = product["id"] + 1
       end
+      skip_authorization
     end
     redirect_to products_path
     flash[:notice] = "le traitement est terminé"

@@ -12,4 +12,8 @@ class Product < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def change_status
+    self.status = "vendu"
+  end
+
 end
