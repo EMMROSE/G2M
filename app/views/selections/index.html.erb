@@ -1,7 +1,7 @@
 <div style="margin: 32px;">
   <h1>Les sélections de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %></h1>
-  <%= link_to 'Retour au fournisseur', fournisseur_path(@fournisseur), class: "btn button-red"%>
-  <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
+  <%= link_to 'Retour au fournisseur', fournisseur_path(@fournisseur), class: "btn button-red", style:"margin-bottom: 16px;"%>
+  <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
 </div>
 <div class="table-selections">
   <table style="border: 1px solid black; font-weight: bolder;">

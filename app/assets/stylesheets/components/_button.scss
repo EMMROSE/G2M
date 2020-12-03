@@ -161,6 +161,7 @@
 }
 
 #button-plus {
+  margin-bottom: 16px;
   a {
     background-color: pink;
     padding: 16px;
@@ -181,4 +182,8 @@
       z-index: 99;
     }
   }
+}
+
+#margin-top-button {
+  margin-top: 16px;
 }
