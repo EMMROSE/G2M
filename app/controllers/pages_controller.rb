@@ -12,4 +12,8 @@ class PagesController < ApplicationController
     @selections = Selection.all
     @products = Product.all
   end
+
+  def pricer
+
+  end
 end

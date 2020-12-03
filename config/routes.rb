@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'furnishers', to: 'pages#fournisseurs'
+  get 'pricer', to: 'pages#pricer'
   get 'stocks', to: 'pages#stocks'
   get 'comptabilite', to: 'pages#comptabilite'
   get 'test', to: 'pages#test'
@@ -57,5 +58,6 @@ Rails.application.routes.draw do
   resources :brands
   resources :clothes
   resources :colors
+  resources :prices
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

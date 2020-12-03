@@ -1,0 +1,29 @@
+<div>
+  <table class="products_table">
+    <tr id="product-bg">
+      <td>Vêtements \ Marques</td>
+      <% Brand.all.each do |element| %>
+        <td>
+          <%= element.name %>
+        </td>
+      <% end %>
+    </tr>
+    <% Clothe.all.each do |clothe| %>
+      <% @clothe = clothe.name %>
+      <tr>
+        <td><%= @clothe %></td>
+        <% Brand.all.each do |brand| %>
+          <% @brand = brand.name %>
+          <!-- #link to create a new price -->
+          <%= link_to new_price_path(@brand, @selection) %>
+            <% if Price.where(brand: @brand, clothe: @clothe).present? %>
+              <td><% Price.where(brand: @brand, clothe: @clothe) %> €</td>
+            <% else %>
+              <td>0.00 €</td>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
