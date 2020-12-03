@@ -44,12 +44,15 @@ Rails.application.routes.draw do
     post 'products/:id/return', to: "products#return_status", as: "return_status"
     post 'products/:id/edit_price', to: "products#edit_price", as: "edit_price"
     post 'products/duplicate', to: "products#duplicate", as: "duplicate"
+    post 'products/import', to: "products#import", as: "import"
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
 
   get 'selections/:id/csv', to: "selections#csv", as: "selection_csv"
   get 'selections/:id/mail', to: "selections#mail", as: "selection_mail"
   get 'selections/:id/etiquette', to: "selections#etiquette", as: "selection_etiquette"
+
+
 
   resources :brands
   resources :clothes

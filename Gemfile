@@ -74,3 +74,7 @@ gem 'wkhtmltopdf-binary'
 gem 'postmark-rails'
 # join a photo to get image_path
 gem 'cloudinary'
+
+#to allow us to easily make requests to Shopify's REST API
+gem 'rest-client'
+gem 'shopify_api'

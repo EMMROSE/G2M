@@ -1,6 +1,6 @@
 <div class="container m-5">
-  <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
-  <%= link_to 'Importer ventes', import_path, class: "button-red"%>
+  <%= link_to 'Retour au Menu', root_path, class: "button-sm"%>
+  <%= link_to 'Importer ventes', import_path, method: :post, class: "button-red"%>
   <div class="search mt-2">
     <%= form_tag products_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
       <div class="search-form-control form-group mt-1 mb-0">

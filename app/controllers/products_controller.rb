@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  require 'open-uri'
+  require 'json'
 
   def index
     if params[:query].present?
@@ -220,6 +222,28 @@ class ProductsController < ApplicationController
     @product.save!
     redirect_to selection_path(@product.selection)
     flash[:notice] = "Votre produit a été dupliqué."
+  end
+
+  def import
+
+    #possibilité de retrouver le produit par son sku pour contourner la limite des 250 produits
+    url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_API_SHOP']}.myshopify.com/admin/api/2020-10/products.json"
+    user_serialized = RestClient.get(url)
+    user = JSON.parse(user_serialized)
+    raise
+    user["products"].each do |product|
+      qty = nil
+      sku = product["variants"].first.values_at("sku").first
+      if Product.where(id: sku).present?
+        @product = Product.where(id: sku)
+        if product["variants"].first.values_at("inventory_quantity").first == 0
+          @product.status = "vendu"
+          @product.save
+        end
+      end
+    end
+    redirect_to products_path
+    flash[:notice] = "le statut des vêtements"
   end
 
   private
