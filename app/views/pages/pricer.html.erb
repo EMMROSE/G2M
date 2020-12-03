@@ -2,15 +2,15 @@
   <table class="products_table">
     <tr id="product-bg">
       <td>Vêtements \ Marques</td>
-      <% Brand.all.each do |element| %>
+      <% Brand.order(name: :asc).each do |element| %>
       <td><%= element.name %></td>
       <% end %>
     </tr>
-    <% Clothe.all.each do |clothe| %>
+    <% Clothe.order(name: :asc).each do |clothe| %>
     <% @clothe = clothe.name %>
     <tr>
       <td><%= @clothe %></td>
-      <% Brand.all.each do |brand| %>
+      <% Brand.order(name: :asc).each do |brand| %>
       <% @brand = brand.name %>
         <% if Tarif.where(brand: @brand, clothe: @clothe).present? %>
           <% @tarif = Tarif.where(brand: @brand, clothe: @clothe).first %>
