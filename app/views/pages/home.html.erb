@@ -81,7 +81,7 @@
           <h3>Statistiques</h3>
           <br>
           <% solded = @products.where(status: "vendu").count %>
-          <p>Produits vendus: <%= solded %>, soit <%= (solded.to_f/@products.count.to_f)*100 %>% des produits en stocks.</p>
+          <p>Produits vendus: <%= solded %>, soit <%= ((solded.to_f/@products.count.to_f)*100).round(2) %>% des produits en stocks.</p>
           <% x = 0 %>
           <% numerous_brand = nil %>
           <% Brand.all.each do |brand| %>
