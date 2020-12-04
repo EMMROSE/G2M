@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'pricer', to: 'pages#pricer'
   get 'stocks', to: 'pages#stocks'
   get 'comptabilite', to: 'pages#comptabilite'
-  get 'test', to: 'pages#test'
+  get 'stat', to: 'pages#stat'
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create ]
   end

@@ -7,13 +7,9 @@ class PagesController < ApplicationController
     @products = Product.all
   end
 
-  def admin
+  def stat
     @fournisseurs = Fournisseur.all
     @selections = Selection.all
     @products = Product.all
-  end
-
-  def pricer
-
   end
 end

@@ -1,0 +1,97 @@
+<div class="bg-fournisseur">
+  <div class="buttons-fournisseurs">
+    <%= link_to root_path do %>
+      RETOUR AU MENU
+    <% end %>
+  </div>
+  <div class="stat">
+    <h3>Statistiques</h3>
+    <br>
+    <% solded = @products.where(status: "vendu").count %>
+    <p>Produits vendus: <%= solded %>, soit <%= ((solded.to_f/@products.count.to_f)*100).round(2) %>% des produits en stocks.</p>
+    <% x = 0 %>
+    <% numerous_brand = nil %>
+    <% Brand.all.each do |brand| %>
+      <% y = Product.where(brand: brand.name).count %>
+      <% if y > x %>
+        <% x = y %>
+        <% numerous_brand = brand.name %>
+      <% end %>
+    <% end %>
+    <% numerous2_brand = nil %>
+    <% a = 0 %>
+    <% Brand.all.each do |brand| %>
+      <% if brand.name != numerous_brand %>
+        <% y = Product.where(brand: brand.name).count %>
+        <% if y > a %>
+          <% a = y %>
+          <% numerous2_brand = brand.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% numerous3_brand = nil %>
+    <% b = 0 %>
+    <% Brand.all.each do |brand| %>
+      <% if brand.name != numerous_brand && brand.name != numerous2_brand%>
+        <% y = Product.where(brand: brand.name).count %>
+        <% if y > b %>
+          <% b = y %>
+          <% numerous3_brand = brand.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% array = [] %>
+    <% all_size = [] %>
+    <% Product.all.each do |element| %>
+      <% array << element.size %>
+      <% all_size = array.uniq %>
+    <% end %>
+    <% z = 0 %>
+    <% numerous_size = nil %>
+    <% all_size.each do |element| %>
+       <% y = Product.where(size: element).count %>
+       <% if y > z %>
+         <% z = y %>
+         <% numerous_size = element %>
+       <% end %>
+    <% end %>
+    <p>Les Ages les plus en stock: <%= numerous_size %></p>
+    <p>Les marques les plus en stock: 1er) <%= numerous_brand %> avec <%= x %> vêtements, 2e) <%= numerous2_brand %> avec <%= a %> vêtements, 3e) <%= numerous3_brand %> avec <%= b %> vêtements.</p>
+    <p>les Ages les plus vendus</p>
+    <% numerous_brand_solded = nil %>
+    <% c = 0 %>
+    <% Brand.all.each do |brand| %>
+      <% @products = Product.where(status: "vendu") %>
+      <% y = @products.where(brand: brand.name).count %>
+      <% if y > c %>
+        <% c = y %>
+        <% numerous_brand_solded = brand.name %>
+      <% end %>
+    <% end %>
+    <% numerous_brand_solded2 = nil %>
+    <% d = 0 %>
+    <% Brand.all.each do |brand| %>
+      <% if brand.name != numerous_brand_solded %>
+        <% @products = Product.where(status: "vendu") %>
+        <% y = @products.where(brand: brand.name).count %>
+        <% if y > d %>
+          <% d = y %>
+          <% numerous_brand_solded2 = brand.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% numerous_brand_solded3 = nil %>
+    <% e = 0 %>
+    <% Brand.all.each do |brand| %>
+      <% if brand.name != numerous_brand_solded && brand.name != numerous_brand_solded2 %>
+        <% @products = Product.where(status: "vendu") %>
+        <% y = @products.where(brand: brand.name).count %>
+        <% if y > e %>
+          <% e = y %>
+          <% numerous_brand_solded3 = brand.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <p>Les marques les plus vendu: 1er) <%= numerous_brand_solded %> / 2e) <%= numerous_brand_solded2 %>/ 3e) <%= numerous_brand_solded3 %></p>
+  </div>
+</div>
