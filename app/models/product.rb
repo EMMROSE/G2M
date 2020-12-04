@@ -16,8 +16,12 @@ class Product < ApplicationRecord
     self.status = "vendu"
   end
 
-  def most_size
-
+  def solded
+    percentage = 0.0
+    solded = self.where(status: "vendu").to_f
+    all = self.all.to_f
+    percentage = solded / all
+    return percentage
   end
 
 end
