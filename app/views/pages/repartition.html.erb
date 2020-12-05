@@ -1,0 +1,19 @@
+<div class="bg-repartition">
+  <h3>Répartion du stock par marque et par taille</h3>
+  <table class="products_table" style="margin-bottom: 10vh;">
+    <tr id="product-bg">
+      <td></td>
+      <% @all_size.each do |size| %>
+        <td><%= size %></td>
+      <% end %>
+    </tr>
+    <% @all_brands.each do |element| %>
+      <tr>
+        <td><%= element.name %></td>
+        <% @all_size.each do |size| %>
+          <td><%= element.percentagebysize(size) %>%</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -12,4 +12,21 @@ class PagesController < ApplicationController
     @selections = Selection.all
     @products = Product.all
   end
+
+  def repartition
+    @brands = Brand.all
+    @products = Product.all
+    @all_brands = []
+    @brands.each do |brand|
+      @all_brands << brand
+    end
+    @all_size = []
+    @products.each do |product|
+      @all_size << product.size
+    end
+    @all_size = @all_size.uniq
+    @brands.each do |brand|
+      @percentage = @products.where(brand: brand.name).count / @products.count
+    end
+  end
 end

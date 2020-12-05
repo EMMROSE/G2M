@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'stocks', to: 'pages#stocks'
   get 'comptabilite', to: 'pages#comptabilite'
   get 'stat', to: 'pages#stat'
+  get 'repartition', to: 'pages#repartition'
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create ]
   end
