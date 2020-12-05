@@ -11,19 +11,16 @@
 
 </head>
 <body style="background-color: white;">
-    <%= image_tag wicked_pdf_asset_base64('logo.png'), style:"width: 200px; height: 120px;" %>
-  <br>
-  <h2 class="mt-5 mb-3"><strong>Etiquettes de la sélection n° <%= @selection.id%> des produits à vendre</strong></h2>
   <div class="etiquettes">
-    <table style="width: 100vw;">
+    <table>
       <% @count = @products.count %>
       <% @done = 0 %>
       <% while @done < @count %>
         <% @products = @products.first(@count - @done) %>
-        <tr style="width: 100%;">
+        <tr>
           <% @products.last(3).each do |product| %>
-          <td style="width: 33%; margin: 16px;">
-            <div class="etiquette" style="width: 100%;">
+          <td>
+            <div class="etiquette">
               <%= image_tag wicked_pdf_asset_base64('petitlogo.png') %>
               <p><%= product.name %> - <%= product.size %></p>
               <p style="font-size: 24px;"><%= product.price %>€</p>
