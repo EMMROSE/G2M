@@ -1,14 +1,14 @@
 class Brand < ApplicationRecord
 
-  def percentage
-    @products = Product.all
-    percentage = ((@products.where(brand: self.name).count.to_f / @products.count.to_f)*100).round(2)
-    return percentage
+  def percentagebrand
+    @products = Product.where(status: "à vendre")
+    percentagebrand = ((@products.where(brand: self.name).count.to_f / @products.count.to_f)*100).round(2)
+    return percentagebrand
   end
 
-  def percentagebysize(size)
-    @products = Product.all
-    percentagebysize = ((@products.where(brand: self.name, size: size).count.to_f / @products.count.to_f)*100).round(2)
-    return percentagebysize
+  def percentagebysizeandbrand(size)
+    @products = Product.where(status: "à vendre")
+    percentagebysizeandbrand = ((@products.where(brand: self.name, size: size).count.to_f / @products.count.to_f)*100).round(2)
+    return percentagebysizeandbrand
   end
 end

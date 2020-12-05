@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
   def repartition
     @brands = Brand.all
-    @products = Product.all
+    @products = Product.where(status: "à vendre")
     @all_brands = []
     @brands.each do |brand|
       @all_brands << brand

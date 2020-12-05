@@ -6,14 +6,26 @@
       <% @all_size.each do |size| %>
         <td><%= size %></td>
       <% end %>
+      <td>Total</td>
     </tr>
     <% @all_brands.each do |element| %>
       <tr>
         <td><%= element.name %></td>
         <% @all_size.each do |size| %>
-          <td><%= element.percentagebysize(size) %>%</td>
+          <td><%= element.percentagebysizeandbrand(size) %>%</td>
         <% end %>
+        <td><%= element.percentagebrand %>%</td>
       </tr>
     <% end %>
+    <tr>
+      <td>Total</td>
+      <% @all_size.each do |size| %>
+        <% percentagesize = 0 %>
+        <% @all_brands.each do |element| %>
+          <% percentagesize += element.percentagebysizeandbrand(size) %>
+        <% end %>
+        <td><%= percentagesize %>%</td>
+      <% end %>
+    </tr>
   </table>
 </div>
