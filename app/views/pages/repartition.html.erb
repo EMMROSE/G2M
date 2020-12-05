@@ -1,6 +1,6 @@
 <div class="bg-repartition">
   <h3>Répartion du stock par marque et par taille</h3>
-  <table class="products_table" style="margin-bottom: 10vh;">
+  <table class="products_table" style="margin-bottom: 10vh; background-color: #A37EFC;">
     <tr id="product-bg">
       <td></td>
       <% @all_size.each do |size| %>
@@ -25,6 +25,12 @@
           <% percentagesize += element.percentagebysizeandbrand(size) %>
         <% end %>
         <td><%= percentagesize.round(2) %>%</td>
+      <% end %>
+    </tr>
+    <tr id="product-bg">
+      <td></td>
+      <% @all_size.each do |size| %>
+        <td><%= size %></td>
       <% end %>
     </tr>
   </table>
