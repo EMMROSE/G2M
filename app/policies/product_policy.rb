@@ -49,6 +49,10 @@ class ProductPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def save_price?
+    is_admin?
+  end
+
   def change_price?
     is_admin?
   end

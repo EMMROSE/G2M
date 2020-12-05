@@ -203,6 +203,18 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
+  def save_price
+    @tarif = Tarif.new
+    @product = Product.find(params[:id])
+    authorize @product
+    @tarif.clothe = @product.name
+    @tarif.brand = @product.brand
+    @tarif.price = @product.price
+    @tarif.save!
+    redirect_to selection_path(@product.selection)
+    flash[:notice] = "Le prix a été enregistré."
+  end
+
   def change_price
     @product = Product.find(params[:id])
     authorize @product

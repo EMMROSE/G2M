@@ -128,6 +128,12 @@
             <td>
               <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
             </td>
+            <td>
+              <% if Tarif.where(brand: product.brand, clothe: product.name).present? %>
+              <% else %>
+                <%= link_to '<i class="fas fa-save"></i>'.html_safe, save_price_path(product), method: :post %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% end %>
