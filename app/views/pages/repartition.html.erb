@@ -24,7 +24,7 @@
         <% @all_brands.each do |element| %>
           <% percentagesize += element.percentagebysizeandbrand(size) %>
         <% end %>
-        <td><%= percentagesize %>%</td>
+        <td><%= percentagesize.round(2) %>%</td>
       <% end %>
     </tr>
   </table>
