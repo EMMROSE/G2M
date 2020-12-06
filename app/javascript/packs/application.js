@@ -35,6 +35,7 @@ document.addEventListener('turbolinks:load', () => {
 
 import { loadDynamicBannerText } from '../components/banner';
 import { loadDynamicAdminText } from '../components/banner';
+import { loadDynamicProText } from '../components/banner';
 // import { displayModal } from '../components/modal';
 import { initSweetalert } from '../plugins/init_sweetalert';
 
@@ -44,6 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   // [...]
   loadDynamicBannerText();
   loadDynamicAdminText();
+  loadDynamicProText();
   // displayModal();
   initSweetalert('#sweet-alert-demo', {
     title: "Une seconde d'attention !",

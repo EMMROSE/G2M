@@ -1,0 +1,31 @@
+<div class="stocks">
+  <%= link_to 'Retour au Menu', root_path, class: "button-sm"%>
+
+  <table class="products_table">
+    <tr id="product-bg">
+      <td>Vêtements</td>
+      <td>Marque</td>
+      <td>Prix TTC</td>
+      <td>Photo</td>
+      <td>Achetez</td>
+    </tr>
+    <% @products.where(status: "à vendre", brand: @brand).each do |element| %>
+      <tr id="product-details">
+        <td><%= element.name %></td>
+        <td><%= element.brand %></td>
+        <td><%= element.price %>€</td>
+        <td>
+          <% if element.photo.present?%>
+            <%= link_to product_path(element) do %>
+              <i class="fas fa-camera-retro"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-ban" style="color: #9E2725;"></i>
+          <% end %>
+        </td>
+        <td><i class="fas fa-cart-plus"></i></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

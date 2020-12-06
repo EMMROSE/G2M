@@ -1,0 +1,41 @@
+<div class="bg-fournisseur" style="flex-direction: column;">
+  <div id="welcometext">
+    <p>
+      <span id="pro-typed-text"></span>
+    </p>
+  </div>
+  <div class="buttons-fournisseurs">
+    <%= link_to root_path do %>
+      RETOUR AU MENU
+    <% end %>
+  </div>
+  <div>
+    <div class="cards" style='margin-top: 32px;'>
+      <div class="card" style="background-color: #B2B2B2;">
+        <% @brand = Brand.where(name: "Jacadi").first %>
+        <%= link_to stock4pro_path(@brand) do %>
+          <p>Jacadi</p>
+        <% end %>
+      </div>
+      <div class="card" style="background-color: #A05A24;">
+        <% @brand = Brand.where(name: "Boutchou").first %>
+        <%= link_to stock4pro_path(@brand) do %>
+          <p>Boutchou</p>
+        <% end %>
+      </div>
+      <div class="card" style="background-color: #ECDBB6;">
+        <p>Burberry</p>
+      </div>
+      <div class="card">
+        <p style="color: #D43735;">Catimini</p>
+      </div>
+      <div class="card">
+        <p style="color: black;">Cyrillus</p>
+      </div>
+      <div class="card" style="background-color: #041B42;">
+        <p>Petit Bateau</p>
+      </div>
+    </div>
+  </div>
+</div>
+

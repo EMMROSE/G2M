@@ -16,6 +16,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def stock4pro
+    @brand = Brand.find(params[:id])
+    @products = Product.where(status: "à vendre", brand: @brand)
+    authorize @products
+  end
+
   def show
     @product = Product.find(params[:id])
     authorize @product
@@ -251,7 +257,7 @@ class ProductsController < ApplicationController
     count_serialized = RestClient.get(url)
     result = JSON.parse(count_serialized)
     total = result["count"]
-    #tant que le nombre de produits interroger n'est pas égal à products.count
+    #while sum of products called with API not equal to products.count
     while number < total
       url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_API_SHOP']}.myshopify.com/admin/api/2020-10/products.json?since_id=#{since_id}"
       user_serialized = RestClient.get(url)

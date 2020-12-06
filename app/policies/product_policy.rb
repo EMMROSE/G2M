@@ -65,6 +65,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def stock4pro?
+    true
+  end
+
   private
 
   def is_admin?

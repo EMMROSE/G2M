@@ -49,6 +49,12 @@
             </tr>
           </table>
         </div>
+    <% elsif current_user.pro %>
+      <div class="buttons-home">
+        <%= link_to pro_path do %>
+          PROFESSIONELS
+        <% end %>
+      </div>
     <% else %>
       <% mail = current_user.email %>
       <% @fournisseur = Fournisseur.where(email: mail).first %>

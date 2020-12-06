@@ -1,31 +1,4 @@
 Rails.application.routes.draw do
-  get 'colors/index'
-  get 'colors/new'
-  get 'colors/create'
-  get 'colors/edit'
-  get 'colors/update'
-  get 'colors/destroy'
-  get 'clothes/index'
-  get 'clothes/new'
-  get 'clothes/create'
-  get 'clothes/edit'
-  get 'clothes/update'
-  get 'clothes/destroy'
-  get 'brands/index'
-  get 'brands/new'
-  get 'brands/create'
-  get 'brands/edit'
-  get 'brands/update'
-  get 'brands/destroy'
-  get 'paiements/index'
-  get 'paiements/new'
-  get 'paiements/create'
-  get 'paiements/show'
-  get 'paiements/edit'
-  get 'paiements/update'
-  get 'selections/new'
-  get 'selections/show'
-  get 'selections/edit'
   devise_for :users
   root to: 'pages#home'
   get 'furnishers', to: 'pages#fournisseurs'
@@ -34,6 +7,8 @@ Rails.application.routes.draw do
   get 'comptabilite', to: 'pages#comptabilite'
   get 'stat', to: 'pages#stat'
   get 'repartition', to: 'pages#repartition'
+  get 'pro', to: 'pages#pro'
+
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create ]
   end
@@ -47,6 +22,7 @@ Rails.application.routes.draw do
     post 'products/:id/edit_price', to: "products#edit_price", as: "edit_price"
     post 'products/duplicate', to: "products#duplicate", as: "duplicate"
     post 'products/import', to: "products#import", as: "import"
+    get 'products/:id/stock4pro', to: "products#stock4pro", as: "stock4pro"
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
 

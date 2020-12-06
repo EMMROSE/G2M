@@ -3,7 +3,7 @@ import Typed from 'typed.js';
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
     strings: ["Bienvenue dans G2M", "Notre espace pour déposer vos vêtements", "#CAPOUPASCAP"],
-    typeSpeed: 50,
+    typeSpeed: 40,
     loop: true
   });
 }
@@ -14,8 +14,17 @@ const loadDynamicAdminText = () => {
     typeSpeed: 30,
     loop: true
   });
+
+const loadDynamicProText = () => {
+  new Typed('#pro-typed-text', {
+    strings: ["Bienvenue dans l'espace Professionnel", "Sélectionnez nos pièces pour votre friperie"],
+    typeSpeed: 30,
+    loop: true
+  });
 }
 
 export { loadDynamicBannerText };
 
 export { loadDynamicAdminText };
+
+export { loadDynamicProText };
