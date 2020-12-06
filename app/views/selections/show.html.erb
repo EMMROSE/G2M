@@ -4,9 +4,9 @@
     <% if @selection.products.count > 0 %>
       <%= link_to "Générer un PDF", selection_path(@selection, :format => :pdf) , :format => :pdf, class: "btn btn-success" %>
       <%= link_to "Etiquettes", selection_etiquette_path(@selection, :format => :pdf) , :format => :pdf, class: "btn btn-success" %>
+      <%= link_to "Envoyer un récapitulatif", selection_summary_path, class: "button-red", style:"width: 240px;", data: {confirm: "Vous confirmez l'envoi ?"} %>
     <% end %>
     <%= link_to "Enregistrer en CSV", selection_csv_path, class: "button-red", style:"width: 240px;" %>
-    <%= link_to "Envoyer un récapitulatif", selection_summary_path, class: "button-red", style:"width: 240px;" %>
     <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
     <%= link_to 'Retour', selections_path(fournisseur_id: @selection.fournisseur.id), class: "btn btn-success"%>
     <h3><%= @selection.products.count %> produit(s)</h3>
