@@ -12,6 +12,15 @@ class Selection < ApplicationRecord
     return sum
   end
 
+  def gain
+    sum = 0
+    self.products.where(status: "vendu").each do |product|
+      sum += product.price / 1.2
+    end
+    sum = sum / 2
+    return sum
+  end
+
   def generate_csv
     csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
     CSV.generate(csv_options) do |csv|

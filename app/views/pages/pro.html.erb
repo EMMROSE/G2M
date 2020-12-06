@@ -24,7 +24,10 @@
         <% end %>
       </div>
       <div class="card" style="background-color: #ECDBB6;">
-        <p>Burberry</p>
+        <% @brand = Brand.where(name: "Burberry").first %>
+        <%= link_to stock4pro_path(@brand) do %>
+          <p>Burberry</p>
+        <% end %>
       </div>
       <div class="card">
         <p style="color: #D43735;">Catimini</p>

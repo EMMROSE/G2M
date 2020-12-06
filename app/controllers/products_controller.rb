@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   def stock4pro
     @brand = Brand.find(params[:id])
-    @products = Product.where(status: "à vendre", brand: @brand)
+    @products = Product.where(brand: @brand.name, status: "à vendre")
     authorize @products
   end
 

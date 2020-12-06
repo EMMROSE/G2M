@@ -45,6 +45,10 @@ class SelectionPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def summary?
+    is_admin?
+  end
+
   private
 
   def is_admin?

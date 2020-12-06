@@ -14,6 +14,7 @@ const loadDynamicAdminText = () => {
     typeSpeed: 30,
     loop: true
   });
+}
 
 const loadDynamicProText = () => {
   new Typed('#pro-typed-text', {
