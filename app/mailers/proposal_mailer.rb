@@ -1,5 +1,5 @@
 class ProposalMailer < ApplicationMailer
-
+  require 'date'
 # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -35,7 +35,7 @@ class ProposalMailer < ApplicationMailer
     mail(
       to:       @selection.fournisseur.email,
       bcc:      'bonjour@grainedemomes.com',
-      subject:  "Graîne de mômes - résumé de votre dépôt"
+      subject:  "Graîne de mômes - situation de votre dépôt au #{Date.today.strftime("%d/%m/%Y")}"
     )
   end
 

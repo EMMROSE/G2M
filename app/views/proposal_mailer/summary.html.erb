@@ -1,7 +1,8 @@
 <p>Bonjour <%= @selection.fournisseur.firstname %>,</p>
 <br>
+<p>Vous trouverez en pièce jointe le récapitulatif des ventes de votre sélection n°<%= @selection.id %> déposée le <%= @selection.date %>.</p>
 <br>
-<p>Vous trouverez en pièce jointe le récapitulatif des ventes de votre sélection n°<%= @selection.id %> du <%= @selection.date %>.</p>
+<p>A ce jour, le montant de votre commission s'élève à <%= @selection.gain %>€.</p>
 <br>
 <p>Nous restons à votre disposition.</p>
 <br>
