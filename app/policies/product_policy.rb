@@ -69,6 +69,14 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def select4pro?
+    true
+  end
+
+  def devis4pro?
+    true
+  end
+
   private
 
   def is_admin?

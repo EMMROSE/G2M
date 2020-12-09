@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     post 'products/duplicate', to: "products#duplicate", as: "duplicate"
     post 'products/import', to: "products#import", as: "import"
     get 'products/:id/stock4pro', to: "products#stock4pro", as: "stock4pro"
+    post 'products/:id/select4pro', to: "products#select4pro", as: "select4pro"
+    get 'products/:id/devis4pro', to: "products#devis4pro", as: "devis4pro"
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
 

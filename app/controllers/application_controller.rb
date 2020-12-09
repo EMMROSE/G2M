@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: :home
+  before_action :pro_cart
   include Pundit
 
   # Pundit: white-list approach.
@@ -19,5 +20,11 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = "Cet accès vous est refusé."
     redirect_to(root_path)
+  end
+
+  def pro_cart
+    if user_signed_in? && current_user.pro
+      @current_cart = Cart.create(user: current_user)
+    end
   end
 end

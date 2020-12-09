@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Votre dépôt chez Graîne de Mômes</title>
+  <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
+  'reload' %>
+  <%= wicked_pdf_stylesheet_link_tag "selection" %>
+  <%= wicked_pdf_stylesheet_link_tag "application" %>
+</head>
+<body style="background-color: white;">
+    <%= image_tag wicked_pdf_asset_base64('logo.png'), style:"width: 200px; height: 120px;" %>
+  <br>
+  <p class="mt-5"><strong>Votre devis pour G2M</strong></p>
+  <p style="text-align: right;"><%= Date.today.strftime("le %d/%m/%Y") %></p>
+  <br>
+  <p>Bonjour,</p>
+  <p>Vous trouverez ci-dessous notre proposition de devis détaillée pour votre dernière sélection de vêtements chez G2M:</p><br>
+  <table>
+    <tr style="border-bottom: 1px solid black;">
+      <td style="width: 100px;">n°</td>
+      <td style="width: 100px;">Vêtement</td>
+      <td style="width: 100px;">Taille</td>
+      <td style="width: 100px;">Marque</td>
+      <td style="width: 100px;">Prix HT</td>
+    </tr>
+    <% @selection.products.each do |product| %>
+      <tr style="margin-bottom: 32px;">
+        <td style="width: 100px;"><%= product.id %></td>
+        <td style="width: 100px;"><%= product.name %></td>
+        <td style="width: 100px;"><%= product.size %></td>
+        <td style="width: 100px;"><%= product.brand %></td>
+        <td style="width: 50px;"><%= (product.price / 1.71) %>€</td>
+      </tr>
+    <% end %>
+      <td style="width: 100px;"></td>
+      <td style="width: 100px;"></td>
+      <td style="width: 100px;"></td>
+      <td style="width: 100px; border-top: : 1px solid black;">Total</td>
+      <td style="width: 100px; border-top: 1px solid black;"> Fonction à mettre en place</td>
+  </table>
+  <br>
+  <p>Merci pour votre confiance. Retrouvez toutes les informations sur vos vêtements déposés sur notre site <strong>wwww.grainedemomes.fr</strong> dans la rubrique Dépôts.</p>
+  <br>
+  <br>
+  <p style="text-align: right; line-height:5px;"><strong>Emmanuel ROSE</strong> - co-fondateur</p>
+  <p style="text-align: right; line-height:5px;">espacepro@grainedemomes.com</p>
+  <p style="text-align: right; line-height:5px;">14 place de l'Hotel de Ville</p>
+  <p style="text-align: right; line-height:5px;">92600 Asnières sur Seine</p>
+</body>
+</html>

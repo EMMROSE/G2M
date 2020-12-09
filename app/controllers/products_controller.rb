@@ -22,6 +22,25 @@ class ProductsController < ApplicationController
     authorize @products
   end
 
+  def select4pro
+    @product = Product.find(params[:id])
+    authorize @product
+    @item = Item.new(product_id: @product, cart_id: @current_cart)
+    @item.product = @product
+    @item.cart = @current_cart
+    if @item.save
+      flash[:notice] = "Article sélectionné."
+    end
+    raise
+  end
+
+  def devis4pro
+    # prepare email and forward csv as argument
+    ProposalMailer.devis(@current_cart).deliver_now
+    redirect_to root_path
+    flash[:notice] = "Votre devis vous a été expédié."
+  end
+
   def show
     @product = Product.find(params[:id])
     authorize @product

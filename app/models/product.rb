@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :selection, optional: true
+  has_many :items, dependent: :destroy
 
   monetize :price_cents
 
