@@ -8,10 +8,12 @@
     <%= link_to root_path do %>
       RETOUR AU MENU
     <% end %>
-    <%= link_to root_path do %>
+    <%= link_to devis_path do %>
       Demandez un devis
     <% end %>
   </div>
+  <%= @current_cart.id %>
+  <%= @current_cart.items.count %>
   <div>
     <div class="cards" style='margin-top: 32px;'>
       <div class="card" style="background-color: #B2B2B2;">

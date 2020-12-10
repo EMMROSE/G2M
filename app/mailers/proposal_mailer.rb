@@ -21,7 +21,7 @@ class ProposalMailer < ApplicationMailer
   def devis(cart)
     @cart = cart
     attachments["Devis_G2M.pdf"] = WickedPdf.new.pdf_from_string(
-      render_to_string(pdf: 'devis_g2m.', template: 'layouts/pdf.html.erb', layout: 'pdf4.html', page_size: 'A4', background: false, no_background: true, lowquality: true, zoom: 1, dpi: 300, encoding:"UTF-8")
+      render_to_string(pdf: 'devis_g2m.', template: 'layouts/pdf4.html.erb', layout: 'pdf4.html', page_size: 'A4', background: false, no_background: true, lowquality: true, zoom: 1, dpi: 300, encoding:"UTF-8")
     )
     # mail(to: todo.owner.email, subject: 'Your todo PDF is attached', todo: todo)
     mail(

@@ -23,22 +23,14 @@ class ProductsController < ApplicationController
   end
 
   def select4pro
+    @cart = @current_cart
     @product = Product.find(params[:id])
     authorize @product
-    @item = Item.new(product_id: @product, cart_id: @current_cart)
-    @item.product = @product
-    @item.cart = @current_cart
-    if @item.save
-      flash[:notice] = "Article sélectionné."
-    end
-    raise
-  end
-
-  def devis4pro
-    # prepare email and forward csv as argument
-    ProposalMailer.devis(@current_cart).deliver_now
-    redirect_to root_path
-    flash[:notice] = "Votre devis vous a été expédié."
+    @item = Item.new(product: @product, cart: @cart)
+    @item.save
+    flash[:notice] = "Hop! dans la musette"
+    @brand = Brand.where(name: @product.brand).first.id
+    redirect_to stock4pro_path(@brand)
   end
 
   def show

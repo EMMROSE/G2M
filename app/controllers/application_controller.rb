@@ -24,7 +24,18 @@ class ApplicationController < ActionController::Base
 
   def pro_cart
     if user_signed_in? && current_user.pro
-      @current_cart = Cart.create(user: current_user)
+      @current_cart = current_user.cart
+      if @current_cart == nil
+        @current_cart = Cart.create(user: current_user)
+        session[:cart_id] = @current_cart.id
+      else
+        session[:cart_id] = @current_cart.id
+      end
+    else
+      @current_cart == nil
     end
   end
 end
+
+
+

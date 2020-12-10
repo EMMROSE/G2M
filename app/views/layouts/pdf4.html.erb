@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Votre dépôt chez Graîne de Mômes</title>
+  <title>Votre devis chez G2M</title>
   <meta charset='utf-8' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
@@ -25,13 +25,13 @@
       <td style="width: 100px;">Marque</td>
       <td style="width: 100px;">Prix HT</td>
     </tr>
-    <% @selection.products.each do |product| %>
+    <% @cart.items.each do |item| %>
       <tr style="margin-bottom: 32px;">
-        <td style="width: 100px;"><%= product.id %></td>
-        <td style="width: 100px;"><%= product.name %></td>
-        <td style="width: 100px;"><%= product.size %></td>
-        <td style="width: 100px;"><%= product.brand %></td>
-        <td style="width: 50px;"><%= (product.price / 1.71) %>€</td>
+        <td style="width: 100px;"><%= item.product.id %></td>
+        <td style="width: 100px;"><%= item.product.name %></td>
+        <td style="width: 100px;"><%= item.product.size %></td>
+        <td style="width: 100px;"><%= item.product.brand %></td>
+        <td style="width: 50px;"><%= (item.product.price / 1.71) %>€</td>
       </tr>
     <% end %>
       <td style="width: 100px;"></td>
