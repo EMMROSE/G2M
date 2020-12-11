@@ -3,14 +3,15 @@
   font-weight: bolder;
   width: 100%;
   table {width: 100%;}
-  tr { height: 10vh;}
+  // tr { max-height: 10vh;}
   td {width: 33%; margin-right: 16px;}
 }
 
 .etiquette {
-  height: 12vh;
+  height: 10vh;
   text-align: center;
-  padding: 32px;
+  justify-content: flex-start;
+  padding: 16px;
   // margin: 24px;
   // margin-right: 32px;
   position: relative;
