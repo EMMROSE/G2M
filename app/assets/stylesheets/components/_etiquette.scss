@@ -2,14 +2,18 @@
   font-weight: bolder;
   width: 100%;
   margin-top: 57px;
-  td {width: 33%;}
+  table {
+    width: 100%;
+    height: 100%;
+    td {width: 33%;}
+    tr {height: 15%;}
+  }
 }
 
 .etiquette {
   position: relative;
   text-align: center;
-  min-height: 132px;
-  padding: 24px 12px 24px 12px;
+  padding: 32px 12px 32px 12px;
   img {
     position: absolute;
     top: 56px;
