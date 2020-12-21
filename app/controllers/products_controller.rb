@@ -53,42 +53,48 @@ class ProductsController < ApplicationController
     authorize @selection
     @product.selection = @selection
     # to add a category according to name of product itself
-    array1 = ["Pull", "Gilet", "Cardigan"]
+    array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
     array2 = ["Blouse", "Chemise"]
     array3 = ["Body", "Pyjama", "Gigoteuse"]
     array4 = ["Combinaison", "Salopette", "Bloomer Salopette"]
     array5 = ["Robe", "Jupe"]
     array6 = ["Ensemble"]
     array7 = ["Hauts Manches Longues"]
-    array8 = ["Pantalon", "Legging", "Bloomer"]
-    array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
+    array8 = ["Pantalon", "Legging", "Jogging"]
+    array9 = ["Manteau", "Combinaison pilote", "Blouson", "Veste", "Doudoune"]
     array10 = ["Chaussures", "Chaussons"]
     array11 = ["Hauts manches courtes"]
-    array12 = ["Sweat"]
+    array12 = ["Short", "Bloomer"]
+    array13 = ["Combinaison de ski"]
+    array14 = ["Maillot de bain"]
     if array1.include?(@product.name)
-      @product.category = "Pull/Gilet/Cardigan"
+      @product.category = "Pulls, Mailles"
     elsif array2.include?(@product.name)
-      @product.category = "Blouse/Chemise"
+      @product.category = "Tops"
     elsif array3.include?(@product.name)
-      @product.category = "Body/Pyjama"
+      @product.category = "Sous vêtements, Pyjamas"
     elsif array4.include?(@product.name)
-      @product.category = "Combinaison/Salopette"
+      @product.category = "Ensembles, combinaisons"
     elsif array5.include?(@product.name)
-      @product.category = "Robe/Jupe"
+      @product.category = "Robe, Jupe"
     elsif array6.include?(@product.name)
-      @product.category = "Ensemble"
+      @product.category = "Ensembles, combinaisons"
     elsif array7.include?(@product.name)
-      @product.category = "Hauts Manches Longues"
+      @product.category = "Tops"
     elsif array8.include?(@product.name)
-      @product.category = "Pantalon/Legging/Bloomer"
+      @product.category = "Pantalons"
     elsif array9.include?(@product.name)
-      @product.category = "Manteau/Blouson"
+      @product.category = "Manteaux, Vestes"
     elsif array10.include?(@product.name)
-      @product.category = "Chaussures/Chaussons"
+      @product.category = "Chaussures, Chaussons"
     elsif array11.include?(@product.name)
-      @product.category = "Hauts Manches Courtes"
+      @product.category = "Tops"
     elsif array12.include?(@product.name)
-      @product.category = "Sweat"
+      @product.category = "Shorts, Bloomers"
+    elsif array13.include?(@product.name)
+      @product.category = "Vêtements de ski"
+    elsif array14.include?(@product.name)
+      @product.category = "Maillots de bain"
     else
       @product.category = "Accessoires"
     end
