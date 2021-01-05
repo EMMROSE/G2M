@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
     @product.selection = @selection
     # to add a category according to name of product itself
     array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
-    array2 = ["Blouse", "Chemise","Haut Manches Longues","Haut manches courtes"]
+    array2 = ["Blouse", "Chemise","Haut manches Longues","Haut manches courtes"]
     array3 = ["Body", "Pyjama", "Gigoteuse", "Peignoir"]
     array4 = ["Combinaison", "Salopette", "Bloomer Salopette", "Ensemble"]
     array5 = ["Robe", "Jupe"]
