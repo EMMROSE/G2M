@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'stocks', to: 'pages#stocks'
   get 'comptabilite', to: 'pages#comptabilite'
   get 'stat', to: 'pages#stat'
+  get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'
   get 'pro', to: 'pages#pro'
 

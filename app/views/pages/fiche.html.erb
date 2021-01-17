@@ -1,0 +1,22 @@
+<div class="bg-fiche">
+  <%= link_to 'retour au Menu', root_path, class: "button-sm"%>
+  <div class="table-selections-2">
+    <table style="border: 1px solid black; font-weight: bolder;">
+      <tr style="background-color: rgba(243, 65 ,62, 0.3);">
+        <td>Date de la sélection</td>
+        <td>Nombre de produits</td>
+        <td>Consulter en détail</td>
+      </tr>
+    <% @fournisseur.selections.each do |selection| %>
+      <tr>
+        <td><%= selection.date %> </td>
+        <td><%= selection.products.count %> produits</td>
+        <td>
+          <%= link_to selection_path(selection) do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+</div>

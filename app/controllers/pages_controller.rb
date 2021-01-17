@@ -29,4 +29,9 @@ class PagesController < ApplicationController
       @percentage = @products.where(brand: brand.name).count / @products.count
     end
   end
+
+  def fiche
+    mail = current_user.email
+    @fournisseur = Fournisseur.where(email: mail).first
+  end
 end

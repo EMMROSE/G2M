@@ -10,11 +10,11 @@ class SelectionPolicy < ApplicationPolicy
   end
 
   def show?
-    is_admin?
+    is_admin_or_customer?
   end
 
   def create?
-    is_admin?
+    is_admin_or_customer?
   end
 
   def new?
@@ -53,6 +53,16 @@ class SelectionPolicy < ApplicationPolicy
 
   def is_admin?
     user.admin
+  end
+
+  def is_admin_or_customer?
+    if user.admin
+      return true
+    elsif @fournisseur.present?
+      return true
+    else
+      return false
+    end
   end
 
 end

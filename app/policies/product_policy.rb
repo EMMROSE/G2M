@@ -14,7 +14,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def create?
-    is_admin?
+    is_admin_or_customer?
   end
 
   def new?
@@ -82,4 +82,15 @@ class ProductPolicy < ApplicationPolicy
   def is_admin?
     user.admin
   end
+
+  def is_admin_or_customer?
+    if user.admin
+      return true
+    elsif user.email == Selection.last.fournisseur.email
+      return true
+    else
+      return false
+    end
+  end
+
 end

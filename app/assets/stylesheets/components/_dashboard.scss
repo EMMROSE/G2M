@@ -46,6 +46,22 @@
   }
 }
 
+.table-selections-2{
+  margin: 32px;
+  table {border: 2px solid white; background-color: rgba(55, 55, 55, 0.2); color: white;}
+  tr, td {border: 1px solid white;}
+  td {
+    min-width: 160px;
+    text-align: center;
+    padding: 12px;
+  }
+  i {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+  }
+}
+
 #product-details-vendu{
   background-color: yellow;
 }

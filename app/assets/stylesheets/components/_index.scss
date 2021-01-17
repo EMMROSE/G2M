@@ -12,12 +12,24 @@
 @import "product";
 
 .bg-home {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/094.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/car.jpg");
   background-size: cover;
   background-position: center;
   h1, h2 {color: white; margin-left: 32px;}
   height: 100vh;
   padding-top: 10vh;
+}
+
+.bg-fiche {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/car.jpg");
+  background-size: cover;
+  background-position: center;
+  h1, h2 {color: white; margin-left: 32px;}
+  height: 100vh;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .stocks {
@@ -36,7 +48,7 @@
 }
 
 .bg-fournisseur {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/062.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/car.jpg");
   background-size: cover;
   background-position: center;
   h1, h2, h3 {color: white;}
