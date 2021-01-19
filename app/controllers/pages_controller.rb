@@ -7,6 +7,17 @@ class PagesController < ApplicationController
     @products = Product.all
   end
 
+  def total(fournisseur)
+    result = 0
+    @fournisseur = fournisseur
+    @fournisseur.selections.each do |selection|
+      selection.products.each do |product|
+        result += 1
+      end
+    end
+    return result
+  end
+
   def stat
     @fournisseurs = Fournisseur.all
     @selections = Selection.all

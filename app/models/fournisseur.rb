@@ -19,6 +19,26 @@ class Fournisseur < ApplicationRecord
     return sold
   end
 
+  def inventory
+    sold = 0
+    self.selections.each do |selection|
+      selection.products.each do |product|
+        sold += (product.price/1.2)
+      end
+    end
+    return sold
+  end
+
+  def total
+    sold = 0
+    self.selections.each do |selection|
+      selection.products.each do |product|
+        sold += 1
+      end
+    end
+    return sold
+  end
+
   def settle
     sum = 0
     self.paiements.where(status: "généré").each do |element|
