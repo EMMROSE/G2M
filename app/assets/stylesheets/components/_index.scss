@@ -16,8 +16,9 @@
   background-size: cover;
   background-position: center;
   h1, h2 {color: white; margin-left: 32px;}
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 10vh;
+  background-color: #989999;
 }
 
 .bg-fiche {
