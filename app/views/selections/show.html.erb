@@ -9,8 +9,13 @@
       <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
       <%= link_to 'Retour', selections_path(fournisseur_id: @selection.fournisseur.id), class: "btn btn-success"%>
       <h3><%= @selection.products.count %> produit(s)</h3>
+    <% elsif current_user.admin %>
+      <%= link_to 'Ajouter un produit', new_selection_product_path(@selection), class: "btn btn-primary"%>
+      <%= link_to 'Retour', selections_path(fournisseur_id: @selection.fournisseur.id), class: "btn btn-success"%>
+      <h3><%= @selection.products.count %> produit(s)</h3>
     <% else %>
       <%= link_to 'Retour', root_path, class: "btn btn-success"%>
+      <h3><%= @selection.products.count %> produit(s)</h3>
     <% end %>
   </div>
 </div>
