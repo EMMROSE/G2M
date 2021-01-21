@@ -58,7 +58,7 @@ class SelectionPolicy < ApplicationPolicy
   def is_admin_or_customer?
     if user.admin
       return true
-    elsif @fournisseur.present?
+    elsif user.email == Selection.where(id: @fournisseur.id).first.fournisseur.email
       return true
     else
       return false

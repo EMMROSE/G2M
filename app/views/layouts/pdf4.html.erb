@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Votre devis chez G2M</title>
+  <title>Votre devis par G2M</title>
   <meta charset='utf-8' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
@@ -31,7 +31,7 @@
         <td style="width: 100px;"><%= item.product.name %></td>
         <td style="width: 100px;"><%= item.product.size %></td>
         <td style="width: 100px;"><%= item.product.brand %></td>
-        <td style="width: 50px;"><%= (item.product.price / 1.71) %>€</td>
+        <td style="width: 50px;"><%= (item.product.price / 2) %>€</td>
       </tr>
     <% end %>
       <td style="width: 100px;"></td>

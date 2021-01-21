@@ -18,6 +18,8 @@
 }
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
   .search {
   flex-grow: 1;
   }

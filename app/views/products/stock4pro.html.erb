@@ -1,4 +1,4 @@
-<div class="stocks">
+<div class="stocks4pro">
   <%= link_to 'Retour au Menu', root_path, class: "button-sm"%>
   <%= link_to 'Retour aux marques', pro_path, class: "button-red mt-2"%>
   <%= link_to 'Demandez un devis', devis_path, class: "button-red mt-2"%>
@@ -11,22 +11,24 @@
       <td>Photo</td>
       <td>Sélectionnez</td>
     </tr>
-    <% @products.each do |element| %>
-      <tr id="product-details">
-        <td><%= element.name %></td>
-        <td><%= element.brand %></td>
-        <td><%= element.price/1.2 %>€</td>
-        <td>
-          <% if element.photo.present?%>
-            <%= link_to product_path(element) do %>
-              <i class="fas fa-camera-retro"></i>
+    <% @products.each do |product| %>
+      <% if (Date.today - product.created_at.to_date).to_i > 44 %>
+        <tr id="product-details">
+          <td><%= product.name %></td>
+          <td><%= product.brand %></td>
+          <td><%= product.price/2 %>€</td>
+          <td>
+            <% if product.photo.present?%>
+              <%= link_to product_path(product) do %>
+                <i class="fas fa-camera-retro"></i>
+              <% end %>
+            <% else %>
+              <i class="fas fa-ban" style="color: #9E2725;"></i>
             <% end %>
-          <% else %>
-            <i class="fas fa-ban" style="color: #9E2725;"></i>
-          <% end %>
-        </td>
-        <td><%= link_to '<i class="fas fa-cart-plus"></i>'.html_safe, select4pro_path(element), style:"color: green;" %></td>
-      </tr>
+          </td>
+          <td><%= link_to '<i class="fas fa-cart-plus"></i>'.html_safe, select4pro_path(product), style:"color: green;" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
 </div>

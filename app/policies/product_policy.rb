@@ -10,7 +10,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-    is_admin?
+    is_admin_or_pro?
   end
 
   def create?
@@ -87,6 +87,14 @@ class ProductPolicy < ApplicationPolicy
     if user.admin
       return true
     elsif user.email == Selection.last.fournisseur.email
+      return true
+    else
+      return false
+    end
+  end
+
+  def is_admin_or_pro?
+    if user.admin || user.pro
       return true
     else
       return false

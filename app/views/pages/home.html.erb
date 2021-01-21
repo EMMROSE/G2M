@@ -75,7 +75,7 @@
               <tr style="background-color: rgba(243, 65 ,62, 0.3);">
                 <td>Date de la sélection</td>
                 <td>Nombre de produits</td>
-                <td>Consulter en détail</td>
+                <td>Détails</td>
               </tr>
             <% @fournisseur.selections.each do |selection| %>
               <tr>
@@ -95,7 +95,7 @@
     <% end %>
   <!-- if user doesnt sign up yet. display CGU CGV to create an account and start to propose clothes -->
   <% else %>
-     <%= link_to "Se connecter", new_user_session_path, class: "button-red" %>
+     <%= link_to "Se connecter", new_user_session_path, class: "button-red", style:"margin: auto;"%>
   <% end %>
     <% if user_signed_in? %>
   <!-- access for admins or customers only -->

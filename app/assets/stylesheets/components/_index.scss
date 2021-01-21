@@ -34,9 +34,22 @@
 }
 
 .stocks {
-  background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/train.jpg");
+  background-size: cover;
+  background-position: center;
+  h1, h2 {color: white; margin-left: 32px;}
+  min-height: 100vh;
   padding: 10vh 60px 0 60px;
+}
+
+.stocks4pro {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/train.jpg");
+  background-size: cover;
+  background-position: center;
+  h1, h2 {color: white; margin-left: 32px;}
+  min-height: 100vh;
+  padding: 10vh 60px 0 60px;
+  color: white;
 }
 
 #welcometext {
