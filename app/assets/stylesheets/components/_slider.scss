@@ -34,17 +34,30 @@
 }
 
 .logo-slider .logo-slide-track {
-  -webkit-animation: logo-scroll 60s linear infinite;
-  animation: logo-scroll 60s linear infinite;
+  -webkit-animation: logo-scroll 60s linear infinite alternate;
+  animation: logo-scroll 60s linear infinite alternate;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: calc(250px * 5);
-  animation-duration: 30s;
+  width: calc(250px * 3);
+  animation-duration: 10s;
   animation-iteration-count: infinite;
 }
 
+// .logo-slider .logo-slide-track {
+//   -webkit-animation: logo-scroll 0s linear infinite alternate;
+//   animation: logo-scroll 0s linear infinite alternate;
+//   display: -webkit-box;
+//   display: -ms-flexbox;
+//   display: flex;
+//   width: calc(250px * 3);
+//   animation-duration: 15s;
+//   animation-iteration-count: infinite;
+// }
+
 .logo-slider .slide {
+  display: flex;
+  align-items: center;
   img {
     height: 90%;
     width: auto;
