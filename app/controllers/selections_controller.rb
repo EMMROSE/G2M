@@ -74,6 +74,10 @@ class SelectionsController < ApplicationController
   def destroy
     @selection = Selection.find(params[:id])
     authorize @selection
+    @selection.products.each do |product|
+      product.destroy
+    end
+    @selection.notification.destroy
     @selection.destroy
     redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
   end
