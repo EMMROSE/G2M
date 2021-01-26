@@ -19,6 +19,7 @@
           <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
            <i class="fas fa-sign-out-alt"></i>
           <% end %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>1
         </li>
       <% else %>
         <li class="nav-item">

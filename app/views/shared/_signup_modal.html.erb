@@ -1,0 +1,37 @@
+
+<!-- Modal -->
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+            <h2>Se créer un compte</h2>
+
+            <%= simple_form_for(@new_user, as: :user, url: session_path(:user)) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+                 <%= f.input :email,
+                              required: true,
+                              autofocus: true,
+                              input_html: { autocomplete: "email" }%>
+                  <%= f.input :password,
+                              required: true,
+                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                              input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :password_confirmation,
+                              required: true,
+                              input_html: { autocomplete: "new-password" } %>
+              </div>
+
+              <div class="form-actions mb-3">
+                <%= f.button :submit, "Créer mon compte", class: "btn-red w-100"%>
+              </div>
+            <% end %>
+            <%= link_to "Se connecter", new_session_path(:user) %><br />
+            <%= link_to "Mot de passe oublié?", new_password_path(:user) %><br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

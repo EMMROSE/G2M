@@ -135,46 +135,42 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
     #to edit category
-    array1 = ["Pull", "Gilet", "Cardigan"]
-    array2 = ["Blouse", "Chemise"]
-    array3 = ["Body", "Pyjama", "Gigoteuse"]
-    array4 = ["Combinaison", "Salopette", "Bloomer Salopette"]
+    array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
+    array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes"]
+    array3 = ["Body", "Pyjama", "Gigoteuse", "Peignoir"]
+    array4 = ["Combinaison", "Salopette", "Bloomer Salopette", "Ensemble"]
     array5 = ["Robe", "Jupe"]
-    array6 = ["Ensemble"]
-    array7 = ["Hauts Manches Longues"]
-    array8 = ["Pantalon", "Legging", "Bloomer"]
-    array9 = ["Manteau", "Blouson", "Veste", "Doudoune"]
-    array10 = ["Chaussures", "Chaussons"]
-    array11 = ["Hauts Manches Courtes"]
-    array12 = ["Sweat"]
+    array6 = ["Pantalon", "Legging", "Jogging"]
+    array7 = ["Cap", "Manteau", "Combinaison pilote", "Blouson", "Veste", "Doudoune"]
+    array8 = ["Chaussures", "Chaussons"]
+    array9 = ["Short", "Bloomer"]
+    array10 = ["Combinaison de ski"]
+    array11 = ["Maillot de bain"]
     if array1.include?(@product.name)
-      @product.category = "Pull/Gilet/Cardigan"
+      @product.category = "Pulls, Mailles"
     elsif array2.include?(@product.name)
-      @product.category = "Blouse/Chemise"
+      @product.category = "Tops"
     elsif array3.include?(@product.name)
-      @product.category = "Body/Pyjama"
+      @product.category = "Sous vêtements, Pyjamas"
     elsif array4.include?(@product.name)
-      @product.category = "Combinaison/Salopette"
+      @product.category = "Ensembles, Combinaisons"
     elsif array5.include?(@product.name)
-      @product.category = "Robe/Jupe"
+      @product.category = "Robes, Jupes"
     elsif array6.include?(@product.name)
-      @product.category = "Ensemble"
+      @product.category = "Pantalons"
     elsif array7.include?(@product.name)
-      @product.category = "Hauts Manches Longues"
+      @product.category = "Manteaux, Vestes"
     elsif array8.include?(@product.name)
-      @product.category = "Pantalon/Legging/Bloomer"
+      @product.category = "Chaussures, Chaussons"
     elsif array9.include?(@product.name)
-      @product.category = "Manteau/Blouson"
+      @product.category = "Shorts, Bloomers"
     elsif array10.include?(@product.name)
-      @product.category = "Chaussures/Chaussons"
+      @product.category = "Vêtements de ski"
     elsif array11.include?(@product.name)
-      @product.category = "Hauts Manches Courtes"
-    elsif array12.include?(@product.name)
-      @product.category = "Sweat"
+      @product.category = "Maillots de bain"
     else
       @product.category = "Accessoires"
     end
-
     if @product.update(product_params)
       redirect_to selection_path(@product.selection)
     else render :edit
