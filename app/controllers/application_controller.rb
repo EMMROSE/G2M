@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: :home
 
-  before_action :login_new # try to create a modal
+  # before_action :login_new # try to create a modal
   before_action :pro_cart
   include Pundit
 
@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
 
 
   private
-  def login_new # try to create a modal
-    @new_user = User.new
-  end
+  # def login_new # try to create a modal
+  #   @new_user = User.new
+  # end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
