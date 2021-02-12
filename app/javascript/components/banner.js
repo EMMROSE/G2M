@@ -2,7 +2,7 @@ import Typed from 'typed.js';
 
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
-    strings: ["Bienvenue dans G2M", "Notre espace pour déposer vos vêtements", "#CAPOUPASCAP"],
+    strings: ["Bienvenue dans G2M", "Notre espace pour consulter vos dépôts", "#CAPOUPASCAP"],
     typeSpeed: 40,
     loop: true
   });

@@ -188,3 +188,35 @@
 #margin-top-button {
   margin-top: 16px;
 }
+
+.button-login {
+  background-color: red;
+  a {
+    background-color: pink;
+    padding: 16px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    &:hover {border : solid red 2px;}
+  }
+  &:after {
+      content:'';
+      top:0;
+      transform:translateX(100%) rotate(30deg);
+      width:100%;
+      height:100%;
+      position: absolute;
+      z-index:1;
+      animation: shine 3s infinite ease-in;
+      background:
+        linear-gradient( to right,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.8) 50%,
+          rgba(128,186,232,0) 99%,
+          rgba(128,186,232,0) 100%);
+    }
+    &.silver {
+      background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
+    }
+}
