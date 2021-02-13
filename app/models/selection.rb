@@ -7,17 +7,57 @@ class Selection < ApplicationRecord
   def sum_up
     sum = 0
     self.products.each do |product|
+      # product price is all taxes included
       sum += product.price / 1.2
+    end
+    return sum
+  end
+
+  def sum_up_for_fournisseur
+    sum = 0
+    my_date = "2021-02-13".to_date
+    self.products.each do |product|
+      # apply this new calculation if my product date is > "2021-02-13"
+      if product.created_at.to_date > my_date
+        # product price is all taxes included
+        # cette fonction doit appliquer une commission progressive pour le client selon le prix du vetement.
+        if product.price >= 50.to_money
+          # 70% du prix HT
+          sum += (product.price/1.2) * 0.7
+        elsif product.price >= 30.to_money
+          # 60% du prix HT
+          sum += (product.price/1.2) * 0.6
+        else
+          # 50% du prix HT
+          sum += (product.price/1.2) * 0.5
+        end
+      else
+        sum += (product.price/1.2) * 0.5
+      end
     end
     return sum
   end
 
   def gain
     sum = 0
+    my_date = "2021-02-13".to_date
     self.products.where(status: "vendu").each do |product|
-      sum += product.price / 1.2
+      # apply this new calculation if my product date is > "2021-02-13"
+      if product.created_at.to_date > my_date
+        if product.price >= 50.to_money
+          # 70% du prix HT
+          sum += (product.price/1.2) * 0.7
+        elsif product.price >= 30.to_money
+          # 60% du prix HT
+          sum += (product.price/1.2) * 0.6
+        else
+          # 50% du prix HT
+          sum += (product.price/1.2) * 0.5
+        end
+      else
+        sum += (product.price/1.2) * 0.5
+      end
     end
-    sum = sum / 2
     return sum
   end
 

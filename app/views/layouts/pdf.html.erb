@@ -32,7 +32,19 @@
         <td style="width: 100px;"><%= product.size %></td>
         <td style="width: 50px;"><%= product.price / 1.2 %>€</td>
         <td style="width: 50px;"><%= product.price %>€</td>
-        <td style="width: 100px;"><%= product.price/ 2.4 %>€</td>
+        <!-- appliquer une commission progressive selon le prix du vêtement et la date de création du produit -->
+        <% if product.created_at.to_date > "2021-02-12".to_date %>
+          <% if product.price >= 50.to_money %>
+            <td style="width: 100px;"><%= (product.price/1.2) * 0.7 %>€</td>
+          <% elsif product.price >= 30.to_money %>
+            <td style="width: 100px;"><%= (product.price/1.2) * 0.6 %>€</td>
+          <% else %>
+            <td style="width: 100px;"><%= (product.price/1.2) * 0.5 %>€</td>
+          <% end %>
+        <% else %>
+          <td style="width: 100px;"><%= (product.price/1.2) * 0.5 %>€</td>
+        <% end %>
+        <!-- fin de la condition pour la commission du fournisseur -->
         <td style="width: 150px; text-align: center;"><%= image_tag wicked_pdf_asset_base64('circle-regular.svg'), style:"width: 24px; height: 16px;"%></td>
       </tr>
     <% end %>
@@ -40,7 +52,7 @@
       <td style="width: 100px; border-top: : 1px solid black;">Total</td>
       <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up %>€</td>
       <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up * 1.2 %>€</td>
-      <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up / 2 %>€</td>
+      <td style="width: 50px; border-top: 1px solid black;"><%= @selection.sum_up_for_fournisseur %>€</td>
   </table>
   <br>
   <p><%= image_tag wicked_pdf_asset_base64('circle-regular.svg'), style:"width: 24px; height: 16px;"%> Je valide la liste dans son intégralité.</p>
@@ -54,5 +66,24 @@
   <p style="text-align: right; line-height:5px;">bonjour@grainedemomes.com</p>
   <p style="text-align: right; line-height:5px;">14 place de l'Hotel de Ville</p>
   <p style="text-align: right; line-height:5px;">92600 Asnières sur Seine</p>
+  <p style="margin-top: 60px;">Votre commission est progressive selon le prix de vente de vos articles :</p>
+  <table>
+    <tr style="border: 1px solid black;">
+      <td style="width: 200px; border: 1px solid black;">Prix de vente TTC</td>
+      <td style="width: 200px; border: 1px solid black;">Votre commission</td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td style="width: 200px; border: 1px solid black;">à parti de 50€</td>
+      <td style="width: 200px; border: 1px solid black;">70% du prix hors taxe</td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td style="width: 200px; border: 1px solid black;">compris entre 30 € et 50€</td>
+      <td style="width: 200px; border: 1px solid black;">60% du prix hors taxe</td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td style="width: 200px; border: 1px solid black;">inférieur à 30€</td>
+      <td style="width: 200px; border: 1px solid black;">50% du prix hors taxe</td>
+    </tr>
+  </table>
 </body>
 </html>
