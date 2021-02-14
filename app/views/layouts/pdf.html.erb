@@ -33,7 +33,7 @@
         <td style="width: 50px;"><%= product.price / 1.2 %>€</td>
         <td style="width: 50px;"><%= product.price %>€</td>
         <!-- appliquer une commission progressive selon le prix du vêtement et la date de création du produit -->
-        <% if product.created_at.to_date > "2021-02-12".to_date %>
+        <% if product.created_at.to_date > "2022-02-12".to_date %>
           <% if product.price >= 50.to_money %>
             <td style="width: 100px;"><%= (product.price/1.2) * 0.7 %>€</td>
           <% elsif product.price >= 30.to_money %>
@@ -66,7 +66,7 @@
   <p style="text-align: right; line-height:5px;">bonjour@grainedemomes.com</p>
   <p style="text-align: right; line-height:5px;">14 place de l'Hotel de Ville</p>
   <p style="text-align: right; line-height:5px;">92600 Asnières sur Seine</p>
-  <p style="margin-top: 60px;">Votre commission est progressive selon le prix de vente de vos articles :</p>
+  <!-- <p style="margin-top: 60px;">Votre commission est progressive selon le prix de vente de vos articles :</p>
   <table>
     <tr style="border: 1px solid black;">
       <td style="width: 200px; border: 1px solid black;">Prix de vente TTC</td>
@@ -84,6 +84,6 @@
       <td style="width: 200px; border: 1px solid black;">inférieur à 30€</td>
       <td style="width: 200px; border: 1px solid black;">50% du prix hors taxe</td>
     </tr>
-  </table>
+  </table> -->
 </body>
 </html>
