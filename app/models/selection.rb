@@ -73,4 +73,16 @@ class Selection < ApplicationRecord
     end
   end
 
+  def percentage_sold
+    result = 0.to_f
+    total = self.products.all.count.to_f
+    self.products.each do |product|
+      if product.status == "vendu"
+        result += 1
+      end
+    end
+    percentage = (result / total) * 100
+    return percentage
+  end
+
 end
