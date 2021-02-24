@@ -57,4 +57,9 @@ class ProposalMailer < ApplicationMailer
     mail(to: 'bonjour@grainedemomes.com', subject: 'Nouveau CSV pour Shopify')
   end
 
+  def paiement(paiement)
+    @paiement = paiement
+    mail(to: 'bonjour@grainedemomes.com', subject: 'Nouvelle demande de paiement')
+  end
+
 end

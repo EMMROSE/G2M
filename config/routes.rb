@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'justificatifs/new'
+  get 'justificatifs/create'
   devise_for :users
   root to: 'pages#home'
   get 'furnishers', to: 'pages#fournisseurs'
@@ -12,7 +14,10 @@ Rails.application.routes.draw do
 
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create ]
+    resources :justificatifs, only: [ :new, :create]
   end
+
+
   resources :selections do
     resources :products, only: [ :index, :new, :create ]
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_154641) do
+ActiveRecord::Schema.define(version: 2021_02_24_205101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_154641) do
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "justif"
   end
 
   create_table "items", force: :cascade do |t|
@@ -79,6 +80,14 @@ ActiveRecord::Schema.define(version: 2020_12_10_154641) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cart_id"], name: "index_items_on_cart_id"
     t.index ["product_id"], name: "index_items_on_product_id"
+  end
+
+  create_table "justificatifs", force: :cascade do |t|
+    t.string "justif"
+    t.bigint "fournisseur_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fournisseur_id"], name: "index_justificatifs_on_fournisseur_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -161,6 +170,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_154641) do
   add_foreign_key "carts", "users"
   add_foreign_key "items", "carts"
   add_foreign_key "items", "products"
+  add_foreign_key "justificatifs", "fournisseurs"
   add_foreign_key "notifications", "selections"
   add_foreign_key "paiements", "fournisseurs"
   add_foreign_key "products", "selections"

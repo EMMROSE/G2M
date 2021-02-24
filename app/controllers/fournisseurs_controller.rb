@@ -76,9 +76,22 @@ class FournisseursController < ApplicationController
     redirect_to fournisseurs_path
   end
 
+  def add_justif
+    @fournisseur = Fournisseur.find(params[:id])
+    # authorize @fournisseur
+    if @fournisseur.update(fournisseur_justif_params)
+      redirect_to root_path
+    else render :justif
+    end
+  end
+
   private
 
   def fournisseur_params
     params.require(:fournisseur).permit(:firstname, :lastname, :email, :phone, :rib, :code)
+  end
+
+  def fournisseur_justif_params
+    params.require(:fournisseur).permit(:justif)
   end
 end

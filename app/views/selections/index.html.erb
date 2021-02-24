@@ -16,7 +16,7 @@
     <tr>
       <td><%= selection.date %> </td>
       <td><%= selection.products.count %> produits</td>
-      <td><%= selection.percentage_sold %>%</td>
+      <td><%= selection.percentage_sold.to_i %>%</td>
       <td style="height: 20vh; display: flex; flex-direction: column; justify-content: space-between;">
         <%= link_to 'Voir sa sélection', selection_path(selection), class: "button"%> <%= link_to "Envoyer la proposition", selection_mail_path(selection), id: "delete-link", class: "button-red", data: {confirm: "Vous confirmez l'envoi ?"}  %> <%= link_to 'Supprimer', selection_path(selection), method: :delete, class: "button-red "%>
       </td>

@@ -33,10 +33,13 @@ class FournisseurPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def add_justif?
+    true
+  end
+
   private
 
   def is_admin?
     user.admin
   end
-
 end

@@ -1,0 +1,6 @@
+<h1>Nouveau paiement</h1>
+
+<%= simple_form_for [ @fournisseur, @paiement ] do |f| %>
+  <%= f.input :photo, label: 'Ajoutez une photo', as: :file %>
+  <%= f.submit "Créer le produit", class: 'button-red' %>
+<% end %>

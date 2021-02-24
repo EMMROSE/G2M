@@ -2,12 +2,15 @@ class Fournisseur < ApplicationRecord
   has_many :selections, dependent: :destroy
   has_many :products, through: :selections
   has_many :paiements
+  has_one :notification, dependent: :destroy
 
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :phone, presence: false, uniqueness: true
   validates :rib, presence: false, uniqueness: true
+
+  has_one_attached :justif
 
   def sold
     sold = 0
