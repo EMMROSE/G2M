@@ -27,7 +27,7 @@
           <%= element.firstname %> <%= element.lastname %>- n°<%= element.code %>
           <% element.selections.each do |selection| %>
             <% if selection.percentage_sold == 100 %>
-              <i class="fas fa-star" style="color: #FFD700;"></i>
+              <i class="fas fa-star flash-star" style="color: #FFD700;"></i>
             <% elsif selection.percentage_sold > 50 %>
               <i class="fas fa-star-half-alt" style="color: #FFD700;"></i>
             <% else %>

@@ -220,3 +220,23 @@
       background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
     }
 }
+
+.flash-star{
+  color:#f2f;
+  -webkit-animation: flash linear 3s infinite;
+  animation: flash linear 3s infinite;
+  &.hover {
+    -webkit-animation: pause;
+    animation: pause;
+  }
+}
+@-webkit-keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .3; }
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .3; }
+  100% { opacity: 1; }
+}
