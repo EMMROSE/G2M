@@ -40,7 +40,7 @@ class Selection < ApplicationRecord
 
   def gain
     sum = 0
-    my_date = "2021-02-13".to_date
+    my_date = "2022-02-13".to_date
     self.products.where(status: "vendu").each do |product|
       # apply this new calculation if my product date is > "2021-02-13"
       if product.created_at.to_date > my_date
