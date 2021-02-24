@@ -61,12 +61,13 @@
       <% if @fournisseur.present? %>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
           <div class="fiche_fournisseur" style="background-color: rgba(155;155;155;0.6); margin: auto !important;">
-            <p style="height: 3.5rem; font-weight: bolder; display: flex;">Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %></p>
-            <p>Mon code : <%= @fournisseur.code %></p>
+            <p style="height: 3.5rem; font-weight: bolder; display: flex;">Bonjour <%= @fournisseur.firstname %> <%= @fournisseur.lastname %>,</p>
+            <p>Ton code déposant est le n°: <%= @fournisseur.code %></p>
             <div>
-              <p><%= @fournisseur.selections.count %> sélection(s) - <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
-              <p>Mon crédit = <%= @fournisseur.credit %>€.</p>
+              <p>Tu as effectué <%= @fournisseur.selections.count %> dépôts(s) comprenant <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
+              <p>Ton crédit s'élève à <%= @fournisseur.credit %>€.</p>
 <!--               <p>Vous avez déjà gagné <%= @fournisseur.settle %>€.</p> -->
+              <p>Tu trouveras ci-après le détail de tout tes dépôts chez Graîne de Mômes.</p>
               <br>
             </div>
           </div>
@@ -75,12 +76,14 @@
               <tr style="background-color: rgba(243, 65 ,62, 0.3);">
                 <td>Date de la sélection</td>
                 <td>Nombre de produits</td>
+                <td>Produits vendus</td>
                 <td>Détails</td>
               </tr>
             <% @fournisseur.selections.each do |selection| %>
               <tr>
                 <td><%= selection.date %> </td>
                 <td><%= selection.products.count %> produits</td>
+                <td><%= selection.percentage_sold.to_i %>%</td>
                 <td>
                   <%= link_to selection_path(selection) do %>
                     <i class="fas fa-search"></i>
@@ -137,7 +140,7 @@
       <% end %>
     <% end %>
 <!-- LOGO SLIDER -->
-<div class="logo-slider">
+<!-- <div class="logo-slider">
   <div class="logo-slide-track">
     <div class="slide">
       <img src="../assets/logo.png" alt="" />
@@ -155,5 +158,5 @@
       <img src="../assets/logo.png" alt="" />
     </div>
   </div>
-</div>
+</div> -->
 </div>

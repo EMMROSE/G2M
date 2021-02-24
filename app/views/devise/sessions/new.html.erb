@@ -1,21 +1,21 @@
 <div class="bg-home">
-  <div style="width: 90%; margin: auto;">
-    <h2>Connectez-vous à votre espace dépôt chez Graîne de Mômes :</h2>
+  <div style="width: 90%; max-width: 50vw; margin: auto;">
+    <h3 style="color: white; font-weight: bolder;">Connectez-vous à votre espace dépôt<br>chez Graîne de Mômes :</h3>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
+      <div class="form-inputs" style="color: white; font-weight: bolder;">
         <%= f.input :email,
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "email" } %>
         <%= f.input :password,
+                    label: "Mot de passe",
                     required: false,
                     input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
-
-      <div class="form-actions">
-        <%= f.submit "Log in", class: 'button-login'%>
+      <div class="form-button">
+       <%= f.submit "Cap ?", class: 'button-form'%>
       </div>
     <% end %>
 

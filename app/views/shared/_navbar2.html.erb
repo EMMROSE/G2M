@@ -1,0 +1,15 @@
+<div id="js-scroll-navbar" class="navbar navbar-shadow fixed-top bg-transparent">
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+  <div>
+    <% if user_signed_in? %>
+      <p><%= current_user.email %></p>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    <% else %>
+        <%= link_to "Se connecter", new_user_session_path, class:"button-ts"%>
+    <% end %>
+  </div>
+</div>
