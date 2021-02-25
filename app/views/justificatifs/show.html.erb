@@ -1,0 +1,11 @@
+<div class="modal">
+  <div class="modal-wrapper">
+    <% if @justificatif.justif.present? %>
+      <%= link_to 'X', :back %>
+      <%= cl_image_tag @justificatif.justif.key %>
+    <% else %>
+      <%= link_to 'X', :back%>
+      <p>le justificatif n°<%= @justificatif.id %> n'a pas encore d'image.</p>
+    <% end %>
+  </div>
+</div>

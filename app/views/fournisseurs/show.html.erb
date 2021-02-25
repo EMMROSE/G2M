@@ -2,11 +2,22 @@
   <div class="fiche_fournisseur">
     <h2 style="display: flex;">Fiche de <%= @fournisseur.firstname %> <%= @fournisseur.lastname %>    <%= link_to 'Editer', edit_fournisseur_path(@fournisseur), class: "button", style:"margin-left: 16px;"%></h2>
     <p>Coordonnées : <%= @fournisseur.email %>  / Tél: <%= @fournisseur.phone %></p>
-    <p>RIB : <%= @fournisseur.rib %></p>
+    <% if @fournisseur.justificatif.present? %>
+      <p>IBAN: <%= @fournisseur.justificatif.justif %></p>
+    <% else %>
+      <p>Le fournisseur n'a pas encore saisie son RIB.</p>
+    <% end %>
     <p>Code : <%= @fournisseur.code %></p>
     <div>
       <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes. Crédit = <%= @fournisseur.credit %> €. </p>
-      <p><%= @fournisseur.firstname %> a gagné <%= @fournisseur.settle %>€.</p>
+      <% if @fournisseur.paiements.count < 1 %>
+        <p>Aucun paiement n'a été réalisé</p>
+      <% else %>
+        <p>Ses paiements : </p>
+        <% @fournisseur.paiements.each do |paiement| %>
+          <p><%= paiement.date.to_date.strftime("le %d/%m/%Y")%>, un virement de <%= paiement.amount_cents %>€</p>
+        <% end %>
+      <% end %>
       <br>
     </div>
   </div>

@@ -1,5 +1,4 @@
 class Justificatif < ApplicationRecord
   belongs_to :fournisseur
-
-  has_one_attached :justif
+  validates :justif, presence: true
 end

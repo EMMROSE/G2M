@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_205101) do
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "justif"
   end
 
   create_table "items", force: :cascade do |t|

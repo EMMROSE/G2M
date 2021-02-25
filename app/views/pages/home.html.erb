@@ -63,7 +63,13 @@
           <div class="fiche_fournisseur" style="background-color: rgba(155;155;155;0.6); margin: auto !important;">
             <p style="height: 3.5rem; font-weight: bolder; display: flex;">Bonjour <%= @fournisseur.firstname %> <%= @fournisseur.lastname %>,</p>
             <p>Ton code déposant est le n°: <%= @fournisseur.code %></p>
-            <%= link_to 'Transmettre mon RIB', new_fournisseur_justificatif_path(@fournisseur), class: "button", style:"max-width: 240px;"%>
+            <% if @fournisseur.justificatif.present?%>
+              <%= link_to justificatif_path(@fournisseur.justificatif) do %>
+                <%= link_to 'Editer mon RIB', edit_justificatif_path(@fournisseur.justificatif), class: "button", style:"max-width: 240px;"%>
+              <% end %>
+            <% else %>
+              <%= link_to 'Sauvegarder mon RIB', new_fournisseur_justificatif_path(@fournisseur), class: "button", style:"max-width: 240px;"%>
+            <% end %>
             <br>
             <div>
               <p>Tu as effectué <%= @fournisseur.selections.count %> dépôts(s) comprenant <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
@@ -75,7 +81,7 @@
               <% credit = credit - paiements %>
               <p>Ton crédit s'élève à <%= credit %>€.</p>
               <% if credit >= 70 %>
-                <%= link_to "Demandez mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts", style:"max-width: 240px;"%>
+                <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts", style:"max-width: 240px;"%>
               <% end %>
 <!--               <p>Vous avez déjà gagné <%= @fournisseur.settle %>€.</p> -->
               <p>Tu trouveras ci-après le détail de tout tes dépôts chez Graîne de Mômes.</p>

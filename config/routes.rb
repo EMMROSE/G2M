@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :justificatifs, only: [ :new, :create]
   end
 
+  resources :justificatifs, only: [ :show, :edit, :update]
 
   resources :selections do
     resources :products, only: [ :index, :new, :create ]

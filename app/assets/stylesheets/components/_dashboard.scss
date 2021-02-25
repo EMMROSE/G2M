@@ -89,3 +89,22 @@
   color: green;
 }
 
+@media (max-width: 900px) {
+  .table-selections-2{
+    font-size: 12px;
+    // width: 70%;
+    // margin-top: 32px;
+    // table {border: 2px solid white; background-color: rgba(55, 55, 55, 0.2); color: white;}
+    // tr, td {border: 1px solid white;}
+    td {
+      max-width: 120px;
+      text-align: center;
+      padding: 8px;
+    }
+    i {
+      border-radius: 50%;
+      height: 12px;
+      width: 12px;
+    }
+  }
+}
