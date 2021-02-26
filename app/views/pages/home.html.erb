@@ -86,11 +86,11 @@
                 <br>
                 <div style="display: flex; flex-direction: row;">
                   <% if @fournisseur.justificatif.don %>
-                    <p>Si mes vêtements ne sont pas vendus, je choisis de les récupérer.     </p>
-                    <%= link_to "En faire don", don_path(@fournisseur.justificatif.id), method: :post, class: "button-ts", style:"max-width: 200px;"%>
+                    <p>Si mes vêtements ne sont pas vendus, je choisis d'en faire don à <a href="https://www.unpetitbagagedamour.org/" target='_blank'>Un petit bagage d'amour</a>.</p>
+                    <%= link_to "Les récupérer", don_path(@fournisseur.justificatif.id), method: :post, class: "button-ts", style:"max-width: 200px; margin-left: 16px;"%>
                   <% else %>
-                    <p>Si mes vêtements ne sont pas vendus, je choisis d'en faire don à <a href="https://www.unpetitbagagedamour.org/" target='_blank'>Un petit bagage d'amour</a>.     </p>
-                    <%= link_to "Les récupérer", don_path(@fournisseur.justificatif.id), method: :post, class: "button-ts", style:"max-width: 200px;"%>
+                    <p>Si mes vêtements ne sont pas vendus, je choisis de les récupérer.</p>
+                    <%= link_to "En faire don", don_path(@fournisseur.justificatif.id), method: :post, class: "button-ts", style:"max-width: 200px; margin-left: 16px;"%>
                   <% end %>
                 </div>
               <% end %>
