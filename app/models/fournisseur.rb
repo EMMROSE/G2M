@@ -8,7 +8,7 @@ class Fournisseur < ApplicationRecord
   validates :lastname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :phone, presence: false, uniqueness: true
-  validates :rib, presence: false, uniqueness: true
+  validates :rib, presence: false
 
   def sold
     sold = 0

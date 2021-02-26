@@ -7,6 +7,11 @@
     <% else %>
       <p>Le fournisseur n'a pas encore saisie son RIB.</p>
     <% end %>
+    <% if @fournisseur.justificatif.present? && @fournisseur.justificatif.don %>
+      <p>En cas de vêtements invendus : en faire don.</p>
+    <% else %>
+      <p>En cas de vêtements invendus : récuperer.</p>
+    <% end %>
     <p>Code : <%= @fournisseur.code %></p>
     <div>
       <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes. Crédit = <%= @fournisseur.credit %> €. </p>

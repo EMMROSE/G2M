@@ -2,7 +2,7 @@
   <%= link_to 'retour', root_path, class: "btn btn-success"%>
   <br>
   <br>
-   <%= simple_form_for [ @fournisseur, @justificatif ] do |f| %>
+   <%= simple_form_for [@fournisseur, @justificatif] do |f| %>
       <%= f.input :justif, label: 'Saisir mon code IBAN'%>
       <%= f.submit "Enregistrer", class: 'btn btn-primary' %>
    <% end %>

@@ -5,7 +5,6 @@ class JustificatifPolicy < ApplicationPolicy
     end
   end
 
-
   def create?
     is_admin_or_customer?
   end
@@ -22,6 +21,9 @@ class JustificatifPolicy < ApplicationPolicy
     update?
   end
 
+  def don?
+    is_admin_or_customer?
+  end
 
   private
 
@@ -32,7 +34,7 @@ class JustificatifPolicy < ApplicationPolicy
   def is_admin_or_customer?
     if user.admin
       return true
-    elsif user.email = Fournisseur.where(id: @fournisseur.fournisseur_id).first.email
+    elsif user.email == @fournisseur.fournisseur.email
       return true
     else
       return false

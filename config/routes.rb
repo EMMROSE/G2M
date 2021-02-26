@@ -14,10 +14,11 @@ Rails.application.routes.draw do
 
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create ]
-    resources :justificatifs, only: [ :new, :create]
+    resources :justificatifs, only: [:new, :create]
   end
 
-  resources :justificatifs, only: [ :show, :edit, :update]
+  resources :justificatifs, only: [:edit, :update]
+  post 'justificatifs/:id/don', to: "justificatifs#don", as: "don"
 
   resources :selections do
     resources :products, only: [ :index, :new, :create ]
