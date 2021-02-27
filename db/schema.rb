@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_084023) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "comment"
     t.string "season"
-    t.string "commentaires"
+    t.string "commentaire"
     t.index ["selection_id"], name: "index_products_on_selection_id"
   end
 
