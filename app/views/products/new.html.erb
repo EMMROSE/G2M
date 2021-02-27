@@ -32,6 +32,8 @@
         <%= f.input :color, label: "Sa couleur",collection: array_color %>
         <%= f.input :season, label: "Saison",collection: ['Printemps/Eté', 'Automne/Hiver'] %>
         <%= f.input :comment, label: "Ajouter un commentaire", collection: ['Neuf avec étiquette', 'Excellent état', 'Bon état'] %>
+        <%= f.input :comment, label: "Choisir l'état", collection: ['Neuf avec étiquette', 'Excellent état', 'Bon état'] %>
+        <%= f.input :commentaire, label: "Ajouter un commentaire"%>
         <div class="d-flex mb-2">
           <%= f.input :photo, label: 'Ajoutez une photo', as: :file %>
         </div>

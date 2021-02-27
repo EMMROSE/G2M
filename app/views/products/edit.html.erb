@@ -22,7 +22,8 @@
         <%= f.input :genre, label: "Genre",collection: ['Fille', 'Garçon', 'Mixte'] %>
         <%= f.input :color, label: "Sa couleur",collection: array_color %>
         <%= f.input :season, label: "Saison",collection: ['Printemps/Eté', 'Automne/Hiver'] %>
-        <%= f.input :comment, label: "Ajouter un commentaire", collection: ['Neuf avec étiquette', 'Excellent état', 'Bon état'] %>
+        <%= f.input :comment, label: "Choisir l'état", collection: ['Neuf avec étiquette', 'Excellent état', 'Bon état'] %>
+        <%= f.input :commentaire, label: "Ajouter un commentaire"%>
 
         <%= f.association :selection, input_html: { class: "beautiful-dropdown" }, include_hidden: false, :label_method => lambda { |selection| "#{selection.fournisseur.firstname} #{selection.fournisseur.lastname}" } %>
        <div class="d-flex mb-2">
