@@ -1,7 +1,7 @@
 Rails.application.configure do
   #configuration for Postmark
   config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'], http_ssl_version: :TLSv1_2 }
   config.action_mailer.default_url_options = { host: "http://www.grainedemomes-depot.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
