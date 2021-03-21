@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
       @products = Product.search_by_brand_id_name(params[:query])
       authorize @products
     else
-      @products = Product.first(30)
+      @products = Product.limit(30)
       authorize @products
     end
     if @products.count == 0
