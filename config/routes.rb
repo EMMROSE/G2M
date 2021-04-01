@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'stat', to: 'pages#stat'
   get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'
+  get 'save_csv', to: 'pages#save_csv'
   get 'pro', to: 'pages#pro'
 
   resources :fournisseurs do

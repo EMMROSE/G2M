@@ -37,6 +37,10 @@ class FournisseurPolicy < ApplicationPolicy
     true
   end
 
+  def save_csv?
+    is_admin?
+  end
+
   private
 
   def is_admin?

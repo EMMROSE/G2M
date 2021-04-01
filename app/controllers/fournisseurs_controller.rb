@@ -1,5 +1,6 @@
 class FournisseursController < ApplicationController
   require 'date'
+  require 'csv'
 
   def index
     if params[:query].present?
@@ -84,6 +85,17 @@ class FournisseursController < ApplicationController
     else render :justif
     end
   end
+
+  # def save_csv
+  #   @fournisseurs = Fournisseur.all
+  #   authorize @fournisseurs
+  #   # prepare my csv with Model function
+  #   csv = @fournisseurs.save_fournisseur_csv
+  #   # prepare email and forward csv as argument
+  #   ProposalMailer.fournisseurcsv(csv).deliver_now
+  #   redirect_to root_path
+  #   flash[:notice] = "le CSV a bien été transmis."
+  # end
 
   private
 

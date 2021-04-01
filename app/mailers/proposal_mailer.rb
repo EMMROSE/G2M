@@ -57,6 +57,11 @@ class ProposalMailer < ApplicationMailer
     mail(to: 'bonjour@grainedemomes.com', subject: 'Nouveau CSV pour Shopify')
   end
 
+  def fournisseurcsv(csv)
+    attachments['fournisseur.csv'] = {mime_type: 'text/csv', content: csv}
+    mail(to: 'bonjour@grainedemomes.com', subject: 'Sauvegarde des fournissseurs')
+  end
+
   def paiement(paiement)
     @paiement = paiement
     mail(to: 'bonjour@grainedemomes.com', subject: 'Nouvelle demande de paiement')
