@@ -62,7 +62,13 @@ class Fournisseur < ApplicationRecord
     CSV.generate(csv_options) do |csv|
       csv << ["FOURNISSEUR"]
       Fournisseur.all.each do |fournisseur|
-        csv << ["id: #{fournisseur.id}, firstname: '#{fournisseur.firstname}', lastname: '#{fournisseur.lastname}', rib: '#{fournisseur.rib}', email: '#{fournisseur.email}', phone: '#{fournisseur.phone}', code: '#{fournisseur.code}'"]
+        csv << ["f = Fournisseur.new(id: #{fournisseur.id}, firstname: '#{fournisseur.firstname}', lastname: '#{fournisseur.lastname}', rib: '#{fournisseur.rib}', email: '#{fournisseur.email}', phone: '#{fournisseur.phone}', code: '#{fournisseur.code}')"]
+      end
+      Selection.all.each do |selection|
+        csv << ["s = Selection.new(id: #{selection.id}, date: '#{selection.date}', fournisseur_id: #{selection.fournisseur_id})"]
+      end
+      Product.all.each do |product|
+        csv << ["s = Product.new(id: #{product.id}, brand: '#{product.brand}', name: '#{product.name}', size: '#{product.size}', status: '#{product.status}', price_cents: #{product.price_cents}, price_currency: 'EUR', selection_id: #{product.selection_id})"]
       end
     end
   end
