@@ -19,7 +19,7 @@ puts 'Destroy all Colors'
 Color.destroy_all
 puts '... building array'
 
-array = ['Aden & Anais', '10IS', 'Absorba', 'Alice', 'Arsène et les pipelettes', 'Baby b gosh', 'Benetton', 'Billieblush', 'Blune', 'Bonpoint', 'Bonton', 'Boutchou', 'Burberry', 'C&A', 'Cadet Rousselle', 'Carrément Beau', 'Catimini', 'CdeC', 'Chipie', 'Cyrillus', 'Dior', 'DPAM', 'Gap', 'Gocco', 'H&M', 'IKKS', 'Isabel Marant', 'Jacadi', 'Kiabi', 'Kickers', 'K-way', 'La Redoute', 'Le Bome', 'Levis', 'Lola Palacios', 'Louis Louise', 'Mango', 'Monoprix', 'Natalys', 'Noukies', 'Obaïbi', 'Okaïdi', 'Orchestra', 'Oscar & Valentine', 'Oshkosh', 'Paul Smith', 'Petit Bateau', 'Ralph Lauren', 'Ronron', 'Sergent Major', 'Stella McCartney', 'Sucre d Orge','TAO', 'Tape à l œil', 'Tartine & Chocolat', 'The Little White Company', 'Timberland', 'Vert Baudet', 'Zadig & Voltaire', 'Zara', 'Nike']
+array = ['Aden & Anais', '10IS', 'Absorba', 'Alice', 'Arsène et les pipelettes', 'Baby b gosh', 'Benetton', 'Billieblush', 'Blune', 'Bonpoint', 'Bonton', 'Boutchou', 'Burberry', 'C&A', 'Cadet Rousselle', 'Carrément Beau', 'Catimini', 'CdeC', 'Chipie', 'Cyrillus', 'Dior', 'DPAM', 'Gap', 'Gocco', 'H&M', 'IKKS', 'Isabel Marant', 'Jacadi', 'Kiabi', 'Kickers', 'K-way', 'La Redoute', 'Le Bome', 'Levis', 'Lola Palacios', 'Louis Louise', 'Mango', 'Monoprix', 'Natalys', 'Noukies', 'Obaibi', 'Okaidi', 'Orchestra', 'Oscar & Valentine', 'Oshkosh', 'Paul Smith', 'Petit Bateau', 'Ralph Lauren', 'Ronron', 'Sergent Major', 'Stella McCartney', 'Sucre d Orge','TAO', 'Tartine & Chocolat', 'The Little White Company', 'Timberland', 'Vert Baudet', 'Zadig & Voltaire', 'Zara', 'Nike']
 array2 = ['Bloomer', 'Bloomer Salopette', 'Blouse', 'Body', 'Chaussures', 'Chaussons', 'Chemise', 'Combinaison', 'Doudoune', 'Ensemble', 'Gigoteuse', 'Gilet', 'Hauts Manches Longues', 'Jupe', 'Manteau', 'Pantalon', 'Pull', 'Pyjama', 'Robe', 'Salopette', 'Veste', 'Bonnet', 'Jogging', 'Legging']
 array3 = ["Argenté", "Beige", "Blanc", "Bleu", "Bordeau", "Doré", "Gris", "Jaune", "Marron", "Multicolor", "Noir", "Orange", "Rose", "Rouge", "Vert", "Violet", "Marinière", "Terracotta", "Lavande", "Corail"]
 puts "CREATING PRICES HASH"
@@ -51,8 +51,8 @@ end
 puts '>>>>>> Done!'
 puts '----------------'
 
-Product.destroy_all
-puts 'Create Products'
+# Product.destroy_all
+# puts 'Create Products'
 # LES PRIX INDIQUES SONT EN TTC. PENSEZ A CHANGER CETTE BASE DE DONNEE ET TRAVAILLER EN HT
 # @product1 = Product.new(brand: 'Jacadi', name: 'Manteau', price: 40.00)
 # @product2 = Product.new(brand: 'Boutchou', name: 'Manteau', price: 16.00)
