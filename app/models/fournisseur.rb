@@ -73,7 +73,6 @@ class Fournisseur < ApplicationRecord
         csv << ["p = Product.new(id: #{product.id}, brand: '#{product.brand}', name: '#{product.name}', size: '#{product.size}', status: '#{product.status}', price_cents: #{product.price_cents}, price_currency: 'EUR', selection_id: #{product.selection_id})"]
         csv << ["p.save!"]
       end
-      User id: 2, email: "klervie.kronental@gmail.com", created_at: "2021-03-29 06:51:48", updated_at: "2021-03-29 06:51:48", admin: nil, pro: nil
       User.all.each do |user|
         csv << ["u = User.new(id: #{user.id}, email: '#{user.email}', admin: #{user.admin}, pro: #{user.pro})"]
         csv << ["u.save!"]
