@@ -86,16 +86,16 @@ class FournisseursController < ApplicationController
     end
   end
 
-  # def save_csv
-  #   @fournisseurs = Fournisseur.all
-  #   authorize @fournisseurs
-  #   # prepare my csv with Model function
-  #   csv = @fournisseurs.save_fournisseur_csv
-  #   # prepare email and forward csv as argument
-  #   ProposalMailer.fournisseurcsv(csv).deliver_now
-  #   redirect_to root_path
-  #   flash[:notice] = "le CSV a bien été transmis."
-  # end
+  def save_csv
+    @fournisseur = Fournisseur.find(params[:id])
+    authorize @fournisseur
+    # prepare my csv with Model function
+    csv = @fournisseur.save_fournisseur_csv
+    # prepare email and forward csv as argument
+    ProposalMailer.fournisseurcsv(csv).deliver_now
+    redirect_to root_path
+    flash[:notice] = "le CSV a bien été transmis."
+  end
 
   private
 

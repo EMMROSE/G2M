@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'stat', to: 'pages#stat'
   get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'
-  get 'save_csv', to: 'pages#save_csv'
   get 'pro', to: 'pages#pro'
 
   resources :fournisseurs do
@@ -36,6 +35,8 @@ Rails.application.routes.draw do
 
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
+
+  get 'fournisseurs/:id/save_csv', to: "fournisseurs#save_csv", as: "fournisseur_save_csv"
 
   get 'selections/:id/csv', to: "selections#csv", as: "selection_csv"
   get 'selections/:id/mail', to: "selections#mail", as: "selection_mail"

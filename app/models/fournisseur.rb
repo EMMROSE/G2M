@@ -61,7 +61,7 @@ class Fournisseur < ApplicationRecord
     csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
     CSV.generate(csv_options) do |csv|
       csv << ["FOURNISSEUR"]
-      self.each do |fournisseur|
+      Fournisseur.all.each do |fournisseur|
         csv << ["id: #{fournisseur.id}, firstname: '#{fournisseur.firstname}', lastname: '#{fournisseur.lastname}', rib: '#{fournisseur.rib}', email: '#{fournisseur.email}', phone: '#{fournisseur.phone}', code: '#{fournisseur.code}'"]
       end
     end
