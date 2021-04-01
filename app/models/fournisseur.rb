@@ -63,12 +63,20 @@ class Fournisseur < ApplicationRecord
       csv << ["FOURNISSEUR"]
       Fournisseur.all.each do |fournisseur|
         csv << ["f = Fournisseur.new(id: #{fournisseur.id}, firstname: '#{fournisseur.firstname}', lastname: '#{fournisseur.lastname}', rib: '#{fournisseur.rib}', email: '#{fournisseur.email}', phone: '#{fournisseur.phone}', code: '#{fournisseur.code}')"]
+        csv << ["f.save!"]
       end
       Selection.all.each do |selection|
         csv << ["s = Selection.new(id: #{selection.id}, date: '#{selection.date}', fournisseur_id: #{selection.fournisseur_id})"]
+        csv << ["s.save!"]
       end
       Product.all.each do |product|
-        csv << ["s = Product.new(id: #{product.id}, brand: '#{product.brand}', name: '#{product.name}', size: '#{product.size}', status: '#{product.status}', price_cents: #{product.price_cents}, price_currency: 'EUR', selection_id: #{product.selection_id})"]
+        csv << ["p = Product.new(id: #{product.id}, brand: '#{product.brand}', name: '#{product.name}', size: '#{product.size}', status: '#{product.status}', price_cents: #{product.price_cents}, price_currency: 'EUR', selection_id: #{product.selection_id})"]
+        csv << ["p.save!"]
+      end
+      User id: 2, email: "klervie.kronental@gmail.com", created_at: "2021-03-29 06:51:48", updated_at: "2021-03-29 06:51:48", admin: nil, pro: nil
+      User.all.each do |user|
+        csv << ["u = User.new(id: #{user.id}, email: '#{user.email}', admin: #{user.admin}, pro: #{user.pro})"]
+        csv << ["u.save!"]
       end
     end
   end
