@@ -34,23 +34,23 @@
         <% end %>
         <td>Vêtements</td>
         <td>Marque</td>
-        <td>Catégorie</td>
+        <td id="responsivity">Catégorie</td>
         <td>Taille</td>
         <% if current_user.admin %>
-          <td>Genre</td>
+          <td id="responsivity">Genre</td>
         <% end %>
         <td>Couleur</td>
         <% if current_user.admin %>
-          <td>Prix HT</td>
+          <td id="responsivity">Prix HT</td>
         <% end %>
-        <td>Prix TTC</td>
+        <td id="responsivity">Prix TTC</td>
         <td>Statut</td>
         <% if current_user.admin %>
           <td>Photo</td>
-          <td>MAJ prix</td>
+          <td id="responsivity">MAJ prix</td>
           <td>Editer</td>
-          <td>Supprimer</td>
-          <td>Vendu ?</td>
+          <td id="responsivity">Supprimer</td>
+          <td id="responsivity">Vendu ?</td>
         <% end %>
       </tr>
       <% if @selection.products.count > 0 %>
@@ -62,16 +62,16 @@
               <% end %>
               <td><%= product.name %></td>
               <td><%= product.brand %></td>
-              <td><%= product.category %></td>
+              <td id="responsivity"><%= product.category %></td>
               <td><%= product.size %></td>
               <% if current_user.admin %>
-                <td><%= product.genre %></td>
+                <td id="responsivity"><%= product.genre %></td>
               <% end %>
               <td><%= product.color %></td>
               <% if current_user.admin %>
-                <td><%= product.price / 1.2 %>€</td>
+                <td id="responsivity"><%= product.price / 1.2 %>€</td>
               <% end %>
-              <td><%= product.price %>€</td>
+              <td id="responsivity"><%= product.price %>€</td>
               <td><%= product.status %></td>
               <% if current_user.admin %>
                 <td>
@@ -83,7 +83,7 @@
                     <i class="fas fa-ban" style="color: #9E2725;"></i>
                   <% end %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <% if product.status == "à vendre" %>
                     <%= link_to '€', edit_price_path(product), method: :post %>
                   <% else %>
@@ -97,14 +97,14 @@
                     <i class="fas fa-ban" style="color: #9E2725;"></i>
                   <% end %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <% if product.status == "à vendre" %>
                     <%= link_to '<i class="fas fa-trash"></i>'.html_safe, product_path(product), method: :delete, data: {confirm: "Vous êtes sûre?"} %>
                   <% else %>
                     <i class="fas fa-ban" style="color: #9E2725;"></i>
                   <% end %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
                 </td>
               <% end %>
@@ -116,16 +116,16 @@
               <% end %>
               <td><%= product.name %></td>
               <td><%= product.brand %></td>
-              <td><%= product.category %></td>
+              <td id="responsivity"><%= product.category %></td>
               <td><%= product.size %></td>
               <% if current_user.admin %>
-                <td><%= product.genre %></td>
+                <td id="responsivity"><%= product.genre %></td>
               <% end %>
               <td><%= product.color %></td>
               <% if current_user.admin %>
-                <td><%= product.price / 1.2 %>€</td>
+                <td id="responsivity"><%= product.price / 1.2 %>€</td>
               <% end %>
-              <td><%= product.price %>€</td>
+              <td id="responsivity"><%= product.price %>€</td>
               <td><%= product.status %></td>
               <% if current_user.admin %>
                 <td>
@@ -137,7 +137,7 @@
                     <i class="fas fa-ban" style="color: #9E2725;"></i>
                   <% end %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <% if product.status == "à vendre" %>
                     <%= link_to '€', edit_price_path(product), method: :post %>
                   <% else %>
@@ -158,10 +158,10 @@
                     <i class="fas fa-ban" style="color: #9E2725;"></i>
                   <% end %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(product), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(product), method: :post, style:"color: #F6AE3B;" %>
                 </td>
-                <td>
+                <td id="responsivity">
                   <% if Tarif.where(brand: product.brand, clothe: product.name).present? %>
                   <% else %>
                     <%= link_to '<i class="fas fa-save"></i>'.html_safe, save_price_path(product), method: :post %>
