@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
       authorize @products
     end
     if @products.count == 0
-      @products = Product.all
+      @products = Product.limit(30)
       authorize @products
     end
   end
