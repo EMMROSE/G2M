@@ -4,7 +4,7 @@
   <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
   <ul>
     <% Paiement.order("id DESC").each do |paiement| %>
-      <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount %> € - <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
+      <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
       <br>
     <% end %>
   </ul>
