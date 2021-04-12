@@ -33,6 +33,10 @@ class PaiementPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def settle_status?
+    is_admin?
+  end
+
   private
 
   def is_admin?

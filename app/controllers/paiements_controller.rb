@@ -39,12 +39,14 @@ class PaiementsController < ApplicationController
 
   def destroy
     @paiement = Paiement.find(params[:id])
+    authorize @paiement
     @paiement.destroy
     redirect_to comptabilite_path
   end
 
   def settle_status
     paiement = Paiement.find(params[:id])
+    authorize @paiement
     paiement.status = "généré"
     paiement.save
     redirect_to comptabilite_path
