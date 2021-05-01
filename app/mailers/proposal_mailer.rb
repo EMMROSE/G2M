@@ -64,7 +64,7 @@ class ProposalMailer < ApplicationMailer
 
   def paiement(paiement)
     @paiement = paiement
-    mail(to: 'bonjour@grainedemomes.com', subject: 'Nouvelle demande de paiement')
+    mail(to: 'marine@grainedemomes.com', subject: 'Nouvelle demande de paiement')
   end
 
 end

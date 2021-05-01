@@ -45,10 +45,10 @@ class PaiementsController < ApplicationController
   end
 
   def settle_status
-    paiement = Paiement.find(params[:id])
+    @paiement = Paiement.find(params[:id])
     authorize @paiement
-    paiement.status = "généré"
-    paiement.save
+    @paiement.status = "généré"
+    @paiement.save
     redirect_to comptabilite_path
   end
 
