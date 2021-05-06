@@ -93,6 +93,10 @@ class FournisseursController < ApplicationController
     csv = @fournisseur.save_fournisseur_csv
     # prepare email and forward csv as argument
     ProposalMailer.fournisseurcsv(csv).deliver_now
+    # prepare my csv with Model function
+    csv2 = @fournisseur.save_product_csv
+    # prepare email and forward csv as argument
+    ProposalMailer.fournisseurcsv(csv2).deliver_now
     redirect_to root_path
     flash[:notice] = "le CSV a bien été transmis."
   end

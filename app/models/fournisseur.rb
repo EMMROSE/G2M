@@ -88,6 +88,20 @@ class Fournisseur < ApplicationRecord
     end
   end
 
+  def save_product_csv
+    csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
+    CSV.generate(csv_options) do |csv|
+      range = (1..7000).to_a
+      range.each do |number|
+        if Product.where(id: number).present? == false
+        # Product.order("id ASC").each do |product|
+          csv << ["p = Product.new(id: #{number}, price_cents: 0, price_currency: 'EUR', selection_id: 217)"]
+          csv << ["p.save!"]
+        end
+      end
+    end
+  end
+
   #pg search
   include PgSearch::Model
   pg_search_scope :search_by_lastname_email_code,
