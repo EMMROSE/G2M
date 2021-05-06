@@ -70,7 +70,7 @@ class Fournisseur < ApplicationRecord
         csv << ["s.save!"]
       end
       Product.order("id ASC").each do |product|
-          csv << ["p = Product.new(id: #{@product.id}, brand: '#{@product.brand}', name: '#{@product.name}', size: '#{@product.size}', color: '#{@product.color}', status: '#{@product.status}', price_cents: #{@product.price_cents}, price_currency: 'EUR', selection_id: #{@product.selection_id})"]
+          csv << ["p = Product.new(id: #{product.id}, brand: '#{product.brand}', name: '#{product.name}', size: '#{product.size}', color: '#{product.color}', status: '#{product.status}', price_cents: #{product.price_cents}, price_currency: 'EUR', selection_id: #{product.selection_id})"]
           csv << ["p.save!"]
       end
       User.all.each do |user|
