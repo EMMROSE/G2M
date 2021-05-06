@@ -69,38 +69,34 @@ class Fournisseur < ApplicationRecord
         csv << ["s = Selection.new(id: #{selection.id}, date: '#{selection.date}', fournisseur_id: #{selection.fournisseur_id})"]
         csv << ["s.save!"]
       end
-      range = (1..7000).to_a
-      range.each do |number|
-        if Product.where(id: number).present?
-        # Product.order("id ASC").each do |product|
-          @product = Product.where(id: number).first
+      Product.order("id ASC").each do |product|
           csv << ["p = Product.new(id: #{@product.id}, brand: '#{@product.brand}', name: '#{@product.name}', size: '#{@product.size}', color: '#{@product.color}', status: '#{@product.status}', price_cents: #{@product.price_cents}, price_currency: 'EUR', selection_id: #{@product.selection_id})"]
           csv << ["p.save!"]
-        else
-          csv << ["p = Product.new(id: #{number}, price_cents: 0, price_currency: 'EUR', selection_id: 217)"]
-          csv << ["p.save!"]
-        end
       end
       User.all.each do |user|
         csv << ["u = User.new(id: #{user.id}, email: '#{user.email}', admin: #{user.admin}, pro: #{user.pro})"]
         csv << ["u.save!"]
       end
-    end
-  end
-
-  def save_product_csv
-    csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
-    CSV.generate(csv_options) do |csv|
-      range = (1..7000).to_a
-      range.each do |number|
-        if Product.where(id: number).present? == false
-        # Product.order("id ASC").each do |product|
-          csv << ["p = Product.new(id: #{number}, price_cents: 0, price_currency: 'EUR', selection_id: 217)"]
-          csv << ["p.save!"]
-        end
+      Justificatif.all.each do |element|
+        csv << ["u = Justificatif.new(id: #{element.id}, justif: '#{element.justif}', fournisseur_id: #{element.fournisseur_id})"]
+        csv << ["u.save!"]
       end
     end
   end
+
+  # def save_product_csv
+  #   csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
+  #   CSV.generate(csv_options) do |csv|
+  #     range = (1..7000).to_a
+  #     range.each do |number|
+  #       if Product.where(id: number).present? == false
+  #       # Product.order("id ASC").each do |product|
+  #         csv << ["p = Product.new(id: #{number}, price_cents: 0, price_currency: 'EUR', selection_id: 217)"]
+  #         csv << ["p.save!"]
+  #       end
+  #     end
+  #   end
+  # end
 
   #pg search
   include PgSearch::Model
