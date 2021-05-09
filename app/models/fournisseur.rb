@@ -49,8 +49,8 @@ class Fournisseur < ApplicationRecord
   end
 
   def credit
-    credit = self.sold - self.settle
-    return credit
+    credit = self.sold.to_f - (self.settle * 100).to_f
+    return credit.to_i
   end
 
   def sales

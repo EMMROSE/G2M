@@ -20,11 +20,11 @@ class PaiementsController < ApplicationController
     authorize @paiement
     @paiement.date = Date.today
     @paiement.fournisseur = @fournisseur
-    previous_paiements = 0.to_money
-    Paiement.where(fournisseur_id: @fournisseur.id).each do |paiement|
-      previous_paiements += paiement.amount_cents
-    end
-    @paiement.amount_cents = @paiement.fournisseur.credit - previous_paiements
+    # previous_paiements = 0
+    # Paiement.where(fournisseur_id: @fournisseur.id).each do |paiement|
+    #   previous_paiements += paiement.amount_cents.to_f
+    # end
+    @paiement.amount_cents = @paiement.fournisseur.credit
     @paiement.save
     ProposalMailer.paiement(@paiement).deliver_now
     redirect_to root_path

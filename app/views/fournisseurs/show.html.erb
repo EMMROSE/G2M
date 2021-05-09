@@ -14,7 +14,7 @@
     <% end %>
     <p>Code : <%= @fournisseur.code %></p>
     <div>
-      <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € Hors Taxes. Crédit = <%= @fournisseur.credit %> €. </p>
+      <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> €. Crédit = <%= @fournisseur.credit %> €. </p>
       <% if @fournisseur.paiements.count < 1 %>
         <p>Aucun paiement n'a été réalisé</p>
       <% else %>
@@ -31,7 +31,7 @@
 
     <%= link_to "Créer une nouvelle sélection de vêtements", selections_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts"%>
 
-    <%= link_to "Réaliser un paiement", new_fournisseur_paiement_path(@fournisseur), class: "button-red"%>
+    <%= link_to "Réaliser un paiement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-red"%>
 
     <%= link_to "Retour aux autres fournisseurs", fournisseurs_path, class: "button-return"%>
   </div>

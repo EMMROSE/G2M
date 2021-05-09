@@ -70,15 +70,15 @@
             <% end %>
             <br>
             <div>
-              <p>Tu as effectué <%= @fournisseur.selections.count %> dépôts(s) comprenant <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
+              <p>Tu as effectué <%= @fournisseur.selections.count %> dépôt(s) comprenant <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
               <% credit = @fournisseur.credit.to_i  %>
-              <% paiements = 0 %>
-              <% Paiement.where(fournisseur_id: @fournisseur).each do |paiement| %>
-                <% paiements += paiement.amount_cents.to_i %>
-              <% end %>
-              <% credit = credit - paiements %>
+
               <% if @fournisseur.justificatif.present?%>
-                <p>Ton crédit s'élève à <%= credit %>€.</p>
+                <% if @fournisseur.settle > 0 %>
+                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
+                <% else %>
+                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
+                <% end %>
                 <% if credit >= 70 %>
                   <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts", style:"max-width: 240px;"%>
                 <% end %>
