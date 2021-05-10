@@ -27,6 +27,7 @@ class PaiementsController < ApplicationController
     @paiement.amount_cents = @paiement.fournisseur.credit
     @paiement.save
     ProposalMailer.paiement(@paiement).deliver_now
+    flash[:notice] = "Votre demande a bien été enregistrée."
     redirect_to root_path
   end
 

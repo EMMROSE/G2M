@@ -80,7 +80,7 @@
                   <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
                 <% end %>
                 <% if credit >= 70 %>
-                  <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts", style:"max-width: 240px;"%>
+                  <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, id:'clickme', class: "button-ts", style:"max-width: 240px;"%>
                 <% end %>
   <!--               <p>Vous avez déjà gagné <%= @fournisseur.settle %>€.</p> -->
                 <br>
