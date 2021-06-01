@@ -78,3 +78,7 @@ gem 'cloudinary'
 #to allow us to easily make requests to Shopify's REST API
 gem 'rest-client'
 gem 'shopify_api'
+
+#to generate barcode
+gem 'barby'
+gem 'chunky_png'

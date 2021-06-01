@@ -1,0 +1,27 @@
+<div class="bg-repartition">
+  <h3>Répartion du stock par age et par produit</h3>
+  <table class="products_table" style="margin-bottom: 10vh; background-color: #A37EFC;">
+    <tr id="product-bg">
+      <td>Produits \ Ages</td>
+    <% @all_size.each do |size| %>
+      <td><%= size %></td>
+    <% end %>
+    </tr>
+    <tr>
+      <td></td>
+      <% @all_size.each do |size| %>
+        <% percentage = (@products.where(size: size).count.to_f / @products.count.to_f).round(2) %>
+        <td><%= (percentage*100).round(2)%>%</td>
+      <% end %>
+    </tr>
+    <% @clothes.each do |element| %>
+      <tr>
+        <td><%= element.name %></td>
+        <% @all_size.each do |size| %>
+          <% product_percentage = (@products.where(size: size, name: element.name).count.to_f / @products.where(size: size).count.to_f)*100 %>
+          <td><%= product_percentage.round(2) %>%</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

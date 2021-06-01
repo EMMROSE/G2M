@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   monetize :price_cents
 
   has_one_attached :photo
+  # has_one_attached :barcode
   #pg search for products
   include PgSearch::Model
   pg_search_scope :search_by_brand_id_name,

@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   get 'furnishers', to: 'pages#fournisseurs'
   get 'pricer', to: 'pages#pricer'
   get 'stocks', to: 'pages#stocks'
+    get 'panier', to: 'pages#panier'
   get 'comptabilite', to: 'pages#comptabilite'
   get 'stat', to: 'pages#stat'
   get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'
+  get 'repartitionage', to: 'pages#repartitionage'
   get 'pro', to: 'pages#pro'
 
   resources :fournisseurs do
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
     post 'products/import', to: "products#import", as: "import"
     get 'products/:id/stock4pro', to: "products#stock4pro", as: "stock4pro"
     get 'products/:id/select4pro', to: "products#select4pro", as: "select4pro"
+    get 'products/:id/codebar', to: "products#codebar", as: "codebar"
 
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"

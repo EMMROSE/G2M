@@ -2,6 +2,21 @@ class ProductsController < ApplicationController
   require 'open-uri'
   require 'json'
 
+  # require 'barby'
+  # require 'barby/barcode/code_128'
+  # require 'barby/outputter/png_outputter'
+  # require 'chunky_png'
+
+  # def codebar
+  #   @product = Product.find(params[:id])
+  #   authorize @product
+  #   barcode = Barby::Code128.new(@product.id)
+  #   name = @product.id.to_s+".png"
+  #   File.open(name, 'wb'){|f|
+  #     f.write barcode.to_png(:height => 20, :margin => 5)
+  #   }
+  # end
+
   def index
     if params[:query].present?
       @products = Product.search_by_brand_id_name(params[:query])
@@ -96,23 +111,14 @@ class ProductsController < ApplicationController
       @product.price = 0
     end
 
-    # # prices = {}
-    # # Brand.all.each do |element|
-    # #   prices[element.name] = Hash.new
-    # #   Clothe.all.each do |element2|
-    #     sum = 0
-    #     moy = 0
-    #     var = 0
-    #    Product.where(brand: @product.brand, name: @product.name).each do |x|
-    #       var += 1
-    #       sum += x.price
-    #     end
-    #     if var > 0
-    #       moy = sum / var
-    #        @product.price = moy
-    #     else
-    #       @product.price = 0
-    #     end
+    # to genrate a barcode
+    # code = Product.last.id.to_i + 1
+    # @product.barcode = Barby::Code128.new(code)
+    # name = code.to_s +".png"
+    # File.open(name, 'wb'){|f|
+    #   f.write barcode.to_png(:height => 20, :margin => 5)
+    # }
+    # end
 
     if @product.save && params[:commit] == 'Créer le produit'
       redirect_to selection_path(@selection)

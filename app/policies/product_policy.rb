@@ -9,6 +9,10 @@ class ProductPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def codebar?
+    true
+  end
+
   def show?
     is_admin_or_pro?
   end
