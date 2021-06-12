@@ -79,8 +79,11 @@
                 <% else %>
                   <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
                 <% end %>
-                <% if credit >= 50 %>
+                <% if credit >= 50 && Paiement.where(fournisseur_id: @fournisseur.id, status: "à générer").present? == false %>
                   <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, id:'clickme', class: "button-ts", style:"max-width: 240px;"%>
+                <% end %>
+                <% if Paiement.where(fournisseur_id: @fournisseur.id, status: "à générer").present?%>
+                  <p style="color: white; background-color: red;">Votre demande de virement a été prise en compte et sera réglé d'ici la fin du mois.</p>
                 <% end %>
   <!--               <p>Vous avez déjà gagné <%= @fournisseur.settle %>€.</p> -->
                 <br>
