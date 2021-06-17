@@ -50,7 +50,7 @@ class PagesController < ApplicationController
       @all_size << product.size
     end
     @all_size = @all_size.uniq
-    @all_size = @all_size.sort
+    @all_size = @all_size
   end
 
   def repartitiongenre
@@ -60,7 +60,7 @@ class PagesController < ApplicationController
       @all_size << product.size
     end
     @all_size = @all_size.uniq
-    @all_size = @all_size.sort
+    @all_size = @all_size
   end
 
   def fiche
