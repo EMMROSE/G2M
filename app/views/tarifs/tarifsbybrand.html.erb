@@ -1,0 +1,29 @@
+<div style="margin-top: 20vh;">
+  <table class="products_table">
+    <tr id="product-bg">
+      <td>Marques</td>
+      <td><%= @brand.name %></td>
+    </tr>
+    <% Clothe.order(name: :asc).each do |clothe| %>
+      <% @clothe = clothe.name %>
+      <% brand = @brand.name %>
+      <tr>
+        <td><%= @clothe %></td>
+          <% if Tarif.where(brand: brand, clothe: clothe.name).present? %>
+            <% @tarif = Tarif.where(brand: brand, clothe: clothe.name).first %>
+            <td style="background-color: #ADF7B6;">
+              <%= link_to edit_tarif_path(@tarif) do %>
+                <p style="margin: auto;"><%= @tarif.price %>€</p>
+              <% end %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to new_tarif_path do %>
+                <p style="margin: auto; padding: 8px;">0,00 €</p>
+              <% end %>
+            </td>
+          <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

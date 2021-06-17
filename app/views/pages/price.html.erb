@@ -1,0 +1,12 @@
+<div style="margin-top: 20vh; margin-left:20vw; display: flex; flex-direction: column; align-items: start;">
+    <ul style="font-weight: bolder;">Marques</ul>
+    <% Brand.order(name: :asc).each do |element| %>
+      <% @brand = element %>
+        <%= link_to tarifsbybrand_path(@brand) do %>
+          <p style="margin: auto; color: black; font-weight: bolder; padding: 16px; background-color: yellow; border-radius: 6px; width: 100px; margin-top: 8px;"><%= @brand.name %></p>
+        <% end %>
+    <% end %>
+</div>
+
+
+

@@ -5,11 +5,18 @@ class TarifsController < ApplicationController
     authorize @tarif
   end
 
+  def tarifsbybrand
+    @brand = Brand.find(params[:id])
+    @tarifs = Tarif.where(brand: @brand)
+    authorize @tarifs
+  end
+
   def create
     @tarif = Tarif.new(tarif_params)
     authorize @tarif
+    @brand = Brand.where(name: @tarif.brand).first
     if @tarif.save
-      redirect_to pricer_path
+      redirect_to tarifsbybrand_path(@brand)
       flash[:notice] = "Le prix a bien été enregistré."
     else
       render :new
@@ -25,8 +32,9 @@ class TarifsController < ApplicationController
   def update
     @tarif = Tarif.find(params[:id])
     authorize @tarif
+    @brand = Brand.where(name: @tarif.brand).first
     if @tarif.update(tarif_params)
-      redirect_to pricer_path
+      redirect_to tarifsbybrand_path(@brand)
     else
       render :edit
     end

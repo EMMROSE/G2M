@@ -9,6 +9,10 @@ class TarifPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def tarifsbybrand?
+    is_admin?
+  end
+
   def new?
     create?
   end
