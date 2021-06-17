@@ -45,9 +45,9 @@
       <td>Non renseigné</td>
       <% @all_size.each do |size|%>
         <% products = Product.where(size: size, status: "à vendre").count.to_f %>
-        <% nr_products = Product.where(size: size, genre: "", status: "à vendre").count.to_f %>
+        <% nr_products = Product.where(size: size, genre: "", status: "à vendre").count.to_f + Product.where(size: size, genre: nil, status: "à vendre").count.to_f%>
         <% result = ((nr_products / products)*100).to_i %>
-        <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= nr_products.to_i %></td>
+        <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= nr_products %></td>
       <% end %>
     </tr>
     <tr id="product-bg">
@@ -58,10 +58,5 @@
       <% end %>
     </tr>
   </table>
-  <div>
-    <% Product.where(size: "12-18 mois", status: "à vendre").each do |product|%>
-      <li><%= product.id %> / <%= product.genre %> / <%= product.size %></li>
-    <% end %>
-  </div>
 </div>
 
