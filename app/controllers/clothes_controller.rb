@@ -17,13 +17,6 @@ class ClothesController < ApplicationController
     redirect_to brands_path
   end
 
-
-  # def edit
-  # end
-
-  # def update
-  # end
-
   def destroy
     @clothe = Clothe.find(params[:id])
     authorize @clothe

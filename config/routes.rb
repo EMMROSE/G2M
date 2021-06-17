@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'
   get 'repartitionage', to: 'pages#repartitionage'
+  get 'repartitiongenre', to: 'pages#repartitiongenre'
   get 'pro', to: 'pages#pro'
 
   resources :fournisseurs do

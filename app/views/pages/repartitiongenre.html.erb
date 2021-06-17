@@ -1,0 +1,46 @@
+<div class="bg-repartition">
+  <h3>Répartion du stock par genre et par âge</h3>
+  <table class="products_table" style="margin-bottom: 10vh; background-color: #A37EFC;">
+    <tr id="product-bg">
+      <td>Sexe/Ages</td>
+      <% @all_size.each do |size|%>
+      <td><%= size %></td>
+      <% end %>
+    </tr>
+    <tr id="product-bg">
+      <td>Fille</td>
+      <% @all_size.each do |size|%>
+        <% girlproducts = Product.where(size: size, genre: "Fille", status: "à vendre").count.to_f %>
+        <% products = Product.where(size: size, status: "à vendre").count.to_f %>
+        <% result = ((girlproducts / products)*100).to_i %>
+        <% if result > 70 %>
+          <td class="flash-alert"><%= result %>%</td>
+        <% else %>
+          <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>%</td>
+        <% end %>
+      <% end %>
+    </tr>
+    <tr id="product-bg">
+      <td>Mixte</td>
+      <% @all_size.each do |size|%>
+        <% mixtproducts = Product.where(size: size, genre: "Mixte", status: "à vendre").count.to_f %>
+        <% products = Product.where(size: size, status: "à vendre").count.to_f %>
+        <td style="background-color: #ECE9EC; color: #4C424C;"><%= ((mixtproducts / products)*100).to_i %>%</td>
+      <% end %>
+    </tr>
+    <tr id="product-bg">
+      <td>Garçon</td>
+      <% @all_size.each do |size|%>
+        <% boyproducts = Product.where(size: size, genre: "Garçon", status: "à vendre").count.to_f %>
+        <% products = Product.where(size: size, status: "à vendre").count.to_f %>
+        <% result = ((boyproducts / products)*100).to_i %>
+        <% if result > 70 %>
+          <td class="flash-alert"><%= result %>%</td>
+        <% else %>
+          <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>%</td>
+        <% end %>
+      <% end %>
+    </tr>
+  </table>
+</div>
+

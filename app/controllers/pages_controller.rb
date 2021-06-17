@@ -52,6 +52,15 @@ class PagesController < ApplicationController
     @all_size = @all_size.uniq
   end
 
+  def repartitiongenre
+    @all_size = []
+    @products = Product.where(status: "à vendre")
+    @products.each do |product|
+      @all_size << product.size
+    end
+    @all_size = @all_size.uniq
+  end
+
   def fiche
     mail = current_user.email
     @fournisseur = Fournisseur.where(email: mail).first

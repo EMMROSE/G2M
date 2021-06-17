@@ -249,6 +249,27 @@
   100% { opacity: 1; }
 }
 
+.flash-alert{
+  background-color: #ECE9EC;
+  color: #EE403C;
+  -webkit-animation: flash linear 1.5s infinite;
+  animation: flash linear 1.5s infinite;
+  &.hover {
+    -webkit-animation: pause;
+    animation: pause;
+  }
+}
+@-webkit-keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .1; }
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .1; }
+  100% { opacity: 1; }
+}
+
 @media (max-width: 900px) {
   .button {
   a {font-size: 75%;}
