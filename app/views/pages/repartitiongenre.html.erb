@@ -58,5 +58,10 @@
       <% end %>
     </tr>
   </table>
+  <div>
+    <% Product.where(size: "12-18 mois", status: "à vendre").each do |product|%>
+      <li><%= product.id %> / <%= product.genre %> / <%= product.size %></li>
+    <% end %>
+  </div>
 </div>
 
