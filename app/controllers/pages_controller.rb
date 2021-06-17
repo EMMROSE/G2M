@@ -50,7 +50,13 @@ class PagesController < ApplicationController
       @all_size << product.size
     end
     @all_size = @all_size.uniq
-    @all_size = @all_size
+    @all_size = @all_size.sort
+    @all_category = []
+    @products.each do |product|
+      @all_category << product.category
+    end
+    @all_category = @all_category.uniq
+    @all_category = @all_category.sort
   end
 
   def repartitiongenre
