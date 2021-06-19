@@ -60,13 +60,7 @@ class PagesController < ApplicationController
   end
 
   def repartitiongenre
-    @all_size = []
-    @products = Product.where(status: "à vendre")
-    @products.each do |product|
-      @all_size << product.size
-    end
-    @all_size = @all_size.uniq
-    @all_size = @all_size
+    @all_size = ['0 mois', '1 mois','3 mois','3-6 mois','6 mois','6-9 mois','9 mois','9-12 mois','12 mois','12-18 mois','18 mois','18-24 mois','2 ans', '2-3 ans','3 ans','3-4 ans', '4 ans', '5 ans', '6 ans', '7 ans', '8 ans', '9 ans', '10 ans', '12 ans', '14 ans', 'Pointure 15', 'Pointure 16', 'Pointure 17', 'Pointure 18', 'Pointure 19', 'Pointure 20', 'Pointure 21', 'Pointure 22', 'Pointure 23', 'Pointure 24', 'Pointure 25', 'Pointure 26', 'Pointure 27', 'Pointure 28', 'Pointure 29', 'Pointure 30', 'Pointure 31', 'Pointure 32', 'Pointure 33', 'Pointure 34', 'N/A']
   end
 
   def fiche
