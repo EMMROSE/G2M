@@ -12,11 +12,15 @@
       <% @all_size.each do |size|%>
         <% girlproducts = Product.where(size: size, genre: "Fille", status: "à vendre").count.to_f %>
         <% products = Product.where(size: size, status: "à vendre").count.to_f %>
-        <% result = ((girlproducts / products)*100).to_i %>
-        <% if result > 70 %>
-          <td class="flash-alert"><%= result %>% - <%= girlproducts.to_i %></td>
+        <% if products > 0 %>
+          <% result = ((girlproducts / products)*100).to_i %>
+          <% if result > 70 %>
+            <td class="flash-alert"><%= result %>% - <%= girlproducts.to_i %></td>
+          <% else %>
+            <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= girlproducts.to_i %></td>
+          <% end %>
         <% else %>
-          <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= girlproducts.to_i %></td>
+            <td style="background-color: #ECE9EC; color: #4C424C;">0% - <%= girlproducts.to_i %></td>
         <% end %>
       <% end %>
     </tr>
@@ -25,7 +29,11 @@
       <% @all_size.each do |size|%>
         <% mixtproducts = Product.where(size: size, genre: "Mixte", status: "à vendre").count.to_f %>
         <% products = Product.where(size: size, status: "à vendre").count.to_f %>
-        <td style="background-color: #ECE9EC; color: #4C424C;"><%= ((mixtproducts / products)*100).to_i %>% - <%= mixtproducts.to_i %></td>
+        <% if products > 0 %>
+          <td style="background-color: #ECE9EC; color: #4C424C;"><%= ((mixtproducts / products)*100).to_i %>% - <%= mixtproducts.to_i %></td>
+        <% else %>
+          <td style="background-color: #ECE9EC; color: #4C424C;">0% - <%= mixtproducts.to_i %></td>
+        <% end %>
       <% end %>
     </tr>
     <tr id="product-bg">
@@ -33,11 +41,15 @@
       <% @all_size.each do |size|%>
         <% boyproducts = Product.where(size: size, genre: "Garçon", status: "à vendre").count.to_f %>
         <% products = Product.where(size: size, status: "à vendre").count.to_f %>
-        <% result = ((boyproducts / products)*100).to_i %>
-        <% if result > 70 %>
-          <td class="flash-alert"><%= result %>%  - <%= boyproducts.to_i %></td>
+        <% if products > 0 %>
+          <% result = ((boyproducts / products)*100).to_i %>
+          <% if result > 70 %>
+            <td class="flash-alert"><%= result %>%  - <%= boyproducts.to_i %></td>
+          <% else %>
+            <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= boyproducts.to_i %></td>
+          <% end %>
         <% else %>
-          <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= boyproducts.to_i %></td>
+            <td style="background-color: #ECE9EC; color: #4C424C;">0% - <%= boyproducts.to_i %></td>
         <% end %>
       <% end %>
     </tr>
@@ -46,8 +58,12 @@
       <% @all_size.each do |size|%>
         <% products = Product.where(size: size, status: "à vendre").count.to_f %>
         <% nr_products = Product.where(size: size, genre: "", status: "à vendre").count.to_f + Product.where(size: size, genre: nil, status: "à vendre").count.to_f%>
-        <% result = ((nr_products / products)*100).to_i %>
-        <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= nr_products.to_i %></td>
+        <% if nr_products > 0 %>
+          <% result = ((nr_products / products)*100).to_i %>
+          <td style="background-color: #ECE9EC; color: #4C424C;"><%= result %>% - <%= nr_products.to_i %></td>
+        <% else %>
+          <td style="background-color: #ECE9EC; color: #4C424C;">0% - <%= nr_products.to_i %></td>
+        <% end %>
       <% end %>
     </tr>
     <tr id="product-bg">
