@@ -69,7 +69,7 @@ class ProductsController < ApplicationController
     @product.selection = @selection
     # to add a category according to name of product itself
     array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
-    array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes"]
+    array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes", "Polo"]
     array3 = ["Body", "Pyjama", "Gigoteuse", "Peignoir", "Lot bodies"]
     array4 = ["Combinaison", "Salopette", "Bloomer Salopette", "Ensemble"]
     array5 = ["Robe", "Jupe"]
@@ -142,7 +142,7 @@ class ProductsController < ApplicationController
     authorize @product
     #to edit category
     array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
-    array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes"]
+    array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes", "Polo"]
     array3 = ["Body", "Pyjama", "Gigoteuse", "Peignoir", "Lot bodies"]
     array4 = ["Combinaison", "Salopette", "Bloomer Salopette", "Ensemble"]
     array5 = ["Robe", "Jupe"]
