@@ -3,16 +3,21 @@
     <% credit = 0 %>
     <% encours = 0 %>
     <% versement = 0 %>
+    <% somme = 0 %>
     <% Product.where(status: "vendu").each do |product| %>
       <% credit += ((product.price_cents/1.2)/200) %>
     <% end %>
     <% Paiement.where(status: "généré").each do |paiement| %>
       <% versement += paiement.amount_cents %>
     <% end %>
+    <% Fournisseur.each do |fournisseur| %>
+      <% somme += fournisseur.credit %>
+    <% end %>
     <% encours = credit - versement %>
     <h3>Montant des produits vendu: <%= credit %>€</h3>
     <h3>Somme des paiements effectués: <%= versement %>€</h3>
     <h3>Encours fournisseur à verser: <%= encours %>€</h3>
+    <h3>Total des crédits fournisseur: <%= somme %>€</h3>
   </div>
   <h1>Mes paiements</h1>
   <div>
