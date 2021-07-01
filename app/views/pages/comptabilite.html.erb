@@ -10,7 +10,7 @@
     <% Paiement.where(status: "généré").each do |paiement| %>
       <% versement += paiement.amount_cents %>
     <% end %>
-    <% Fournisseur.each do |fournisseur| %>
+    <% Fournisseur.all.each do |fournisseur| %>
       <% somme += fournisseur.credit %>
     <% end %>
     <% encours = credit - versement %>
