@@ -9,6 +9,10 @@ class BrandPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def research?
+    is_admin?
+  end
+
   def show?
     is_admin?
   end

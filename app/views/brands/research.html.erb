@@ -1,5 +1,5 @@
-<div class="search mt-2">
-  <%= form_tag brands_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+<div class="search" style="margin-top: 50vh;">
+  <%= form_tag research_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
     <div class="search-form-control form-group mt-1 mb-0">
       <%= text_field_tag :query,
           params[:query],

@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   resources :colors
   resources :tarifs
     get 'brands/:id/tarifsbybrand', to: "tarifs#tarifsbybrand", as: "tarifsbybrand"
+    get 'brands/research', to: "brands#research", as: "research"
 
   post 'products/:id/save_price', to: "products#save_price", as: "save_price"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

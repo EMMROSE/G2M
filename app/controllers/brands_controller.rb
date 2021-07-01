@@ -5,6 +5,18 @@ class BrandsController < ApplicationController
     @colors = Color.order(name: :asc)
   end
 
+  def research
+    if params[:query].present?
+      @brands = Brand.search_by_name(params[:query])
+    else
+      @brands = Brand.all
+    end
+    if @brands.count == 0
+      @brands = Brand.all
+    end
+    authorize @brands
+  end
+
   def new
     @brand = Brand.new
     authorize @brand

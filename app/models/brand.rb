@@ -11,4 +11,12 @@ class Brand < ApplicationRecord
     percentagebysizeandbrand = ((@products.where(brand: self.name, size: size).count.to_f / @products.count.to_f)*100).round(2)
     return percentagebysizeandbrand
   end
+
+    #pg search
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :name],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
