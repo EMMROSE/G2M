@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'stocks', to: 'pages#stocks'
   get 'panier', to: 'pages#panier'
   get 'comptabilite', to: 'pages#comptabilite'
+  get 'creditdetail', to: 'pages#creditdetail'
   get 'stat', to: 'pages#stat'
   get 'fiche', to: 'pages#fiche'
   get 'repartition', to: 'pages#repartition'

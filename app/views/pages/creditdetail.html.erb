@@ -1,0 +1,5 @@
+<div style='display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; margin-top: 20vh;'>
+  <% Fournisseur.all.each do |fournisseur| %>
+    <p style="padding:16px; border: solid black 1px; border-radius: 8px; width: 80%;"><%= fournisseur.id %> - <%= fournisseur.firstname %> <%= fournisseur.lastname %>  (<%= fournisseur.credit %>€)</p>
+  <% end %>
+</div>
