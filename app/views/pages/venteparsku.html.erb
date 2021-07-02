@@ -1,58 +1,58 @@
 <div style="margin: 10vh;">
   <h1>Vente par sku</h1>
   <h3>de 0 à 999:</h3>
-  <p><%= Product.where(:id => 1..999, status: "vendu").count / Product.where(:id => 1..999).count * 100 %>%</p>
+  <p><%= Product.where(:id => 1..999, status: "vendu").count.to_f / Product.where(:id => 1..999).count.to_f * 100 %>%</p>
   <h3>de 1000 à 1999:</h3>
   <% if Product.where(:id => 1000..1999).present? %>
-    <p><%= Product.where(:id => 1000..1999, status: "vendu").count / Product.where(:id => 1000..1999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 1000..1999, status: "vendu").count.to_f / Product.where(:id => 1000..1999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 2000 à 2999:</h3>
   <% if Product.where(:id => 2000..2999).present? %>
-    <p><%= Product.where(:id => 2000..2999, status: "vendu").count / Product.where(:id => 2000..2999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 2000..2999, status: "vendu").count.to_f / Product.where(:id => 2000..2999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 3000 à 3999:</h3>
   <% if Product.where(:id => 3000..3999).present? %>
-    <p><%= Product.where(:id => 3000..3999, status: "vendu").count / Product.where(:id => 3000..3999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 3000..3999, status: "vendu").count.to_f / Product.where(:id => 3000..3999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 4000 à 4999:</h3>
   <% if Product.where(:id => 4000..4999).present? %>
-    <p><%= Product.where(:id => 4000..4999, status: "vendu").count / Product.where(:id => 4000..4999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 4000..4999, status: "vendu").count.to_f / Product.where(:id => 4000..4999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 5000 à 5999:</h3>
   <% if Product.where(:id => 5000..5999).present? %>
-    <p><%= Product.where(:id => 5000..5999, status: "vendu").count / Product.where(:id => 5000..5999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 5000..5999, status: "vendu").count.to_f / Product.where(:id => 5000..5999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 6000 à 6999:</h3>
   <% if Product.where(:id => 6000..6999).present? %>
-    <p><%= Product.where(:id => 6000..6999, status: "vendu").count / Product.where(:id => 6000..6999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 6000..6999, status: "vendu").count.to_f / Product.where(:id => 6000..6999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 7000 à 7999:</h3>
   <% if Product.where(:id => 7000..7999).present? %>
-    <p><%= Product.where(:id => 7000..7999, status: "vendu").count / Product.where(:id => 7000..7999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 7000..7999, status: "vendu").count.to_f / Product.where(:id => 7000..7999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 8000 à 8999:</h3>
   <% if Product.where(:id => 8000..8999).present? %>
-    <p><%= Product.where(:id => 8000..8999, status: "vendu").count / Product.where(:id => 8000..8999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 8000..8999, status: "vendu").count.to_f / Product.where(:id => 8000..8999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
   <h3>de 9000 à 9999:</h3>
   <% if Product.where(:id => 9000..9999).present? %>
-    <p><%= Product.where(:id => 9000..9999, status: "vendu").count / Product.where(:id => 9000..9999).count * 100 %>%</p>
+    <p><%= (Product.where(:id => 9000..9999, status: "vendu").count.to_f / Product.where(:id => 9000..9999).count.to_f * 100).round(2) %>%</p>
   <% else %>
     <p>Pas de produit dans cette tranche</p>
   <% end %>
