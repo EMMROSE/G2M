@@ -31,6 +31,24 @@ class PaiementsController < ApplicationController
     redirect_to root_path
   end
 
+  def avoir
+    @fournisseur = Fournisseur.find(params[:fournisseur_id])
+    @paiement = Paiement.new
+    authorize @paiement
+    @paiement.date = Date.today
+    @paiement.fournisseur = @fournisseur
+    # previous_paiements = 0
+    # Paiement.where(fournisseur_id: @fournisseur.id).each do |paiement|
+    #   previous_paiements += paiement.amount_cents.to_f
+    # end
+    @paiement.amount_cents = @paiement.fournisseur.credit
+    @paiement.avoir = true
+    @paiement.save
+    ProposalMailer.paiement(@paiement).deliver_now
+    flash[:notice] = "L'avoir a bien été enregistrée."
+    redirect_to root_path
+  end
+
 
   def edit
   end

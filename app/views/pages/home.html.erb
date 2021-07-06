@@ -72,12 +72,16 @@
             <div>
               <p>Tu as effectué <%= @fournisseur.selections.count %> dépôt(s) comprenant <%= @fournisseur.total %> produits d'une valeur totale de <%= @fournisseur.inventory %> € Hors Taxes.</p>
               <% credit = @fournisseur.credit.to_i  %>
+              <% avoir = 0 %>
+              <% Paiement.where(fournisseur_id: @fournisseur.id, avoir: true).each do |paiement| %>
+                <% avoir += paiement.amount_cents %>
+              <% end %>
 
               <% if @fournisseur.justificatif.present?%>
                 <% if @fournisseur.settle > 0 %>
-                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
+                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€ (dont <%= avoir %>€ utilisé(s) en avoir).</p>
                 <% else %>
-                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€.</p>
+                  <p>Ton crédit s'élève à <%= credit %>€. A ce jour, tu as gagné <%= @fournisseur.settle * 100 %>€ (dont <%= avoir %>€ utilisé(s) en avoir).</p>
                 <% end %>
                 <% if credit >= 50 && Paiement.where(fournisseur_id: @fournisseur.id, status: "à générer").present? == false %>
                   <%= link_to "Demander mon virement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, id:'clickme', class: "button-ts", style:"max-width: 240px;"%>

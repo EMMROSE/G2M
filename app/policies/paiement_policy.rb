@@ -17,6 +17,10 @@ class PaiementPolicy < ApplicationPolicy
     is_admin_or_customer?
   end
 
+  def avoir?
+    is_admin_or_customer?
+  end
+
   def new?
     create?
   end

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'pro', to: 'pages#pro'
 
   resources :fournisseurs do
-    resources :paiements, only: [ :index, :show, :new, :create ]
+    resources :paiements, only: [ :index, :show, :new, :create]
     resources :justificatifs, only: [:new, :create]
   end
 
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
+    post 'paiements/avoir', to: "paiements#avoir", as: "avoir"
 
   get 'fournisseurs/:id/save_csv', to: "fournisseurs#save_csv", as: "fournisseur_save_csv"
 

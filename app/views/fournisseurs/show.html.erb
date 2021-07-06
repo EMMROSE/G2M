@@ -20,7 +20,11 @@
       <% else %>
         <p>Ses paiements : </p>
         <% @fournisseur.paiements.each do |paiement| %>
-          <p><%= paiement.date.to_date.strftime("le %d/%m/%Y")%>, un virement de <%= paiement.amount_cents %>€</p>
+          <% if paiement.avoir %>
+            <p><%= paiement.date.to_date.strftime("le %d/%m/%Y")%>, un avoir utilisé de <%= paiement.amount_cents %>€</p>
+          <% else %>
+            <p><%= paiement.date.to_date.strftime("le %d/%m/%Y")%>, un virement de <%= paiement.amount_cents %>€</p>
+          <% end %>
         <% end %>
       <% end %>
       <br>
@@ -32,6 +36,8 @@
     <%= link_to "Créer une nouvelle sélection de vêtements", selections_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-ts"%>
 
     <%= link_to "Réaliser un paiement", fournisseur_paiements_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-red"%>
+
+    <%= link_to "Générer un avoir", avoir_path(fournisseur_id: @fournisseur.id), method: :post, class: "button-red"%>
 
     <%= link_to "Retour aux autres fournisseurs", fournisseurs_path, class: "button-return"%>
   </div>

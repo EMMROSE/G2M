@@ -1,7 +1,7 @@
 <div style="margin: 10vh;">
   <h1>Vente par sku</h1>
   <h3>de 0 à 999:</h3>
-  <p><%= Product.where(:id => 1..999, status: "vendu").count.to_f / Product.where(:id => 1..999).count.to_f * 100 %>%</p>
+  <p><%= (Product.where(:id => 1..999, status: "vendu").count.to_f / Product.where(:id => 1..999).count.to_f * 100).round(2) %>%</p>
   <h3>de 1000 à 1999:</h3>
   <% if Product.where(:id => 1000..1999).present? %>
     <p><%= (Product.where(:id => 1000..1999, status: "vendu").count.to_f / Product.where(:id => 1000..1999).count.to_f * 100).round(2) %>%</p>
