@@ -44,7 +44,8 @@ class PaiementsController < ApplicationController
     @paiement.amount_cents = @paiement.fournisseur.credit
     @paiement.avoir = true
     @paiement.save
-    redirect_to edit_amount_path(@paiement)
+    flash[:notice] = "Avoir généré. Disponible dans comptabilité"
+    redirect_to comptabilite_path
   end
 
   def edit
