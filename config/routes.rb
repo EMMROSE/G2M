@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
     post 'paiements/avoir', to: "paiements#avoir", as: "avoir"
+    post 'paiements/:id/edit_amount', to: "paiements#edit_amount", as: "edit_amount"
 
   get 'fournisseurs/:id/save_csv', to: "fournisseurs#save_csv", as: "fournisseur_save_csv"
 

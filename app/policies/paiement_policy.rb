@@ -30,7 +30,15 @@ class PaiementPolicy < ApplicationPolicy
   end
 
   def edit?
-    update?
+    is_admin?
+  end
+
+  def edit_amount?
+    is_admin?
+  end
+
+  def change_amount?
+    is_admin?
   end
 
   def destroy?

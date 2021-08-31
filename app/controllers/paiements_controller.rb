@@ -44,17 +44,39 @@ class PaiementsController < ApplicationController
     @paiement.amount_cents = @paiement.fournisseur.credit
     @paiement.avoir = true
     @paiement.save
-    ProposalMailer.paiement(@paiement).deliver_now
-    flash[:notice] = "L'avoir a bien été enregistrée."
-    redirect_to root_path
+    redirect_to edit_amount_path(@paiement)
   end
 
-
   def edit
+    @paiement = Paiement.find(params[:id])
+    authorize @paiement
   end
 
   def update
+    @paiement = Paiement.find(params[:id])
+    authorize @paiement
+    @paiement.update(price_params)
+    ProposalMailer.avoir(@paiement).deliver_now
+    redirect_to comptabilite_path
+    flash[:notice] = "L'avoir a bien été enregistrée."
   end
+
+  def edit_amount
+    @paiement = Paiement.find(params[:id])
+    authorize @paiement
+  end
+
+  def change_amount
+    @paiement = Paiement.find(params[:id])
+    authorize @paiement
+    price = price_params
+    raise
+    @paiement.amount_cents = price_params
+    @paiement.save
+    redirect_to comptabilite_path
+    flash[:notice] = "Le montant a bien été modifié."
+  end
+
 
   def destroy
     @paiement = Paiement.find(params[:id])
@@ -75,5 +97,9 @@ class PaiementsController < ApplicationController
 
   def paiement_params
     params.require(:paiement).permit(:fournisseur_id)
+  end
+
+  def price_params
+    params.require(:paiement).permit(:amount_cents)
   end
 end

@@ -1,0 +1,12 @@
+<p>NOUVEL AVOIR</p>
+<br>
+<% if @paiement.avoir %>
+  <p>Une nouvelle demande d'avoir a été émise pour <%= @paiement.fournisseur.firstname %> <%= @paiement.fournisseur.lastname %> (<%= @paiement.fournisseur.id %>) pour un montant de <%= @paiement.amount_cents%> €.</p>
+<% else %>
+  <p>Une nouvelle demande de paiement a été émise par <%= @paiement.fournisseur.firstname %> <%= @paiement.fournisseur.lastname %> (<%= @paiement.fournisseur.id %>) pour un montant de <%= @paiement.amount_cents%> €.</p>
+<% end %>
+<br>
+<h3>l'équipe de Graîne de Mômes</h3>
+<p>bonjour@grainedemomes.com</p>
+<br>
+<img src="../assets/images/logo.png" style="height: 100px; width: 200px;">

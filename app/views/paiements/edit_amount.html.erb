@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <%= link_to 'retour aux paiements', comptabilite_path, class: "btn btn-success"%>
+   <div class="container form-container">
+     <%= simple_form_for(@paiement) do |f| %>
+      <p>Modifiez le montant de ce paiement (avoir ou virement)</p>
+       <div class="form-top">
+         <%= f.number_field :amount_cents, label: "Quelle somme en cents ? ex : pour 10 €, taper 1000 (NB >> on va essayer de modifier en €)", placeholder: 0%>
+       </div>
+       <div class="btn btn-primary">
+        <%= f.submit "Enregistrer", class: 'btn btn-contact'%>
+       </div>
+     <% end %>
+   </div>
+</div>

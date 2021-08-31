@@ -1,20 +1,4 @@
-<div class="search mt-2">
-  <%= form_tag brands_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
-    <div class="search-form-control form-group mt-1 mb-0">
-      <%= text_field_tag :query,
-          params[:query],
-          class: "search-input form-control string required",
-          id: "search_query",
-          placeholder: "recherche une marque",
-          value: ""
-      %>
-      <%= button_tag(type: "submit", class: "btn btn-flat") do %>
-        <i class="fas fa-search"></i>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div style="margin-top: 20vh; margin-left:20vw; display: flex; flex-direction: column; align-items: start;">
+<div style="margin-top: 10vh; margin-left:5vw; display: flex; flex-direction: column; align-items: start;">
     <ul style="font-weight: bolder;">Marques</ul>
     <% Brand.order(name: :asc).each do |element| %>
       <% @brand = element %>

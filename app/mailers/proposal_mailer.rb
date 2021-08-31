@@ -67,4 +67,9 @@ class ProposalMailer < ApplicationMailer
     mail(to: 'marine@grainedemomes.com', subject: 'Nouvelle demande de paiement')
   end
 
+  def avoir(paiement)
+    @paiement = paiement
+    mail(to: 'marine@grainedemomes.com', subject: 'Nouvel avoir généré')
+  end
+
 end

@@ -24,12 +24,22 @@
   <%= link_to 'retour au Menu', root_path, class: "btn btn-success"%>
   <ul>
     <% Paiement.order("id DESC").each do |paiement| %>
-      <% if paiement.avoir %>
-        <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - avoir <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
-        <br>
+      <% if paiement.status == "à générer" %>
+        <% if paiement.avoir %>
+          <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - avoir <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px; max-width: 16%;" %> <%= link_to '€', edit_amount_path(paiement), method: :post %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
+          <br>
+        <% else %>
+          <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - virement <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px; max-width: 16%;" %> <%= link_to '€', edit_amount_path(paiement), method: :post %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
+          <br>
+        <% end %>
       <% else %>
-        <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - virement <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
-        <br>
+        <% if paiement.avoir %>
+          <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - avoir <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px; max-width: 16%;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
+          <br>
+        <% else %>
+          <li><%= paiement.id %> - <%= paiement.fournisseur.firstname %> <%= paiement.fournisseur.lastname %> - <%= paiement.amount_cents %> € - virement <%= paiement.status %> <%= link_to 'Réglé', settle_status_path(paiement), method: :post, class: "button", style:"padding: 8px; max-width: 16%;" %> <%= link_to 'X', paiement_path(paiement), method: :delete, class: "button-red"%></li>
+          <br>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
