@@ -1,5 +1,5 @@
-<div class="bg-fournisseur">
-  <div>
+<div class="bg-stat">
+  <div style="width: 70%; margin-top: 10vh;">
     <div class="buttons-fournisseurs">
       <%= link_to root_path do %>
         RETOUR AU MENU
@@ -115,4 +115,29 @@
     <% end %>
     <p>Les marques les plus vendu: 1er) <%= numerous_brand_solded %> / 2e) <%= numerous_brand_solded2 %>/ 3e) <%= numerous_brand_solded3 %></p>
   </div>
+  <table class="products_table">
+    <% months = ["01","02","03","04","05","06","07","08","09","10","11","12"] %>
+    <% years = [2020, 2021, 2022] %>
+    <tr>
+      <td id="product-bg">Année / Mois</td>
+      <% months.each do |month| %>
+        <td id="product-bg"><%= I18n.t("date.month_names")[month.to_i] %></td>
+      <% end %>
+    </tr>
+    <% years.each do |year| %>
+      <tr>
+        <td id="product-bg"><%= year %></td>
+        <% months.each do |month| %>
+          <% ventes = 0 %>
+          <% Product.where(status: "vendu").each do |p| %>
+            <% if p.updated_at.to_date.strftime("%m-%Y") == month + "-" + year.to_s %>
+              <% ventes += p.price_cents.to_i / 100 %>
+            <% end %>
+          <% end %>
+          <td><%= ventes %> €</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 </div>
+

@@ -26,6 +26,14 @@
         </div>
         <div class="dashboard">
           <h3>Dashboard</h3>
+          <% date = Date.today.strftime("%m-%Y") %>
+          <% ventes = 0 %>
+          <% Product.where(status: "vendu").each do |p| %>
+            <% if p.updated_at.to_date.strftime("%m-%Y") == date %>
+              <% ventes += p.price_cents.to_i / 100 %>
+            <% end %>
+          <% end %>
+          <h4>CA mensuel à <%= date %>: <%= ventes %>€</h2>
           <table>
             <tr class="bg-info text-white">
               <td>Fournisseurs</td>

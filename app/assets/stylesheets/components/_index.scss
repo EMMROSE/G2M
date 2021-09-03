@@ -74,6 +74,19 @@
   align-items: center;
 }
 
+.bg-stat {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../assets/car.jpg");
+  background-size: cover;
+  background-position: center;
+  h1, h2, h3 {color: white;}
+  height: 100vh;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .bg-repartition {
   color: white;
   font-weight: bolder;
