@@ -11,27 +11,60 @@
       <td>% vendu</td>
       <td>Actions disponibles</td>
       <td>Mail transmis</td>
+      <td>Retournée ?</td>
     </tr>
   <% @fournisseur.selections.each do |selection| %>
-    <tr>
-      <td><%= selection.date %> </td>
-      <td><%= selection.products.count %> produits</td>
-      <% if selection.percentage_sold > 0 %>
-        <td><%= selection.percentage_sold.to_i %>%</td>
-      <% else %>
-        <td>0%</td>
-      <% end %>
-      <td style="height: 20vh; display: flex; flex-direction: column; justify-content: space-between;">
-        <%= link_to 'Voir sa sélection', selection_path(selection), class: "button"%> <%= link_to "Envoyer la proposition", selection_mail_path(selection), id: "delete-link", class: "button-red", data: {confirm: "Vous confirmez l'envoi ?"}  %> <%= link_to 'Supprimer', selection_path(selection), method: :delete, class: "button-red "%>
-      </td>
-      <td>
-        <% if selection.notification.present? && selection.notification.status == "transmis"%>
-          <i class="fas fa-check-circle" id="green"></i>
+    <% if selection.return %>
+      <tr style="background-color: rgba(228,193,249) !important;">
+        <td><%= selection.date %> </td>
+        <td><%= selection.products.count %> produits</td>
+        <% if selection.percentage_sold > 0 %>
+          <td><%= selection.percentage_sold.to_i %>%</td>
         <% else %>
-          <i class="fas fa-times-circle" id="red"></i>
+          <td>0%</td>
         <% end %>
-      </td>
-    </tr>
+        <td style="height: 20vh; display: flex; flex-direction: column; justify-content: space-between;">
+          <%= link_to 'Voir sa sélection', selection_path(selection), class: "button"%> <%= link_to "Envoyer la proposition", selection_mail_path(selection), id: "delete-link", class: "button-red", data: {confirm: "Vous confirmez l'envoi ?"}  %> <%= link_to 'Supprimer', selection_path(selection), method: :delete, class: "button-red "%>
+        </td>
+        <td>
+          <% if selection.notification.present? && selection.notification.status == "transmis"%>
+            <i class="fas fa-check-circle" id="green"></i>
+          <% else %>
+            <i class="fas fa-times-circle" id="red"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if selection.return %>
+            <i class="far fa-hand-point-left"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= selection.date %> </td>
+        <td><%= selection.products.count %> produits</td>
+        <% if selection.percentage_sold > 0 %>
+          <td><%= selection.percentage_sold.to_i %>%</td>
+        <% else %>
+          <td>0%</td>
+        <% end %>
+        <td style="height: 20vh; display: flex; flex-direction: column; justify-content: space-between;">
+          <%= link_to 'Voir sa sélection', selection_path(selection), class: "button"%> <%= link_to "Envoyer la proposition", selection_mail_path(selection), id: "delete-link", class: "button-red", data: {confirm: "Vous confirmez l'envoi ?"}  %> <%= link_to 'Supprimer', selection_path(selection), method: :delete, class: "button-red "%>
+        </td>
+        <td>
+          <% if selection.notification.present? && selection.notification.status == "transmis"%>
+            <i class="fas fa-check-circle" id="green"></i>
+          <% else %>
+            <i class="fas fa-times-circle" id="red"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if selection.return %>
+            <i class="far fa-hand-point-left"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
   </table>
 </div>

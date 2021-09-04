@@ -112,6 +112,15 @@ class SelectionsController < ApplicationController
     flash[:notice] = "l'Email a été expédié."
   end
 
+  def return
+    @selection = Selection.find(params[:id])
+    authorize @selection
+    @selection.return = true
+    @selection.save!
+    redirect_to selections_path(fournisseur_id: @selection.fournisseur.id)
+    flash[:notice] = "Status sauvegardé"
+  end
+
   private
 
   def selection_params

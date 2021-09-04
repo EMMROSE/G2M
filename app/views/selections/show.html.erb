@@ -19,6 +19,11 @@
         <h3><%= @selection.products.count %> produit(s)</h3>
       <% end %>
     </div>
+    <div style="margin-left: 8px; margin-top: 8px;">
+      <% if @selection.products.count > 0  && current_user.admin %>
+        <%= link_to "Retourner la sélection", selection_return_path, class: "button-red", style:"width: 240px;", data: {confirm: "Vous confirmez le retour ?"} %>
+      <% end %>
+    </div>
   </div>
   <div class="products_table">
     <% if current_user.admin %>
