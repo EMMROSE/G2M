@@ -14,7 +14,7 @@
     <% end %>
     <p>Code : <%= @fournisseur.code %></p>
     <div>
-      <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> €. Crédit = <%= @fournisseur.credit %> €. </p>
+      <p><%= @selections.count %> sélection(s) - <%= @total %> produit(s) d'une valeur totale de <%= @sumup %> € TTC. Crédit = <%= @fournisseur.credit %> €. </p>
       <% if @fournisseur.paiements.count < 1 %>
         <p>Aucun paiement n'a été réalisé</p>
       <% else %>
