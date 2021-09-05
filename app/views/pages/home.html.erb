@@ -7,6 +7,11 @@
   <% if user_signed_in? %>
   <!-- access for admins or customers only -->
     <% if current_user.admin %>
+      <% notification = 0 %>
+      <% Paiement.where(status: "à générer").each do |paiement| %>
+        <% notification += 1 %>
+      <% end %>
+      <div>
       <div>
         <h1>Graine de mômes</h1>
         <h2>Application de Gestion du stock & comptabilité</h2>
@@ -17,13 +22,14 @@
           <%= link_to products_path do %>
             STOCKS
           <% end %>
-          <%= link_to comptabilite_path do %>
-            COMPTABILITE
-          <% end %>
           <%= link_to stat_path do %>
             STATISTIQUES
           <% end %>
+          <%= link_to comptabilite_path do %>
+            COMPTABILITE
+          <% end %>
         </div>
+        <span style="padding: 3px; border-radius: 50%; background-color: red; color: white; font-weight: bolder; position: relative; bottom: 42px; left: 620px;"><%= notification %></span>
         <div class="dashboard">
           <h3>Dashboard</h3>
           <% date = Date.today.strftime("%m-%Y") %>
