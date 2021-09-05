@@ -13,7 +13,6 @@
       <% if paiement.avoir %>
         <% avoir += paiement.amount_cents %>
       <% end %>
-      <% versement = versement - avoir %>
     <% end %>
     <% Fournisseur.all.each do |fournisseur| %>
       <% somme += fournisseur.credit %>
@@ -21,7 +20,7 @@
     <% encours = credit - versement %>
     <h3>Montant des produits vendu: <%= credit %>€</h3>
     <h4>Somme des paiements effectués: <%= versement %>€</h4>
-    <h4>Avoir utilisé: <%= avoir %>€</h4>
+    <h4>dont <%= avoir %>€ sous forme d'avoir</h4>
     <h3>Total des crédits fournisseur restants: <%= somme %>€</h3>
     <%= link_to 'Crédit en détail', creditdetail_path, class: "btn btn-success", style: 'max-width: 25%; border-radius: 8px;'%>
   </div>
