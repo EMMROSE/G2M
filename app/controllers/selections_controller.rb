@@ -2,6 +2,7 @@ class SelectionsController < ApplicationController
   require 'date'
   require 'csv'
 
+
   def index
     @fournisseur = Fournisseur.find(params[:fournisseur_id])
     @selections = @fournisseur.selections

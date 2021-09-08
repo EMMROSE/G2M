@@ -1,0 +1,18 @@
+<div style="padding: 36px;">
+  <h1>Caisse enregistreuse: </h1>
+  <% @session = Session.last %>
+  <%= @session.status %>
+  <%= @session.created_at.to_date %>
+  <% if @session.list.empty? %>
+    <p>Liste vide</p>
+  <% else %>
+    <% sum = 0 %>
+    <% @session.list.each do |element| %>
+      <% product = Product.where(id: element.to_i).first %>
+      <li><%= product.id %>- <%= product.price %></li>
+      <% sum += product.price %>
+    <% end %>
+  <% end %>
+  <p><%= sum %></p>
+</div>
+

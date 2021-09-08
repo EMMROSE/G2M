@@ -1,21 +1,9 @@
 class ProductsController < ApplicationController
   require 'open-uri'
   require 'json'
+  require 'rqrcode'
+  require 'chunky_png'
 
-  # require 'barby'
-  # require 'barby/barcode/code_128'
-  # require 'barby/outputter/png_outputter'
-  # require 'chunky_png'
-
-  # def codebar
-  #   @product = Product.find(params[:id])
-  #   authorize @product
-  #   barcode = Barby::Code128.new(@product.id)
-  #   name = @product.id.to_s+".png"
-  #   File.open(name, 'wb'){|f|
-  #     f.write barcode.to_png(:height => 20, :margin => 5)
-  #   }
-  # end
 
   def index
     if params[:query].present?
@@ -288,6 +276,29 @@ class ProductsController < ApplicationController
     end
     redirect_to products_path
     flash[:notice] = "le traitement est terminé"
+  end
+
+  def qrcode
+    @product = Product.find(params[:id])
+    authorize @product
+    @code = "https://g2m-management.herokuapp.com/products/#{@product.id.to_s}/add_to_list"
+    @qrcode = RQRCode::QRCode.new(@code)
+
+    @svg = @qrcode.as_svg(
+      offset:0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 6
+    )
+  end
+
+  def add_to_list
+    @product = Product.find(params[:id])
+    authorize @product
+    @session = Session.last
+    @session.list << @product.id.to_s
+    @session.save
+    redirect_to caisse_path
   end
 
   private

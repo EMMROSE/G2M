@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'repartitiongenre', to: 'pages#repartitiongenre'
   get 'venteparsku', to: 'pages#venteparsku'
   get 'pro', to: 'pages#pro'
+  get 'caisse', to: 'pages#caisse'
 
   resources :fournisseurs do
     resources :paiements, only: [ :index, :show, :new, :create]
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
     post 'products/import', to: "products#import", as: "import"
     get 'products/:id/stock4pro', to: "products#stock4pro", as: "stock4pro"
     get 'products/:id/select4pro', to: "products#select4pro", as: "select4pro"
-    get 'products/:id/codebar', to: "products#codebar", as: "codebar"
+    get 'products/:id/qrcode', to: "products#qrcode", as: "qrcode"
 
   resources :paiements, only: [ :edit, :update, :destroy]
     post 'paiements/:id/settle', to: "paiements#settle_status", as: "settle_status"
@@ -64,5 +65,10 @@ Rails.application.routes.draw do
     get 'brands/research', to: "brands#research", as: "research"
 
   post 'products/:id/save_price', to: "products#save_price", as: "save_price"
+
+  # resources :sessions
+  post 'sessions/display', to: "sessions#display", as: "display"
+  post 'sessions/list', to: "sessions#list", as: "list"
+  get 'products/:id/add_to_list', to: "products#add_to_list", as: "add_to_list"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

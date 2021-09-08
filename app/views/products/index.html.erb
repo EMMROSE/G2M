@@ -31,6 +31,7 @@
       <td>Supprimer</td>
       <td>Statut</td>
       <td>Vendu ?</td>
+      <td>qrcode</td>
     </tr>
     <% @products.order(:id).each do |element| %>
       <% if element.status == "vendu" %>
@@ -123,6 +124,11 @@
           <td><%= element.status %></td>
           <td>
             <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, sold_status_path(element), method: :post, style:"color: green;" %> / <%= link_to '<i class="fas fa-undo"></i>'.html_safe, tosell_status_path(element), method: :post, style:"color: #F6AE3B;" %>
+          </td>
+          <td>
+            <%= link_to qrcode_path(element) do %>
+              <i class="fas fa-camera-retro"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>

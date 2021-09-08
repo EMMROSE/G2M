@@ -9,10 +9,6 @@ class ProductPolicy < ApplicationPolicy
     is_admin?
   end
 
-  def codebar?
-    true
-  end
-
   def show?
     is_admin_or_pro?
   end
@@ -63,6 +59,14 @@ class ProductPolicy < ApplicationPolicy
 
   def duplicate?
     is_admin?
+  end
+
+  def qrcode?
+    is_admin?
+  end
+
+  def add_to_list?
+    true
   end
 
   def import?

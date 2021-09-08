@@ -79,6 +79,5 @@ gem 'cloudinary'
 gem 'rest-client'
 gem 'shopify_api'
 
-#to generate barcode
-gem 'barby'
-gem 'chunky_png'
+
+gem "rqrcode", "~> 2.0"
