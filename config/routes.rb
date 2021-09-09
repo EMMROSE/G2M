@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   # resources :sessions
   post 'sessions/display', to: "sessions#display", as: "display"
   post 'sessions/list', to: "sessions#list", as: "list"
+  get 'sessions/validation', to: "sessions#validation", as: "validation"
   get 'products/:id/add_to_list', to: "products#add_to_list", as: "add_to_list"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

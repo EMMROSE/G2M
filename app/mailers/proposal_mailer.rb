@@ -57,6 +57,11 @@ class ProposalMailer < ApplicationMailer
     mail(to: 'bonjour@grainedemomes.com', subject: 'Nouveau CSV pour Shopify')
   end
 
+  def generatecsv2(csv)
+    attachments['import_products.csv'] = {mime_type: 'text/csv', content: csv}
+    mail(to: 'bonjour@grainedemomes.com', subject: 'MAJ CSV pour Shopify')
+  end
+
   def fournisseurcsv(csv)
     attachments['fournisseur.csv'] = {mime_type: 'text/csv', content: csv}
     mail(to: 'bonjour@grainedemomes.com', subject: 'Sauvegarde des fournissseurs')

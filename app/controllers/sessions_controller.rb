@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  require 'csv'
 
   def index
     @sessions = Session.all
@@ -34,18 +35,33 @@ class SessionsController < ApplicationController
   # end
 
   def validation
-    @session = Session.find(params[:id])
+    @session = Session.last
     authorize @session
-    @session.status = "validate"
-    @session.save
-    redirect_to roots_path
+    if @session.list.empty? == false
+      @session.list.each do |element|
+        id = element.to_i
+        product = Product.where(id: id).first
+        product.status = "vendu"
+        product.save
+      end
+      # prepare my csv with Model function
+      csv = @session.generate_csv2
+      # prepare email and forward csv as argument
+      ProposalMailer.generatecsv2(csv).deliver_now
+      @session.destroy
+      redirect_to root_path
+      flash[:notice] = "le CSV a bien été transmis."
+    else
+      redirect_to caisse_path
+      flash[:notice] = "la liste est vide."
+    end
   end
 
   def destroy
     @session = Session.find(params[:id])
     authorize @session
     @session.destroy
-    redirect_to roots_path
+    redirect_to root_path
   end
 
   def list

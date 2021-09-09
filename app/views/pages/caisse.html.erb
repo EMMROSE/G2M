@@ -5,14 +5,18 @@
   <%= @session.created_at.to_date %>
   <% if @session.list.empty? %>
     <p>Liste vide</p>
+    <% sum = 0 %>
   <% else %>
     <% sum = 0 %>
     <% @session.list.each do |element| %>
       <% product = Product.where(id: element.to_i).first %>
-      <li><%= product.id %>- <%= product.price %></li>
+      <li>article n°<%= product.id %> - <%= product.price %>€</li>
       <% sum += product.price %>
     <% end %>
   <% end %>
-  <p><%= sum %></p>
+  <br>
+  <p style="font-weight: bolder;"><%= sum %>€</p>
+  <br>
+  <%= link_to "Valider", validation_path, class: "button-red", style:"width: 240px;", data: {confirm: "Vous confirmez l'envoi ?"} %>
 </div>
 
