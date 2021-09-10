@@ -288,7 +288,9 @@ class ProductsController < ApplicationController
       offset:0,
       color: '000',
       shape_rendering: 'crispEdges',
-      module_size: 6
+      module_size: 1,
+      standalone: true,
+      use_path: true
     )
   end
 

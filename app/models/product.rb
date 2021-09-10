@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  require 'rqrcode'
+  require 'chunky_png'
+
   belongs_to :selection, optional: true
   has_many :items, dependent: :destroy
 
@@ -24,6 +27,22 @@ class Product < ApplicationRecord
     all = self.all.to_f
     percentage = solded / all
     return percentage
+  end
+0
+  def qrcode
+    @product = Product.find(params[:id])
+    authorize @product
+    @code = "https://g2m-management.herokuapp.com/products/#{@product.id.to_s}/add_to_list"
+    @qrcode = RQRCode::QRCode.new(@code)
+
+    @svg = @qrcode.as_svg(
+      offset:0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 1,
+      standalone: true,
+      use_path: true
+    )
   end
 
 end
