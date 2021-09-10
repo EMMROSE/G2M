@@ -21,7 +21,7 @@
           <% @products.last(3).each do |product| %>
           <td>
             <div class="etiquette">
-              <%= image_tag wicked_pdf_asset_base64('petitlogo.png') %>
+              <!-- <%= image_tag wicked_pdf_asset_base64('petitlogo.png') %> -->
               <!-- ajouter le QR CODE -->
               <% @code = "https://g2m-management.herokuapp.com/products/#{product.id.to_s}/add_to_list" %>
               <% @qrcode = RQRCode::QRCode.new(@code) %>
@@ -29,12 +29,12 @@
                   offset:0,
                   color: '000',
                   shape_rendering: 'crispEdges',
-                  module_size: 1,
+                  module_size: 1.5,
                   standalone: true,
                   use_path: true
                 )
               %>
-              <%= @svg.html_safe %>
+              <span id="svg"><%= @svg.html_safe %></span>
               <p><%= product.name %> - <%= product.size %></p>
               <p style="font-size: 24px;"><%= product.price %>€</p>
               <p style="font-size: 8px;">(n°<%= product.id %><%= product.selection.fournisseur.firstname.chars.first%><%= product.selection.fournisseur.lastname.chars.first%>)</p>
