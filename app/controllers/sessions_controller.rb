@@ -69,4 +69,5 @@ class SessionsController < ApplicationController
     @item = product.find(params[:id])
     @session.list
   end
+
 end

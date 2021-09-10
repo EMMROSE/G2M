@@ -69,6 +69,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def delete_to_list?
+    true
+  end
+
   def import?
     true
   end

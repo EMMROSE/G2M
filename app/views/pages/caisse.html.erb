@@ -1,6 +1,11 @@
 <div style="padding: 36px;">
   <h1>Caisse enregistreuse: </h1>
-  <% @session = Session.last %>
+  <% if Session.last.present? %>
+    <% @session = Session.last %>
+  <% else %>
+    <% @session = Session.new %>
+    <% @session.save %>
+  <% end %>
   <%= @session.status %>
   <%= @session.created_at.to_date %>
   <% if @session.list.empty? %>
@@ -10,7 +15,10 @@
     <% sum = 0 %>
     <% @session.list.each do |element| %>
       <% product = Product.where(id: element.to_i).first %>
-      <li>article n°<%= product.id %> - <%= product.price %>€</li>
+      <div style="display: flex;">
+        <li>article n°<%= product.id %> - <%= product.price %>€ </li>
+        <%= link_to '<i class="fas fa-trash"></i>'.html_safe, delete_to_list_path(product) %>
+      </div>
       <% sum += product.price %>
     <% end %>
   <% end %>

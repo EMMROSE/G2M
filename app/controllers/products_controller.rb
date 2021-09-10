@@ -301,6 +301,16 @@ class ProductsController < ApplicationController
     redirect_to caisse_path
   end
 
+  def delete_to_list
+    @product = Product.find(params[:id])
+    authorize @product
+    @session = Session.last
+    id = @product.id.to_s
+    @session.list.delete(id)
+    @session.save!
+    redirect_to caisse_path
+  end
+
   private
 
   def product_params

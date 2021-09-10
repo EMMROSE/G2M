@@ -9,7 +9,7 @@ class Session < ApplicationRecord
         product = Product.where(id: id).first
         if product.status == "vendu" && product.photo.present?
         # image_url = "http://res.cloudinary.com/grainedemomes/image/upload/" + product.photo.key.to_s
-        csv << ["#{product.name}-#{product.id}","#{product.name} #{product.brand} #{product.size}","<meta content='text/html charset=utf-8'' http-equiv=''content-type''><span data-mce-fragment=''1''>Occasion - #{product.comment}.<br>Cet article est unique.1 seul exemplaire est en stock.<br>#{product.commentaire}</span>","#{product.brand}","#{product.category}","#{product.genre}","true","Taille","#{product.size}","Saison","#{product.season}","","","#{product.id}","0.0","shopify",1,"deny","manual","#{product.price}","","true","true","","",1,"","false","","","","","","","","","","","","","","","","","kg","",""]
+        csv << ["#{product.name}-#{product.id}","#{product.name} #{product.brand} #{product.size}","<meta content='text/html charset=utf-8'' http-equiv=''content-type''><span data-mce-fragment=''1''>Occasion - #{product.comment}.<br>Cet article est unique.1 seul exemplaire est en stock.<br>#{product.commentaire}</span>","#{product.brand}","#{product.category}","#{product.genre}","false","Taille","#{product.size}","Saison","#{product.season}","","","#{product.id}","0.0","shopify",1,"deny","manual","#{product.price}","","true","true","","",1,"","false","","","","","","","","","","","","","","","","","kg","",""]
         # PENSER A INDIQUER LE PRIX EN TTC ET PAS SUR LA BASE HT
         end
       end
