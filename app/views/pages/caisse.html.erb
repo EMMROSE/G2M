@@ -1,30 +1,32 @@
-<div style="padding: 36px;">
-  <h1>Caisse enregistreuse: </h1>
-  <% if Session.last.present? %>
-    <% @session = Session.last %>
-  <% else %>
-    <% @session = Session.new %>
-    <% @session.save %>
-  <% end %>
-  <%= @session.status %>
-  <%= @session.created_at.to_date %>
-  <% if @session.list.empty? %>
-    <p>Liste vide</p>
-    <% sum = 0 %>
-  <% else %>
-    <% sum = 0 %>
-    <% @session.list.each do |element| %>
-      <% product = Product.where(id: element.to_i).first %>
-      <div style="display: flex;">
-        <li>article n°<%= product.id %> - <%= product.price %>€ </li>
-        <%= link_to '<i class="fas fa-trash"></i>'.html_safe, delete_to_list_path(product) %>
-      </div>
-      <% sum += product.price %>
+<div class="caisse">
+  <div class="subcaisse">
+    <h1>Caisse en cours: </h1>
+    <% if Session.last.present? %>
+      <% @session = Session.last %>
+    <% else %>
+      <% @session = Session.new %>
+      <% @session.save %>
     <% end %>
-  <% end %>
-  <br>
-  <p style="font-weight: bolder;"><%= sum %>€</p>
-  <br>
-  <%= link_to "Valider", validation_path, class: "button-red", style:"width: 240px;", data: {confirm: "Vous confirmez l'envoi ?"} %>
+    <p>Statut: <%= @session.status %></p>
+    <p>Date: <%= @session.created_at.to_date.strftime("%d/%m/%Y") %></p>
+    <% if @session.list.empty? %>
+      <p>Liste vide pour le moment</p>
+      <% sum = 0 %>
+    <% else %>
+      <% sum = 0 %>
+      <% @session.list.each do |element| %>
+        <% product = Product.where(id: element.to_i).first %>
+        <div style="display: flex;">
+          <li>article n°<%= product.id %> - <%= product.price %>€ </li>
+          <%= link_to '<i class="fas fa-trash"></i>'.html_safe, delete_to_list_path(product) %>
+        </div>
+        <% sum += product.price %>
+      <% end %>
+    <% end %>
+    <br>
+    <p style="font-weight: bolder; border-top: dashed black; max-width: 200px; padding-top: 16px;">Total: <%= sum %>€</p>
+    <br>
+    <%= link_to "Valider", validation_path, class: "button-red", style:"width: 240px;", data: {confirm: "Vous confirmez l'envoi ?"} %>
+  </div>
 </div>
 
