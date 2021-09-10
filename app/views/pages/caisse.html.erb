@@ -8,16 +8,16 @@
       <% @session.save %>
     <% end %>
     <p>Statut: <%= @session.status %></p>
-    <p>Date: <%= @session.created_at.to_date.strftime("%d/%m/%Y") %></p>
+    <p style="border-bottom: dashed black; max-width: 200px;">Date: <%= @session.created_at.to_date.strftime("%d/%m/%Y") %></p>
     <% if @session.list.empty? %>
-      <p>Liste vide pour le moment</p>
+      <p style="padding-top: 16px;">Liste vide pour le moment</p>
       <% sum = 0 %>
     <% else %>
       <% sum = 0 %>
       <% @session.list.each do |element| %>
         <% product = Product.where(id: element.to_i).first %>
-        <div style="display: flex;">
-          <li>article n°<%= product.id %> - <%= product.price %>€ </li>
+        <div style="display: flex; padding-top: 16px;">
+          <li>article n°<%= product.id %> - <%= product.name %> - <%= product.price %>€ </li>
           <%= link_to '<i class="fas fa-trash"></i>'.html_safe, delete_to_list_path(product) %>
         </div>
         <% sum += product.price %>
