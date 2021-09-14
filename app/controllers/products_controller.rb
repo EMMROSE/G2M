@@ -240,6 +240,8 @@ class ProductsController < ApplicationController
     @product.selection = @last_product.selection
     @product.price = @last_product.price
     @product.category = @last_product.category
+    @product.season = @last_product.season
+    @product.comment = @last_product.comment
 
     @product.save!
     redirect_to selection_path(@product.selection)
