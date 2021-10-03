@@ -40,6 +40,7 @@ import { loadDynamicAdminText } from '../components/banner';
 import { loadDynamicProText } from '../components/banner';
 
 import { changeButton } from '../components/button';
+import { newButton } from '../components/button';
 import { initSweetalert } from '../plugins/init_sweetalert';
 
 
@@ -51,6 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicProText();
 
   changeButton();
+  newButton();
   initSweetalert('#sweet-alert-demo', {
     title: "Une seconde d'attention !",
     text: "Vous souhaitez transmettre cette proposition ?",
