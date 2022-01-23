@@ -69,12 +69,14 @@ class ProposalMailer < ApplicationMailer
 
   def paiement(paiement)
     @paiement = paiement
-    mail(to: 'marine@grainedemomes.com', subject: 'Nouvelle demande de paiement')
+    @email_adress = User.where(id: @paiement.fournisseur.user_id).first.email
+    mail(to: @email_adress, subject: 'Nouvelle demande de paiement')
   end
 
   def avoir(paiement)
     @paiement = paiement
-    mail(to: 'marine@grainedemomes.com', subject: 'Nouvel avoir généré')
+    @email_adress = User.where(id: @paiement.fournisseur.user_id).first.email
+    mail(to: @email_adress, subject: 'Nouvel avoir généré')
   end
 
 end

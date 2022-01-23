@@ -62,6 +62,7 @@ class SelectionsController < ApplicationController
     authorize @selection
     @selection.date = Date.today.strftime("%d/%m/%Y")
     @selection.fournisseur = Fournisseur.find(params[:fournisseur_id])
+    @selection.user_id = @selection.fournisseur.user_id
     @selection.save
     redirect_to selection_path(@selection)
   end
@@ -125,6 +126,6 @@ class SelectionsController < ApplicationController
   private
 
   def selection_params
-    params.require(:selection).permit(:date, :fournisseur_id)
+    params.require(:selection).permit(:date, :fournisseur_id, :user_id)
   end
 end

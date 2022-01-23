@@ -36,6 +36,6 @@ class ColorPolicy < ApplicationPolicy
   private
 
   def is_admin?
-    user.admin
+    user.admin && user.postcode == "92600"
   end
 end

@@ -6,10 +6,12 @@ class FournisseursController < ApplicationController
     if params[:query].present?
       @fournisseurs = Fournisseur.search_by_lastname_email_code(params[:query])
     else
-      @fournisseurs = Fournisseur.all
+      @fournisseurs = Fournisseur.where(user_id: current_user.id).all
+      # @fournisseurs = Fournisseur.all
     end
     if @fournisseurs.count == 0
-      @fournisseurs = Fournisseur.all
+      # @fournisseurs = Fournisseur.all
+      @fournisseurs = Fournisseur.where(user_id: current_user.id).all
     end
     authorize @fournisseurs
   end
@@ -46,7 +48,7 @@ class FournisseursController < ApplicationController
     @fournisseur.code = Date.today.year.to_s + @fournisseur.firstname.chr + @fournisseur.lastname.chr + numberforcode
     @fournisseur.firstname = @fournisseur.firstname.capitalize
     @fournisseur.lastname = @fournisseur.lastname.capitalize
-
+    @fournisseur.user_id = current_user.id
     if @fournisseur.save
       redirect_to furnishers_path
       flash[:notice] = "Votre fournisseur a bien été enregistré."
@@ -104,7 +106,7 @@ class FournisseursController < ApplicationController
   private
 
   def fournisseur_params
-    params.require(:fournisseur).permit(:firstname, :lastname, :email, :phone, :rib, :code)
+    params.require(:fournisseur).permit(:firstname, :lastname, :email, :phone, :rib, :code, :user_id)
   end
 
   def fournisseur_justif_params

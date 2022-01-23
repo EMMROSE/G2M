@@ -3,9 +3,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @fournisseurs = Fournisseur.all
-    @selections = Selection.all
-    @products = Product.all
+    if current_user.present?
+      @fournisseurs = Fournisseur.where(user_id: current_user.id).all #Fournisseur.all
+      @selections = Selection.where(user_id: current_user.id).all #Selection.all
+      @products = Product.where(user_id: current_user.id).all #Product.all
+    end
   end
 
   def total(fournisseur)

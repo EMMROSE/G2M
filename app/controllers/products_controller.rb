@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
       @products = Product.search_by_brand_id_name(params[:query])
       authorize @products
     else
-      @products = Product.limit(30)
+      @products = Product.where(user_id: current_user.id).limit(30)
       authorize @products
     end
     if @products.count == 0
-      @products = Product.limit(30)
+      @products = Product.where(user_id: current_user.id).limit(30)
       authorize @products
     end
   end
@@ -55,6 +55,7 @@ class ProductsController < ApplicationController
     @selection = Selection.find(params[:selection_id])
     authorize @selection
     @product.selection = @selection
+    @product.user_id = @selection.user_id
     # to add a category according to name of product itself
     array1 = ["Pull", "Gilet", "Cardigan", "Sweat"]
     array2 = ["Blouse", "Chemise","Haut manches longues","Haut manches courtes", "Polo"]
@@ -238,6 +239,7 @@ class ProductsController < ApplicationController
     @product.color = @last_product.color
     @product.genre = @last_product.genre
     @product.selection = @last_product.selection
+    @product.user_id = @last_product.selection.user_id
     @product.price = @last_product.price
     @product.category = @last_product.category
     @product.season = @last_product.season
@@ -318,7 +320,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :brand, :size, :color, :genre, :price_cents, :selection_id, :photo, :season, :comment, :commentaire)
+    params.require(:product).permit(:name, :brand, :size, :color, :genre, :price_cents, :selection_id, :photo, :season, :comment, :commentaire, :user_id)
   end
 
   def price_params
