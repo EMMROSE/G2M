@@ -898,7 +898,7 @@
 # @product419.save!
 
 
-Fournisseur.first(10).each do |fournisseur|
+Fournisseur.each do |fournisseur|
   fournisseur.user_id = 1
   fournisseur.save!
   fournisseur.selections.each do |selection|
