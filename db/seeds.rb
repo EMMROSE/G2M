@@ -11,57 +11,57 @@
 # user.save
 # puts 'Done.. Next Step'
 
-puts 'Destroy all Clothes'
-Clothe.destroy_all
-puts 'Destroy all Brands'
-Brand.destroy_all
-puts 'Destroy all Colors'
-Color.destroy_all
-puts '... building array'
+# puts 'Destroy all Clothes'
+# Clothe.destroy_all
+# puts 'Destroy all Brands'
+# Brand.destroy_all
+# puts 'Destroy all Colors'
+# Color.destroy_all
+# puts '... building array'
 
-array = ['Aden & Anais', '10IS', 'Absorba', 'Alice', 'Arsène et les pipelettes', 'Baby b gosh', 'Benetton', 'Billieblush', 'Blune', 'Bonpoint', 'Bonton', 'Boutchou', 'Burberry', 'C&A', 'Cadet Rousselle', 'Carrément Beau', 'Catimini', 'CdeC', 'Chipie', 'Cyrillus', 'Dior', 'DPAM', 'Gap', 'Gocco', 'H&M', 'IKKS', 'Isabel Marant', 'Jacadi', 'Kiabi', 'Kickers', 'K-way', 'La Redoute', 'Le Bome', 'Levis', 'Lola Palacios', 'Louis Louise', 'Mango', 'Monoprix', 'Natalys', 'Noukies', 'Obaibi', 'Okaidi', 'Orchestra', 'Oscar & Valentine', 'Oshkosh', 'Paul Smith', 'Petit Bateau', 'Ralph Lauren', 'Ronron', 'Sergent Major', 'Stella McCartney', 'Sucre d Orge','TAO', 'Tartine & Chocolat', 'The Little White Company', 'Timberland', 'Vert Baudet', 'Zadig & Voltaire', 'Zara', 'Nike']
-array2 = ['Bloomer', 'Bloomer Salopette', 'Blouse', 'Body', 'Chaussures', 'Chaussons', 'Chemise', 'Combinaison', 'Doudoune', 'Ensemble', 'Gigoteuse', 'Gilet', 'Hauts Manches Longues', 'Jupe', 'Manteau', 'Pantalon', 'Pull', 'Pyjama', 'Robe', 'Salopette', 'Veste', 'Bonnet', 'Jogging', 'Legging']
-array3 = ["Argenté", "Beige", "Blanc", "Bleu", "Bordeau", "Doré", "Gris", "Jaune", "Marron", "Multicolor", "Noir", "Orange", "Rose", "Rouge", "Vert", "Violet", "Marinière", "Terracotta", "Lavande", "Corail"]
-puts "CREATING PRICES HASH"
-puts '----------------'
-puts "CREATING BRANDS"
-puts '----------------'
-array.each do |element|
-  x = Brand.new(name: element)
-  x.save
-end
-puts '>>>>>> Done!'
-puts '----------------'
+# array = ['Aden & Anais', '10IS', 'Absorba', 'Alice', 'Arsène et les pipelettes', 'Baby b gosh', 'Benetton', 'Billieblush', 'Blune', 'Bonpoint', 'Bonton', 'Boutchou', 'Burberry', 'C&A', 'Cadet Rousselle', 'Carrément Beau', 'Catimini', 'CdeC', 'Chipie', 'Cyrillus', 'Dior', 'DPAM', 'Gap', 'Gocco', 'H&M', 'IKKS', 'Isabel Marant', 'Jacadi', 'Kiabi', 'Kickers', 'K-way', 'La Redoute', 'Le Bome', 'Levis', 'Lola Palacios', 'Louis Louise', 'Mango', 'Monoprix', 'Natalys', 'Noukies', 'Obaibi', 'Okaidi', 'Orchestra', 'Oscar & Valentine', 'Oshkosh', 'Paul Smith', 'Petit Bateau', 'Ralph Lauren', 'Ronron', 'Sergent Major', 'Stella McCartney', 'Sucre d Orge','TAO', 'Tartine & Chocolat', 'The Little White Company', 'Timberland', 'Vert Baudet', 'Zadig & Voltaire', 'Zara', 'Nike']
+# array2 = ['Bloomer', 'Bloomer Salopette', 'Blouse', 'Body', 'Chaussures', 'Chaussons', 'Chemise', 'Combinaison', 'Doudoune', 'Ensemble', 'Gigoteuse', 'Gilet', 'Hauts Manches Longues', 'Jupe', 'Manteau', 'Pantalon', 'Pull', 'Pyjama', 'Robe', 'Salopette', 'Veste', 'Bonnet', 'Jogging', 'Legging']
+# array3 = ["Argenté", "Beige", "Blanc", "Bleu", "Bordeau", "Doré", "Gris", "Jaune", "Marron", "Multicolor", "Noir", "Orange", "Rose", "Rouge", "Vert", "Violet", "Marinière", "Terracotta", "Lavande", "Corail"]
+# puts "CREATING PRICES HASH"
+# puts '----------------'
+# puts "CREATING BRANDS"
+# puts '----------------'
+# array.each do |element|
+#   x = Brand.new(name: element)
+#   x.save
+# end
+# puts '>>>>>> Done!'
+# puts '----------------'
 
-puts "CREATING CLOTHES"
-puts '----------------'
-array2.each do |element|
-  y = Clothe.new(name: element)
-  y.save
-end
-puts '>>>>>> Done!'
-puts '----------------'
+# puts "CREATING CLOTHES"
+# puts '----------------'
+# array2.each do |element|
+#   y = Clothe.new(name: element)
+#   y.save
+# end
+# puts '>>>>>> Done!'
+# puts '----------------'
 
-puts "CREATING COLORS"
-puts '----------------'
-array3.each do |element|
-  z = Color.new(name: element)
-  z.save
-end
-puts '>>>>>> Done!'
-puts '----------------'
+# puts "CREATING COLORS"
+# puts '----------------'
+# array3.each do |element|
+#   z = Color.new(name: element)
+#   z.save
+# end
+# puts '>>>>>> Done!'
+# puts '----------------'
 
-# Product.destroy_all
-# puts 'Create Products'
-# LES PRIX INDIQUES SONT EN TTC. PENSEZ A CHANGER CETTE BASE DE DONNEE ET TRAVAILLER EN HT
-@product1 = Product.new(brand: 'Jacadi', name: 'Manteau', price: 4000)
-@product2 = Product.new(brand: 'Boutchou', name: 'Manteau', price: 1600)
-@product3 = Product.new(brand: 'Jacadi', name: 'Combinaison', price: 1900)
-@product4 = Product.new(brand: 'Petit Bateau', name: 'Manteau', price: 3000)
-@product1.save!
-@product2.save!
-@product3.save!
-@product4.save!
+# # Product.destroy_all
+# # puts 'Create Products'
+# # LES PRIX INDIQUES SONT EN TTC. PENSEZ A CHANGER CETTE BASE DE DONNEE ET TRAVAILLER EN HT
+# @product1 = Product.new(brand: 'Jacadi', name: 'Manteau', price: 4000)
+# @product2 = Product.new(brand: 'Boutchou', name: 'Manteau', price: 1600)
+# @product3 = Product.new(brand: 'Jacadi', name: 'Combinaison', price: 1900)
+# @product4 = Product.new(brand: 'Petit Bateau', name: 'Manteau', price: 3000)
+# @product1.save!
+# @product2.save!
+# @product3.save!
+# @product4.save!
 
 # @product5 = Product.new(brand: 'Vert Baudet', name: 'Manteau', price: 19.00)
 # @product6 = Product.new(brand: 'Gap', name: 'Manteau', price: 20.00)
@@ -896,4 +896,20 @@ puts '----------------'
 # @product417.save!
 # @product418.save!
 # @product419.save!
+
+
+Fournisseur.first(10).each do |fournisseur|
+  fournisseur.user_id = 1
+  fournisseur.save!
+  fournisseur.selections.each do |selection|
+    selection.user_id = 1
+    selection.save!
+    selection.products.each do |product|
+      product.user_id = 1
+      product.save!
+    end
+  end
+end
+
+
 puts '>>>>>> Done!'
