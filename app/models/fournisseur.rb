@@ -60,6 +60,10 @@ class Fournisseur < ApplicationRecord
   def save_fournisseur_csv
     csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
     CSV.generate(csv_options) do |csv|
+      csv << ["EMAIL DES FOURNISSEURS"]
+      Fournisseur.all.each do |fournisseur|
+        csv << ["#{fournisseur.email}"]
+      end
       csv << ["FOURNISSEUR"]
       Fournisseur.all.each do |fournisseur|
         csv << ["f = Fournisseur.new(id: #{fournisseur.id}, firstname: '#{fournisseur.firstname}', lastname: '#{fournisseur.lastname}', rib: '#{fournisseur.rib}', email: '#{fournisseur.email}', phone: '#{fournisseur.phone}', code: '#{fournisseur.code}')"]
@@ -80,10 +84,6 @@ class Fournisseur < ApplicationRecord
       Justificatif.all.each do |element|
         csv << ["u = Justificatif.new(id: #{element.id}, justif: '#{element.justif}', fournisseur_id: #{element.fournisseur_id})"]
         csv << ["u.save!"]
-      end
-      csv << ["EMAIL DES FOURNISSEURS"]
-      Fournisseur.all.each do |fournisseur|
-        csv << ["#{fournisseur.email}"]
       end
     end
   end
