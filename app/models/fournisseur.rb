@@ -81,6 +81,10 @@ class Fournisseur < ApplicationRecord
         csv << ["u = Justificatif.new(id: #{element.id}, justif: '#{element.justif}', fournisseur_id: #{element.fournisseur_id})"]
         csv << ["u.save!"]
       end
+      csv << ["EMAIL DES FOURNISSEURS"]
+      Fournisseur.all.each do |fournisseur|
+        csv << ["#{fournisseur.email}"]
+      end
     end
   end
 

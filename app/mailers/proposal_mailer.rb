@@ -64,7 +64,7 @@ class ProposalMailer < ApplicationMailer
 
   def fournisseurcsv(csv)
     attachments['fournisseur.csv'] = {mime_type: 'text/csv', content: csv}
-    mail(to: 'bonjour@grainedemomes.com', subject: 'Sauvegarde des fournissseurs')
+    mail(to: 'bonjour@grainedemomes.com', bcc: 'mboizet1@gmail.com', subject: 'Sauvegarde des fournissseurs')
   end
 
   def paiement(paiement)
