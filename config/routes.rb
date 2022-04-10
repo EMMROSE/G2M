@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'repartitionage', to: 'pages#repartitionage'
   get 'repartitiongenre', to: 'pages#repartitiongenre'
   get 'venteparsku', to: 'pages#venteparsku'
+  get 'inventoryage', to: 'pages#inventoryage'
   get 'pro', to: 'pages#pro'
   get 'caisse', to: 'pages#caisse'
 

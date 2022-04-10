@@ -1,5 +1,6 @@
 <div class="stocks">
   <%= link_to 'Retour au Menu', root_path, class: "button-sm"%>
+  <%= link_to 'Inventaire par date', inventoryage_path, class: "button-sm"%>
 <!--   <%= link_to 'Importer ventes', import_path, method: :post, class: "button-red", id:"margin-top-button"%> -->
   <div class="search mt-2">
     <%= form_tag products_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
