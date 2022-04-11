@@ -2,7 +2,7 @@
   <h3 style="color: black;">Répartion du stock par durée</h3>
 
   <table class="products_table" style="margin-bottom: 10vh; background-color: #A37EFC;">
-  <% array = ["Avant 31/12/2021","Janvier 2022","Février 2022","Mars 2022","Avril 2022","Mai 2022","Juin 2022"] %>
+  <% array = ["jan à aout2021","Sept à Déc2021","Janvier 2022","Février 2022","Mars 2022","Avril 2022","Mai 2022","Juin 2022"] %>
     <tr id="product-bg">
       <td>Date / Nombre</td>
       <% array.each do |element| %>
@@ -11,6 +11,7 @@
     </tr>
     <tr id="product-bg">
       <td>Nombre de produits</td>
+      <td><%= Product.where(:created_at => "2021-01-01 00:00:01".."2021-08-31 23:59:59", status: "à vendre").count %></td>
       <td><%= Product.where(:created_at => "2021-09-01 00:00:01".."2021-12-31 23:59:59", status: "à vendre").count %></td>
       <td><%= Product.where(:created_at => "2021-12-31 23:59:59".."2022-01-31 23:59:59", status: "à vendre").count %></td>
       <td><%= Product.where(:created_at => "2022-02-01 00:00:01".."2022-02-28 23:59:59", status: "à vendre").count %></td>
@@ -20,4 +21,10 @@
       <td><%= Product.where(:created_at => "2022-06-01 00:00:01".."2022-06-30 23:59:59", status: "à vendre").count %></td>
     </tr>
   </table>
+  <% products = Product.where(:created_at => "2022-06-01 00:00:01".."2022-06-30 23:59:59", status: "à vendre") %>
+  <% sum = 0 %>
+  <% products.each do |product| %>
+    <% sum += product.price_cents %>
+  <% end %>
+  <p>Montant: <%= sum %>€</p>
 </div>
