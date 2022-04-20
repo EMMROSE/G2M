@@ -92,7 +92,7 @@ class FournisseursController < ApplicationController
     @fournisseur = Fournisseur.find(params[:id])
     authorize @fournisseur
     # prepare my csv with Model function
-    csv = @fournisseur.save_fournisseur_csv
+    csv = @fournisseur.save_fournisseur_csv2
     # prepare email and forward csv as argument
     ProposalMailer.fournisseurcsv(csv).deliver_now
     # prepare my csv with Model function

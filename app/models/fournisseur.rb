@@ -88,6 +88,18 @@ class Fournisseur < ApplicationRecord
     end
   end
 
+  def save_fournisseur_csv2
+    csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
+    CSV.generate(csv_options) do |csv|
+      csv << ["N°id","Type","Marque","Taille","Genre","Prix HT","Prix KIABI"]
+      Product.order("id ASC").each do |product|
+        if product.status == "à vendre"
+          csv << ["#{product.id}","#{product.name}","#{product.brand}","#{product.size}","#{product.genre}","#{product.price*1.2}","#{product.price*0.96}"]
+        end
+      end
+    end
+  end
+
   # def save_product_csv
   #   csv_options = { col_sep: ',', encoding: 'ISO-8859-1'}
   #   CSV.generate(csv_options) do |csv|
