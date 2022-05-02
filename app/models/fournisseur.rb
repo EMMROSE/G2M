@@ -97,6 +97,14 @@ class Fournisseur < ApplicationRecord
           csv << ["#{product.id}","#{product.name}","#{product.brand}","#{product.size}","#{product.genre}","#{product.price*1.2}","#{product.price*0.96}"]
         end
       end
+      csv << [" "]
+      csv << ["la liste des fournisseurs"]
+      csv << [" "]
+      csv << ["ID","Prénom","Nom","email","téléphone"]
+      Fournisseur.order("id ASC").each do |fournisseur|
+        selection = Selection.where(fournisseur: fournisseur.id).count
+        csv << ["#{fournisseur.id}","#{product.firstname}","#{fournisseur.lastname}","#{fournisseur.email}","#{fournisseur.phone}","#{selection} selections(s)"]
+      end
     end
   end
 
