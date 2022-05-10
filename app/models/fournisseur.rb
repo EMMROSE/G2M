@@ -103,7 +103,7 @@ class Fournisseur < ApplicationRecord
       csv << ["ID","Prénom","Nom","email","téléphone"]
       Fournisseur.order("id ASC").each do |fournisseur|
         selection = Selection.where(fournisseur: fournisseur.id).count
-        csv << ["#{fournisseur.id}","#{product.firstname}","#{fournisseur.lastname}","#{fournisseur.email}","#{fournisseur.phone}","#{selection} selections(s)"]
+        csv << ["#{fournisseur.id}","#{fournisseur.firstname}","#{fournisseur.lastname}","#{fournisseur.email}","#{fournisseur.phone}","#{selection} selections(s)"]
       end
     end
   end
